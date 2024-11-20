@@ -1,0 +1,259 @@
+﻿@{
+    ViewData["Title"] = "Contacto";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="~/css/sideBar.css">
+    <link rel="stylesheet" href="~/css/roles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="menu">
+        <ion-icon name="menu-outline"></ion-icon>
+        <ion-icon name="close-outline"></ion-icon>
+    </div>
+
+    <div class="barra-lateral">
+        <div>
+            <div class="nombre-pagina">
+                <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+                <span>CaribeanBliss</span>
+            </div>
+        </div>
+
+        <nav class="navegacion">
+            <ul>
+                <li>
+                    <a id="home" asp-controller="Caribbean" asp-action="Index">
+                        <ion-icon name="home-outline"></ion-icon>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Dashboard">
+                        <ion-icon name="stats-chart-outline"></ion-icon>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Huespedes">
+                        <ion-icon name="people-outline"></ion-icon>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <ion-icon name="bed-outline"></ion-icon>
+                            <span>Alojamiento</span>
+                        </a>
+                        <div class="dropdown-menu m-0">
+                            <a class="dropdown-item" asp-controller="Caribbean" asp-action="Huespedes">Huespedes</a>
+                            <a class="dropdown-item" asp-controller="Caribbean" asp-action="Reservas">Reservas</a>
+                            <a class="dropdown-item" asp-controller="Caribbean" asp-action="Habitaciones">Habitaciones</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Servicios">
+                        <ion-icon name="briefcase-outline"></ion-icon>
+                        <span>Servicios</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Roles">
+                        <ion-icon name="key-outline"></ion-icon>
+                        <span>Roles</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Contacto">
+                        <ion-icon name="call-outline"></ion-icon>
+                        <span>Contacto</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="caribean_logo">
+            <img src="~/img/caribeanbliss_logo.png" alt="Home" srcset="">
+        </div>
+
+        <div>
+            <div class="linea"></div>
+
+            <div class="modo-oscuro">
+                <div class="info">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    <span>Modo Dark</span>
+                </div>
+                <div class="switch">
+                    <div class="base">
+                        <div class="circulo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <main>
+        <!-- Topbar Star -->
+        <div class="container-fluid bg-dark px-5 d-lg-block d justify-content-around mb-2">
+            <div class="row gx-0 p-2 align-items-center">
+                <!-- Sección de botones visibles en pantallas pequeñas y grandes -->
+                <div class="btn-group-container d-flex justify-content-end">
+                    <!-- Íconos visibles solo en pantallas pequeñas con tooltips -->
+                    <a href="" class="btn-modern me-2 d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Iniciar sesión">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                    <a href="" class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Registrarse">
+                        <i class="fas fa-user-plus"></i>
+                    </a>
+
+                    <!-- Botones completos visibles solo en pantallas grandes -->
+                    <a href="" class="btn-modern me-2 d-none d-lg-inline-flex">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                    </a>
+                    <a href="" class="btn-modern d-none d-lg-inline-flex">
+                        <i class="fas fa-user-plus"></i> Registrarse
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
+        <!-- Inicio Seccion Modificable -->
+        <div class="d-flex justify-content-center">
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <h6 class="section-title bg-white text-center text-primary px-3">Contáctanos</h6>
+                        <h1 class="mb-5">Contacto para Cualquier Consulta</h1>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <h5>Ponte en Contacto</h5>
+                            <p class="mb-4">Temporalmente, en rebum elitr clita. Diam dolor, diam ipsum sit. Aliqu diam amet diam et eos</p>
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                                    <i class="fa fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="text-primary">Oficina</h5>
+                                    <p class="mb-0">123 Calle, Nueva York, EE.UU.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                                    <i class="fa fa-phone-alt text-white"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="text-primary">Teléfono</h5>
+                                    <p class="mb-0">+012 345 67890</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                                    <i class="fa fa-envelope-open text-white"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="text-primary">Correo Electrónico</h5>
+                                    <p class="mb-0">info@ejemplo.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                            <iframe class="position-relative rounded w-100 h-100"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.763064458573!2d-77.346366!3d8.637199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMzcnMTMuNiJOIDc3wrA0My43Ilc!5e0!3m2!1ses!2sco!4v1635761345001!5m2!1ses!2sco"
+                                    frameborder="0" style="min-height: 300px; border:0;" allowfullscreen="" aria-hidden="false"
+                                    tabindex="0"></iframe>
+                        </div>
+                        <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="nombre" placeholder="Tu Nombre">
+                                            <label for="nombre">Nombre</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" id="email" placeholder="Tu Correo Electrónico">
+                                            <label for="email">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="asunto" placeholder="Asunto">
+                                            <label for="asunto">Asunto</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Deja tu mensaje aquí" id="mensaje" style="height: 100px"></textarea>
+                                            <label for="mensaje">Mensaje</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100 py-3" type="submit">Enviar Mensaje</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fin Seccion Modificable -->
+    </main>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="~/js/index.js"></script>
+    <script src="~/js/sidebar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+</body>
+
+</html>

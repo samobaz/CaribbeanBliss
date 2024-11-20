@@ -1,0 +1,201 @@
+﻿@model UsuarioViewModel;
+
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="~/css/login.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+    <link rel="stylesheet" href="~/css/logeados.css">
+    <link rel="stylesheet" href="~/css/form.css">
+    <!-- Cambiado de .html a .css -->
+    <!-- Favicon -->
+    <link href="~/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class=""></div> <!-- Eliminado el div sin cerrar -->
+    <main>
+        <!-- Inicio Seccion Modificable -->
+        <div class="wrapper">
+            <nav class="nav">
+                <div class="nav-logo">
+                    <img src="/img/caribeanbliss_logo.png" alt="">
+                </div>
+
+                <div class="nav-menu" id="navMenu"></div>
+
+                <div class="nav-button">
+                    <button class="btn white-btn" id="loginBtn" onclick="showLogin()">Iniciar sesión</button>
+                    <button class="btn" id="registerBtn" onclick="showRegister()">Registrarse</button>
+                </div>
+
+                <div class="nav-menu-btn">
+                    <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+                </div>
+            </nav>
+
+            <!-- Form box -->
+            <div class="form-box">
+                <!-- Login form -->
+                <div class="login-container" id="login">
+                    <span>¿Quieres Crear tu Cuenta? <a href="#" onclick="showRegister()" style="color: white; text-decoration: underline;">Registrarse</a></span>
+                    <header>Inicio de sesión</header> <!-- Cambiado a minúsculas -->
+
+                    <div class="avatar-container">
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                    <form asp-action="Login">
+                        <div class="input-box">
+                            <i class="fas fa-user"></i>
+                            <input asp-for="Correo" class="input-field" placeholder="Correo">
+                            <span asp-validation-for="Correo" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input asp-for="Contrasena" type="password" class="input-field" placeholder="Contraseña">
+                            <span asp-validation-for="Contrasena" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="submit">Iniciar Sesión</button>
+                        <div class="remember-forgot">
+                            <a href="#" onclick="showForgotPassword()" style="color: white; text-decoration: underline;">Olvidaste tu contraseña?</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Registration form -->
+                <div class="register-container" id="register">
+                    <div class="top">
+                        <span style="color: black;">¿Tienes una cuenta? <a href="#" onclick="showLogin()" style="color: white; text-decoration: underline;">Iniciar Sesión</a></span>
+                        <header>Registrarse</header> <!-- Cambiado a minúsculas -->
+                    </div>
+                    <div class="registrar-container">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <form asp-action="Register">
+                        <div class="two-forms">
+                            <div class="input-box">
+                                <i class="fa-regular fa-user"></i>
+                                <input asp-for="NombreUsuario" class="input-field" placeholder="Nombre de Usuario">
+                                <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+                            </div>
+
+                            <div class="input-box-group">
+                                <div class="input-box">
+                                    <i class="fa-sharp-duotone fa-solid fa-id-card"></i>
+                                    <select asp-for="TipoIdentificacion" class="input-field">
+                                        <option value="" disabled selected>Tipo De Identificación</option>
+                                        <option value="T.I">T.I</option>
+                                        <option value="C.C">C.C</option>
+                                        <option value="C.E">C.E</option>
+                                    </select>
+                                    <span asp-validation-for="TipoIdentificacion" class="text-danger"></span>
+                                </div>
+
+                                <div class="input-box">
+                                    <i class="fa-regular fa-id-card"></i>
+                                    <input asp-for="Identificacion" class="input-field" placeholder="Identificación">
+                                    <span asp-validation-for="Identificacion" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="input-box">
+                                <i class="fa-solid fa-phone-volume"></i>
+                                <input asp-for="Telefono" class="input-field" placeholder="Telefono">
+                                <span asp-validation-for="Telefono" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="input-box">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input asp-for="Correo" class="input-field" placeholder="Correo">
+                            <span asp-validation-for="Correo" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input asp-for="Contrasena" type="password" class="input-field" placeholder="Contraseña">
+                            <span asp-validation-for="Contrasena" class="text-danger"></span>
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input asp-for="ConfirmarContrasena" type="password" class="input-field" placeholder="Confirmar Contraseña">
+                            <span asp-validation-for="ConfirmarContrasena" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="submit" class="submit" value="Registrarse">
+                        </div>
+
+                        <div class="two-col">
+                            <div class="two">
+                                <label><a href="#">Términos y Condiciones</a></label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Forgot password form -->
+                <div class="forgot-password-container" id="forgotPassword">
+                    <div class="top">
+                        <span><a href="#" onclick="showLogin()">Volver al login</a></span>
+                        <header>Recuperar Contraseña</header> <!-- Cambiado a minúsculas -->
+                    </div>
+                    <div class="Recuperar-container">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <div class="input-box">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" class="input-field" placeholder="Email">
+                    </div>
+                    <div class="input-box">
+                        <i class="fa-solid fa-phone-volume"></i>
+                        <input type="tel" class="input-field" placeholder="Telefono">
+                    </div>
+
+                    <div class="input-box">
+                        <input type="submit" class="submit" value="Enviar Recuperación">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-to-index">
+            <a asp-controller="Caribbean" asp-action="Index" class="btn btn-lg btn-primary btn-lg-square">
+                <i class="bi bi-arrow-left"></i>
+                <i class="fa fa-home"></i>
+            </a>
+        </div>
+        <!-- Fin Seccion Modificable -->
+    </main>
+
+    <script src="~/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Caribbean2</title>
+    <link rel="stylesheet" href="~/css/sideBar.css">
+    <link rel="stylesheet" href="~/css/roles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        @*         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Caribbean2</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Caribbean" asp-action="Index">Index</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Caribbean" asp-action="Logeados">Logeados</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+ *@
+        <div class="barra-lateral">
+            <div>
+                <div class="nombre-pagina">
+                    <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+                    <span>CaribeanBliss</span>
+                </div>
+            </div>
+
+            <nav class="navegacion">
+                <ul>
+                    <li>
+                        <a asp-controller="Caribbean" asp-action="Index">
+                            <ion-icon name="stats-chart-outline"></ion-icon>
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Caribbean" asp-action="Dashboard">
+                            <ion-icon name="stats-chart-outline"></ion-icon>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <ion-icon name="bed-outline"></ion-icon>
+                                <span>Alojamiento</span>
+                            </a>
+                            <div class="dropdown-menu m-0">
+                                <a class="dropdown-item" asp-controller="Habitaciones" asp-action="Index">Habitaciones</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a asp-controller="Servicios" asp-action="index">
+                            <ion-icon name="briefcase-outline"></ion-icon>
+                            <span>Servicios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Caribbean" asp-action="Contacto">
+                            <ion-icon name="call-outline"></ion-icon>
+                            <span>Contacto</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="caribean_logo">
+                <img src="~/img/caribeanbliss_logo.png" alt="Home" srcset="">
+            </div>
+
+            <div>
+                <div class="linea"></div>
+
+                <div class="modo-oscuro">
+                    <div class="info">
+                        <ion-icon name="moon-outline"></ion-icon>
+                        <span>Modo Dark</span>
+                    </div>
+                    <div class="switch">
+                        <div class="base">
+                            <div class="circulo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="container-fluid bg-dark">
+            <div class="row gx-0">
+                <!-- Sección de botones visibles en pantallas pequeñas y grandes -->
+                <div class="btn-group-container d-flex justify-content-between p-2">
+                    <a class="navbar-brand" href="#">
+                        <div class="logo-container">
+                            <img class="caribean_logo" src="~/img/caribeanbliss_logo.png" width="30" height="30" alt="">
+                        </div>
+                        CaribbeanBliss
+                    </a>
+
+                    <div>
+
+                        <!-- Íconos visibles solo en pantallas pequeñas con tooltips -->
+                        <!-- Botones para pantallas pequeñas -->
+                        <!-- Botones para pantallas pequeñas -->
+                        <a class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Iniciar sesión"
+                           asp-controller="Caribbean" asp-action="Login">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </a>
+                        <a class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Registrarse"
+                           asp-controller="Caribbean" asp-action="Registro">
+                            <i class="fas fa-user-plus"></i>
+                        </a>
+
+                        <!-- Botones completos visibles solo en pantallas grandes -->
+                        <a asp-controller="Caribbean" asp-action="Login" class="btn-modern me-2 d-none d-lg-inline-flex">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                        </a>
+                        <a asp-controller="Caribbean" asp-action="Login" class="btn-modern d-none d-lg-inline-flex">
+                            <i class="fas fa-user-plus"></i> Registrarse
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="container">
+        <main role="main" class="">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="~/js/index.js"></script>
+    <script src="~/js/sidebar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

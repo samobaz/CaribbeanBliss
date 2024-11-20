@@ -1,0 +1,76 @@
+﻿@model Huesped
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Huesped</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="NombreCompleto" class="control-label"></label>
+                <input asp-for="NombreCompleto" class="form-control" />
+                <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CorreoElectronico" class="control-label"></label>
+                <input asp-for="CorreoElectronico" class="form-control" />
+                <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoDocumento" class="control-label"></label>
+                <input asp-for="TipoDocumento" class="form-control" />
+                <span asp-validation-for="TipoDocumento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroIdentificacion" class="control-label"></label>
+                <input asp-for="NumeroIdentificacion" class="form-control" />
+                <span asp-validation-for="NumeroIdentificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroContacto" class="control-label"></label>
+                <input asp-for="NumeroContacto" class="form-control" />
+                <span asp-validation-for="NumeroContacto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LugarResidencia" class="control-label"></label>
+                <input asp-for="LugarResidencia" class="form-control" />
+                <span asp-validation-for="LugarResidencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaLlegada" class="control-label"></label>
+                <input asp-for="FechaLlegada" class="form-control" />
+                <span asp-validation-for="FechaLlegada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaSalida" class="control-label"></label>
+                <input asp-for="FechaSalida" class="form-control" />
+                <span asp-validation-for="FechaSalida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoAcomodacion" class="control-label"></label>
+                <input asp-for="TipoAcomodacion" class="form-control" />
+                <span asp-validation-for="TipoAcomodacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstadoHuesped" class="control-label"></label>
+                <select asp-for="IdEstadoHuesped" class="form-control" asp-items="ViewBag.IdEstadoHuesped"></select>
+                <span asp-validation-for="IdEstadoHuesped" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

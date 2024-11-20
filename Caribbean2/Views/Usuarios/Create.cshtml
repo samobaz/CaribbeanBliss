@@ -1,0 +1,137 @@
+﻿@model UsuarioViewModel
+
+@{
+    ViewData["Title"] = "Login & Crear Usuario";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y Crear Usuario</title>
+    <link rel="stylesheet" href="~/css/login.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+    <link rel="stylesheet" href="~/css/logeados.css">
+    <link rel="stylesheet" href="~/css/form.css">
+
+
+    <!-- Favicon -->
+    <link href="~/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <!-- Wrapper para alternar entre Login y Crear Usuario -->
+        <div class="wrapper">
+
+            <!-- Contenedor del formulario -->
+            <div class="form-box">
+                @* <!-- Login -->
+                <div class="login-container" id="login">
+                    <header>Inicio de Sesión</header>
+                    <form asp-action="Login">
+                        <div class="input-box">
+                            <i class="fas fa-user"></i>
+                            <input asp-for="Correo" class="input-field" placeholder="Correo">
+                            <span asp-validation-for="Correo" class="text-danger"></span>
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input asp-for="Contrasena" type="password" class="input-field" placeholder="Contraseña">
+                            <span asp-validation-for="Contrasena" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="submit">Iniciar Sesión</button>
+                        <div class="remember-forgot">
+                            <a href="#" onclick="showForgotPassword()">¿Olvidaste tu contraseña?</a>
+                        </div>
+                    </form>
+                </div> *@
+
+                <!-- Crear Usuario -->
+                <div class="form-container">
+                    <header>Crear Usuario</header>
+                    <form asp-action="Create">
+                        <div class="input-box">
+                            <i class="fa-regular fa-user"></i>
+                            <input asp-for="NombreUsuario" class="input-field" placeholder="Nombre Completo" />
+                            <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-id-card"></i>
+                            <select asp-for="TipoIdentificacion" class="input-field">
+                                <option value="" disabled selected>Tipo de Documento</option>
+                                <option value="CC">Cédula de Ciudadanía</option>
+                                <option value="TI">Tarjeta de Identidad</option>
+                                <option value="CE">Cédula de Extranjería</option>
+                                <option value="PAS">Pasaporte</option>
+                                <option value="NIT">NIT</option>
+                            </select>
+                            <span asp-validation-for="TipoIdentificacion" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-box">
+                            <i class="fa-regular fa-id-card"></i>
+                            <input asp-for="Identificacion" class="input-field" placeholder="Número de Documento" />
+                            <span asp-validation-for="Identificacion" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-phone"></i>
+                            <input asp-for="Telefono" class="input-field" placeholder="Teléfono" />
+                            <span asp-validation-for="Telefono" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-box">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input asp-for="Correo" class="input-field" placeholder="Correo Electrónico" />
+                            <span asp-validation-for="Correo" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input asp-for="Contrasena" type="password" class="input-field" placeholder="Contraseña" />
+                            <span asp-validation-for="Contrasena" class="text-danger"></span>
+                        </div>
+
+                        <div class="input-box">
+                            <input type="submit" class="submit" value="Crear" />
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div> 
+    </main>
+    
+    <script>
+        function showLogin() {
+            document.getElementById('login').style.display = 'block';
+            document.getElementById('register').style.display = 'none';
+        }
+
+        function showRegister() {
+            document.getElementById('register').style.display = 'block';
+            document.getElementById('login').style.display = 'none';
+        }
+
+        // Mostrar inicialmente el formulario de login
+        showLogin();
+    </script>
+</body>
+</html>

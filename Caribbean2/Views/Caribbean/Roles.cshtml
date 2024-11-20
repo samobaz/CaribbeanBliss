@@ -1,0 +1,305 @@
+﻿@{
+    ViewData["Title"] = "Roles";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="~/css/sideBar.css">
+    <link rel="stylesheet" href="~/css/roles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="menu">
+        <ion-icon name="menu-outline"></ion-icon>
+        <ion-icon name="close-outline"></ion-icon>
+    </div>
+    <div class="barra-lateral">
+        <div>
+            <div class="nombre-pagina">
+                <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+                <span>CaribeanBliss</span>
+            </div>
+        </div>
+
+        <nav class="navegacion">
+            <ul>
+                <li>
+                    <a id="home" asp-controller="Caribbean" asp-action="Index">
+                        <ion-icon name="home-outline"></ion-icon>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Dashboard">
+                        <ion-icon name="stats-chart-outline"></ion-icon>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Huespedes">
+                        <ion-icon name="people-outline"></ion-icon>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <ion-icon name="bed-outline"></ion-icon>
+                            <span>Alojamiento</span>
+                        </a>
+                        <div class="dropdown-menu m-0">
+                            <a class="dropdown-item" asp-controller="Caribbean" asp-action="Huespedes">Huespedes</a>
+                            <a class="dropdown-item" asp-controller="Caribbean" asp-action="Reservas">Reservas</a>
+                            <a class="dropdown-item" asp-controller="Caribbean" asp-action="Habitaciones">Habitaciones</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Servicios">
+                        <ion-icon name="briefcase-outline"></ion-icon>
+                        <span>Servicios</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Roles">
+                        <ion-icon name="key-outline"></ion-icon>
+                        <span>Roles</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Contacto">
+                        <ion-icon name="call-outline"></ion-icon>
+                        <span>Contacto</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="caribean_logo">
+            <img src="~/img/caribeanbliss_logo.png" alt="Home" srcset="">
+        </div>
+
+        <div>
+            <div class="linea"></div>
+
+            <div class="modo-oscuro">
+                <div class="info">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    <span>Modo Dark</span>
+                </div>
+                <div class="switch">
+                    <div class="base">
+                        <div class="circulo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <main>
+        <!-- Topbar Star -->
+        <div class="container-fluid bg-dark px-5 d-lg-block d justify-content-around mb-2">
+            <div class="row gx-0 p-2 align-items-center">
+                <!-- Sección de botones visibles en pantallas pequeñas y grandes -->
+                <div class="btn-group-container d-flex justify-content-end">
+                    <!-- Íconos visibles solo en pantallas pequeñas con tooltips -->
+                    <a href="" class="btn-modern me-2 d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Iniciar sesión">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                    <a href="" class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Registrarse">
+                        <i class="fas fa-user-plus"></i>
+                    </a>
+
+                    <!-- Botones completos visibles solo en pantallas grandes -->
+                    <a href="" class="btn-modern me-2 d-none d-lg-inline-flex">
+                        <i class="fas fa-sign-in-alt"></i> Cerrar sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
+        <!-- Inicio Seccion Modificable -->
+        <h1 class="d-flex justify-content-center mt-3">Gestión de Roles</h1>
+
+        <div class="main-content">
+            <div class="roles-section">
+                <div class="roles-card">
+                    <div class="roles-card-header d-flex justify-content-between align-items-center">
+                        <div class="text-center flex-grow-1">
+                            <h2 class="roles-card-title">Roles</h2>
+                            <p class="roles-card-description">Administración de Roles</p>
+                        </div>
+                        <div class="button-group">
+                            <button class="button" data-bs-toggle="modal" data-bs-target="#addRoleModal">Añadir Rol</button>
+                        </div>
+                    </div>
+                    <div class="roles-card-body">
+                        <table class="roles-table">
+                            <thead>
+                                <tr>
+                                    <th>Rol</th>
+                                    <th>Accesos</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Administrador</td>
+                                    <td>
+                                        <label><input type="checkbox" class="confirm-checkbox" name="modulo1_admin" checked> Gestión de empleados</label><br>
+                                        <label><input type="checkbox" class="confirm-checkbox" name="modulo2_admin" checked> Gestión de clientes</label><br>
+                                        <label><input type="checkbox" class="confirm-checkbox" name="modulo3_admin" checked> Administración total</label>
+                                    </td>
+                                    <td class="roles-actions">
+                                        <button type="button" class="btn btn-success btn-sm" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-sm" title="Eliminar">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Empleado</td>
+                                    <td>
+                                        <label><input type="checkbox" class="confirm-checkbox" name="modulo1_emp" checked> Gestión de huespedes</label><br>
+                                        <label><input type="checkbox" class="confirm-checkbox" name="modulo2_emp" checked> Gestión de habitaciones</label><br>
+                                        <label><input type="checkbox" class="confirm-checkbox" name="modulo3_emp" checked> Gestión de reserva</label><br>
+                                        <label><input type="checkbox" class="confirm-checkbox" name="modulo4_emp" checked> Gestión de servicios</label>
+                                    </td>
+                                    <td class="roles-actions">
+                                        <button type="button" class="btn btn-success btn-sm" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-sm" title="Eliminar">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cliente</td>
+                                    <td>
+                                        <label><input type="checkbox" class="confirm-checkbox" name="modulo1_client" checked> Gestión de habitación</label><br>
+                                        <label><input type="checkbox" class="confirm-checkbox" name="modulo2_client" checked> Gestión de reserva</label>
+                                    </td>
+                                    <td class="roles-actions">
+                                        <button type="button" class="btn btn-success btn-sm" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-sm" title="Eliminar">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de confirmación -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmModalLabel">Confirmar desmarcado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Estás seguro de que deseas desmarcar esta opción?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="denyAction" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" id="confirmAction" class="btn btn-danger">Desmarcar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para añadir un nuevo rol -->
+        <div class="modal fade" id="addRoleModal" tabindex="-1" aria-labelledby="addRoleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addRoleModalLabel">Añadir Nuevo Rol</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addRoleForm">
+                            <div class="mb-3">
+                                <label for="roleName" class="form-label">Nombre del Rol</label>
+                                <input type="text" class="form-control" id="roleName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Accesos</label><br>
+                                <label><input type="checkbox" class="confirm-checkbox-rol" name="access1"> Gestión de empleados</label><br>
+                                <label><input type="checkbox" class="confirm-checkbox-rol" name="access2"> Gestión de clientes</label><br>
+                                <label><input type="checkbox" class="confirm-checkbox-rol" name="access3"> Administración total</label><br>
+                                <label><input type="checkbox" class="confirm-checkbox-rol" name="access4"> Gestión de habitaciones</label><br>
+                                <label><input type="checkbox" class="confirm-checkbox-rol" name="access5"> Gestión de reservas</label><br>
+                                <label><input type="checkbox" class="confirm-checkbox-rol" name="access6"> Gestión de servicios</label><br>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="clearFields">Limpiar Campos</button>
+                        <button type="button" class="btn btn-primary" id="addRole">Añadir Rol</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fin Seccion Modificable -->
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="~/js/index.js"></script>
+    <script src="~/js/login.js"></script>
+    <script src="~/js/sidebar.js"></script>
+    <script src="~/js/roles.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+</body>
+
+</html>

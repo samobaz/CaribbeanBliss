@@ -1,0 +1,400 @@
+﻿@{
+    ViewData["Title"] = "Logeados";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="~/css/sideBar.css">
+    <link rel="stylesheet" href="~/css/roles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+    <link rel="stylesheet" href="~/css/logeados.css">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="menu">
+        <ion-icon name="menu-outline"></ion-icon>
+        <ion-icon name="close-outline"></ion-icon>
+    </div>
+
+    <div class="barra-lateral">
+        <div>
+            <div class="nombre-pagina">
+                <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+                <span>CaribeanBliss</span>
+            </div>
+        </div>
+
+        <nav class="navegacion">
+            <ul>
+                <li>
+                    <a id="home" asp-controller="Caribbean" asp-action="Index">
+                        <ion-icon name="home-outline"></ion-icon>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Dashboard">
+                        <ion-icon name="stats-chart-outline"></ion-icon>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Huespedes">
+                        <ion-icon name="people-outline"></ion-icon>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <ion-icon name="bed-outline"></ion-icon>
+                            <span>Alojamiento</span>
+                        </a>
+                        <div class="dropdown-menu m-0">
+                            <a class="dropdown-item" asp-controller="Caribbean" asp-action="Huespedes">Huespedes</a>
+                            <a class="dropdown-item" asp-controller="Caribbean" asp-action="Reservas">Reservas</a>
+                            <a class="dropdown-item" asp-controller="Caribbean" asp-action="Habitaciones">Habitaciones</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Servicios">
+                        <ion-icon name="briefcase-outline"></ion-icon>
+                        <span>Servicios</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Roles">
+                        <ion-icon name="key-outline"></ion-icon>
+                        <span>Roles</span>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Caribbean" asp-action="Contacto">
+                        <ion-icon name="call-outline"></ion-icon>
+                        <span>Contacto</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="caribean_logo">
+            <img src="~/img/caribeanbliss_logo.png" alt="Home" srcset="">
+        </div>
+
+        <div>
+            <div class="linea"></div>
+
+            <div class="modo-oscuro">
+                <div class="info">
+                    <ion-icon name="moon-outline"></ion-icon>
+                    <span>Modo Dark</span>
+                </div>
+                <div class="switch">
+                    <div class="base">
+                        <div class="circulo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <main>
+        <header class="container-fluid bg-dark px-5 mb-2">
+            <div class="container-fluid bg-dark px-5 d-lg-block d justify-content-around mb-2">
+                <div class="row gx-0 p-2 align-items-center">
+                    <div class="btn-group-container d-flex justify-content-end">
+                        <H1>Admin</H1>
+                        <a href="" class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip"
+                           data-bs-placement="bottom" title="Registrarse">
+                            <i class="fas fa-user-plus"></i>
+                        </a>
+                        <a href="" class="btn-modern me-2 d-none d-lg-inline-flex">
+                            <i class="fas fa-sign-in-alt"></i> Cerrar sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- SECCION MODIFICABLE -->
+
+        <h1 class="text-center mt-3">Usuarios</h1>
+        <div class="container-fluid mt-3">
+            <div class="d-flex align-items-center mb-3">
+                <button type="button" class="btn btn-success rounded-pill me-2" data-bs-toggle="modal"
+                        data-bs-target="#registerUserModal">
+                    Registrar
+                </button>
+                <form class="d-flex mx-auto" role="search" onsubmit="return false;">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Buscar usuarios" aria-label="Buscar"
+                               id="searchInput" oninput="filterTable()">
+                        <button class="btn btn-outline-success" type="submit" onclick="filterTable()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="table-responsive mt-4">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre de Usuario</th>
+                            <th>Cédula</th>
+                            <th>Email</th>
+                            <th>Roles</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        <tr>
+                            <td>Juan Perez</td>
+                            <td>432343</td>
+                            <td>juan@gmail.com</td>
+                            <td>Admin</td>
+                            <td>
+                                <button class="btn btn-warning rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#editUserModal">
+                                    <i class="fas fa-edit"></i> Editar
+                                </button>
+                                <button class="btn btn-danger rounded-pill" onclick="confirmDelete(this)">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>María López</td>
+                            <td>123456</td>
+                            <td>maria@gmail.com</td>
+                            <td>Cliente</td>
+                            <td>
+                                <button class="btn btn-warning rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#editUserModal">
+                                    <i class="fas fa-edit"></i> Editar
+                                </button>
+                                <button class="btn btn-danger rounded-pill" onclick="confirmDelete(this)">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>José Puentes</td>
+                            <td>123456</td>
+                            <td>jose@gmail.com</td>
+                            <td>Cliente</td>
+                            <td>
+                                <button class="btn btn-warning rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#editUserModal">
+                                    <i class="fas fa-edit"></i> Editar
+                                </button>
+                                <button class="btn btn-danger rounded-pill" onclick="confirmDelete(this)">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cristian Perez</td>
+                            <td>123456</td>
+                            <td>cristian@gmail.com</td>
+                            <td>Admin</td>
+                            <td>
+                                <button class="btn btn-warning rounded-pill" data-bs-toggle="modal"
+                                        data-bs-target="#editUserModal">
+                                    <i class="fas fa-edit"></i> Editar
+                                </button>
+                                <button class="btn btn-danger rounded-pill" onclick="confirmDelete(this)">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Puedes añadir más usuarios aquí -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Modal para editar usuario -->
+        <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editUserModalLabel">Editar Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editUserForm">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Nombre de Usuario</label>
+                                <input type="text" class="form-control" id="username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="cedula" class="form-label">Cédula</label>
+                                <input type="text" class="form-control" id="cedula" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="roles" class="form-label">Roles</label>
+                                <input type="text" class="form-control" id="roles" required>
+                            </div>
+                            <button type="submit" class="btn btn-success">Guardar Cambios</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para registrar usuario -->
+        <div class="modal fade" id="registerUserModal" tabindex="-1" aria-labelledby="registerUserModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registerUserModalLabel">Registrar Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="registerUserForm">
+                            <div class="mb-3">
+                                <label for="newUsername" class="form-label">Nombre de Usuario</label>
+                                <input type="text" class="form-control" id="newUsername" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="newCedula" class="form-label">Cédula</label>
+                                <input type="text" class="form-control" id="newCedula" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="newEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="newEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="newRoles" class="form-label">Roles</label>
+                                <input type="text" class="form-control" id="newRoles" required>
+                            </div>
+                            <button type="submit" class="btn btn-success">Registrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de confirmación de eliminación -->
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmDeleteModalLabel">Eliminar Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Estás seguro de que deseas eliminar este usuario?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <!-- Scripts -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="~/js/index.js"></script>
+    <script src="~/js/sidebar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/logeados.js"></script>
+
+    <script>
+        let userRowToDelete;
+
+        function confirmDelete(button) {
+            userRowToDelete = button.closest('tr');
+            const modal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+            modal.show();
+        }
+
+        document.getElementById('confirmDeleteButton').addEventListener('click', function () {
+            if (userRowToDelete) {
+                userRowToDelete.remove();
+                userRowToDelete = null; // Reset the variable after deletion
+            }
+            const modal = bootstrap.Modal.getInstance(document.getElementById('confirmDeleteModal'));
+            modal.hide();
+        });
+
+        document.getElementById('registerUserForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById('newUsername').value;
+            const cedula = document.getElementById('newCedula').value;
+            const email = document.getElementById('newEmail').value;
+            const roles = document.getElementById('newRoles').value;
+
+            // Agregar el nuevo usuario a la tabla
+            const tableBody = document.getElementById('userTableBody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+            <td>${username}</td>
+            <td>${cedula}</td>
+            <td>${email}</td>
+            <td>${roles}</td>
+            <td>
+                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="fas fa-edit"></i> Editar</button>
+                <button class="btn btn-danger" onclick="confirmDelete(this)"><i class="fas fa-trash-alt"></i> Eliminar</button>
+            </td>
+        `;
+            tableBody.appendChild(newRow);
+
+            // Reiniciar el formulario y cerrar el modal
+            this.reset();
+            const modal = bootstrap.Modal.getInstance(document.getElementById('registerUserModal'));
+            modal.hide();
+        });
+    </script>
+
+</body>
+
+</html>
