@@ -8,18 +8,110 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Keep existing head section -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Reserva</title>
+    <link rel="stylesheet" href="~/css/sideBar.css">
+    <link rel="stylesheet" href="~/css/roles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        body {
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/img/imgpagina.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.9;
+            z-index: -1;
+            filter: brightness(0.5) contrast(1.2);
+            backdrop-filter: blur(1px);
+            -webkit-backdrop-filter: blur(1px);
+            background-color: rgba(0, 0, 0, 0.5);
+        }   
+
+        .booking-header {
+            background: linear-gradient(rgba(30, 61, 89, 0.9), rgba(30, 61, 89, 0.9)),
+                        url('/images/hotel-bg.jpg') center/cover;
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+        }
+
+        .roles-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .roles-card-header {
+            background: linear-gradient(135deg, #1e3d59 0%, #2b5278 100%);
+            padding: 1.5rem;
+            border: none;
+        }
+
+        .roles-card-title {
+            color: white;
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+        }
+
+        .form-control {
+            border: 2px solid #f1f4f8;
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: #1e3d59;
+            box-shadow: 0 0 0 0.2rem rgba(30, 61, 89, 0.25);
+        }
+
+        .btn-success {
+            background: #ff6e40;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-success:hover {
+            background: #ff5722;
+            transform: translateY(-2px);
+        }
+
+        .control-label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <div class="booking-header text-center">
-            <h1>Gestión de Reservas</h1>
-            <p class="lead">Editar Reserva</p>
+            <h1 style="color: white;">Gestión de Reservas</h1>
+            <p class="lead">Editar reserva existente en Caribbean Hotel</p>
         </div>
         
         <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-8">
                 <div class="roles-card">
                     <div class="roles-card-header">
                         <h2 class="roles-card-title text-center">Editar Reserva</h2>
@@ -29,62 +121,67 @@
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <input type="hidden" asp-for="IdClienteReserva" />
                             
-                            <div class="form-group mb-3">
-                                <label asp-for="NombreCliente" class="control-label">Nombre del Cliente</label>
-                                <input asp-for="NombreCliente" class="form-control" />
-                                <span asp-validation-for="NombreCliente" class="text-danger"></span>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="NombreCliente" class="control-label">Nombre del Cliente</label>
+                                        <input asp-for="NombreCliente" class="form-control" />
+                                        <span asp-validation-for="NombreCliente" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="Huespedes" class="control-label">Huéspedes</label>
+                                        <input asp-for="Huespedes" class="form-control" />
+                                        <span asp-validation-for="Huespedes" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="TipoDocumento" class="control-label">Tipo de Documento</label>
+                                        <select asp-for="TipoDocumento" class="form-control">
+                                            <option value="">Seleccione un tipo</option>
+                                            <option value="CC">Cédula de Ciudadanía</option>
+                                            <option value="CE">Cédula de Extranjería</option>
+                                            <option value="PAS">Pasaporte</option>
+                                        </select>
+                                        <span asp-validation-for="TipoDocumento" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="NumeroDocumento" class="control-label">Número de Documento</label>
+                                        <input asp-for="NumeroDocumento" class="form-control" />
+                                        <span asp-validation-for="NumeroDocumento" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="fechaLlegada" class="control-label">Fecha de Llegada</label>
+                                        <input asp-for="fechaLlegada" class="form-control" type="date" />
+                                        <span asp-validation-for="fechaLlegada" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="fechaSalida" class="control-label">Fecha de Salida</label>
+                                        <input asp-for="fechaSalida" class="form-control" type="date" />
+                                        <span asp-validation-for="fechaSalida" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="TipodeHabitacion" class="control-label">Tipo de Habitación</label>
+                                        <select asp-for="TipodeHabitacion" class="form-control">
+                                            <option value="">Seleccione tipo</option>
+                                            <option value="Individual">Individual</option>
+                                            <option value="Doble">Doble</option>
+                                            <option value="Suite">Suite</option>
+                                            <option value="Familiar">Familiar</option>
+                                        </select>
+                                        <span asp-validation-for="TipodeHabitacion" class="text-danger"></span>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="form-group mb-3">
-                                <label asp-for="Huespedes" class="control-label">Huéspedes</label>
-                                <input asp-for="Huespedes" class="form-control" />
-                                <span asp-validation-for="Huespedes" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label asp-for="TipoDocumento" class="control-label">Tipo de Documento</label>
-                                <select asp-for="TipoDocumento" class="form-control">
-                                    <option value="">Seleccione un tipo</option>
-                                    <option value="CC">Cédula de Ciudadanía</option>
-                                    <option value="CE">Cédula de Extranjería</option>
-                                    <option value="PAS">Pasaporte</option>
-                                </select>
-                                <span asp-validation-for="TipoDocumento" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label asp-for="NumeroDocumento" class="control-label">Número de Documento</label>
-                                <input asp-for="NumeroDocumento" class="form-control" />
-                                <span asp-validation-for="NumeroDocumento" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label asp-for="fechaLlegada" class="control-label">Fecha de Llegada</label>
-                                <input asp-for="fechaLlegada" class="form-control" type="date" />
-                                <span asp-validation-for="fechaLlegada" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label asp-for="fechaSalida" class="control-label">Fecha de Salida</label>
-                                <input asp-for="fechaSalida" class="form-control" type="date" />
-                                <span asp-validation-for="fechaSalida" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label asp-for="TipodeHabitacion" class="control-label">Tipo de Habitación</label>
-                                <select asp-for="TipodeHabitacion" class="form-control">
-                                    <option value="">Seleccione tipo</option>
-                                    <option value="Individual">Individual</option>
-                                    <option value="Doble">Doble</option>
-                                    <option value="Suite">Suite</option>
-                                    <option value="Familiar">Familiar</option>
-                                </select>
-                                <span asp-validation-for="TipodeHabitacion" class="text-danger"></span>
-                            </div>
-
-                            <div class="text-center mt-4">
+                            <div class="form-group text-center mt-4">
                                 <button type="submit" class="btn btn-success me-2">
-                                    <i class="bi bi-check-circle"></i> Guardar
+                                    <i class="bi bi-check-circle"></i> Guardar Cambios
                                 </button>
                                 <a asp-action="Index" class="btn btn-secondary">
                                     <i class="bi bi-arrow-left-circle"></i> Regresar
@@ -97,19 +194,14 @@
         </div>
     </div>
 
-    <!-- Keep existing scripts section -->
-    <!-- Previous HTML remains the same until scripts section -->
-
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        // Initialize date inputs with current values
         window.onload = function() {
             var fechaLlegada = document.querySelector('input[name="fechaLlegada"]');
             var fechaSalida = document.querySelector('input[name="fechaSalida"]');
             
-            // Convert dates to YYYY-MM-DD format
             if (fechaLlegada.value) {
                 fechaLlegada.value = new Date(fechaLlegada.value).toISOString().split('T')[0];
             }
@@ -118,7 +210,6 @@
             }
         };
 
-        // Form submission with SweetAlert confirmation
         document.getElementById('editForm').addEventListener('submit', function(e) {
             e.preventDefault();
             Swal.fire({
@@ -137,7 +228,6 @@
             });
         });
 
-        // Validate dates
         document.querySelector('input[name="fechaSalida"]').addEventListener('change', function() {
             var fechaLlegada = new Date(document.querySelector('input[name="fechaLlegada"]').value);
             var fechaSalida = new Date(this.value);

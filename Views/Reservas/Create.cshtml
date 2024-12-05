@@ -20,11 +20,33 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <!-- SweetAlert JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
+                  body {
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/imgpagina.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.; /* Reduced opacity for darker effect */
+    z-index: -1;
+    filter: brightness(0.5) contrast(1.2); /* Reduced brightness for darker image */
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}   
         .booking-header {
             background: linear-gradient(rgba(30, 61, 89, 0.9), rgba(30, 61, 89, 0.9)),
                         url('/images/hotel-bg.jpg') center/cover;
@@ -220,21 +242,16 @@
                         </div>
                     </div>
                     <div class="roles-card-body p-4">
-                        <form asp-action="Create" class="mb-3" id="createForm">
+                        <form asp-action="Create" method="post" id="createForm" enctype="multipart/form-data">
                             @Html.AntiForgeryToken()
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                             <!-- Modificar los botones -->
                             <div class="form-group">
                                 <label asp-for="IdCliente" class="control-label">Cliente</label>
-                                <div class="input-group">
-                                    <select asp-for="IdCliente" class="form-control" asp-items="ViewBag.IdCliente">
-                                        <option value="">-- Seleccione un Cliente --</option>
-                                    </select>
-                                    <button type="button" class="btn btn-link text-success" data-bs-toggle="modal" data-bs-target="#modalNuevoCliente">
-                                        <i class="bi bi-person-plus-fill"></i>
-                                    </button>
-                                </div>
+                                <select asp-for="IdCliente" id="IdCliente" class="form-control" asp-items="ViewBag.IdCliente" required>
+                                    <option value="">-- Seleccione un Cliente --</option>
+                                </select>
                                 <span asp-validation-for="IdCliente" class="text-danger"></span>
                             </div>
 
@@ -278,7 +295,7 @@
 
                             <div class="form-group">
                                 <label asp-for="IdHabitacion" class="control-label">Habitación</label>
-                                <select asp-for="IdHabitacion" class="form-control" id="habitacionSelect">
+                                <select asp-for="IdHabitacion" id="habitacionSelect" class="form-control">
                                     <option value="">-- Seleccione una Habitación --</option>
                                     @foreach (var item in ViewBag.IdHabitacion)
                                     {
@@ -514,443 +531,192 @@
 
     <script>
         $(document).ready(function () {
-            // Inicializar Select2 para múltiple selección
-            $('#huespedes-select').select2({
-                placeholder: "Seleccione los huéspedes",
-                width: '100%',
-                theme: "bootstrap-5",
-                allowClear: true
-            }).on('change', function(e) {
-                actualizarHuespedesSeleccionados();
-            });
+    // Variables globales para precios y capacidades
+    const precios = @Html.Raw(Json.Serialize(ViewBag.HabitacionesPrecios));
+    const capacidades = @Html.Raw(Json.Serialize(ViewBag.HabitacionesCapacidad));
 
-            const capacidades = @Html.Raw(Json.Serialize(ViewBag.HabitacionesCapacidad));
-            
-            $('#habitacionSelect').change(function() {
-                validarCapacidad();
-            });
+    // 1. Gestión de huéspedes
+    function setupHuespedesHandlers() {
+        const huespedesDisponibles = $('#huespedes-disponibles');
+        const huespedesSeleccionados = $('#huespedes-seleccionados');
 
-            $('#numeroPersonas').change(function() {
-                validarCapacidad();
-            });
-
-            function validarCapacidad() {
-                const habitacionId = $('#habitacionSelect').val();
-                const numeroPersonas = parseInt($('#numeroPersonas').val()) || 0;
-                const capacidadMaxima = capacidades[habitacionId];
-
-                if (habitacionId && numeroPersonas > 0) {
-                    if (numeroPersonas > capacidadMaxima) {
-                        $('#capacidadError').show();
-                        $('#numeroPersonas').addClass('is-invalid');
-                        return false;
-                    }
-                }
-                
-                $('#capacidadError').hide();
-                $('#numeroPersonas').removeClass('is-invalid');
-                return true;
+        // Doble clic para mover huéspedes
+        huespedesDisponibles.on('dblclick', 'option', function() {
+            const maxPersonas = parseInt($('#numeroPersonas').val()) || 0;
+            if (huespedesSeleccionados.children().length < maxPersonas) {
+                $(this).appendTo(huespedesSeleccionados);
+                validarHuespedes();
+                calcularPrecioTotal();
             }
-
-            // Reemplazar el evento submit actual con este código
-            $('#createForm').on('submit', function(e) {
-                e.preventDefault();
-
-                // Validar número de huéspedes
-                if (!validarNumeroHuespedes()) {
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'El número de huéspedes no puede exceder el número de personas de la reserva',
-                        icon: 'error',
-                        confirmButtonColor: '#3085d6'
-                    });
-                    return false;
-                }
-
-                // Validar capacidad de habitación
-                if (!validarCapacidad()) {
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'El número de personas excede la capacidad de la habitación',
-                        icon: 'error',
-                        confirmButtonColor: '#3085d6'
-                    });
-                    return false;
-                }
-
-                // Validar campos requeridos
-                if (!this.checkValidity()) {
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'Por favor, complete todos los campos requeridos correctamente',
-                        icon: 'error',
-                        confirmButtonColor: '#3085d6'
-                    });
-                    return false;
-                }
-
-                const form = this;
-                
-                // Confirmar antes de enviar
-                Swal.fire({
-                    title: '¿Desea confirmar la reserva?',
-                    text: "Se procederá a crear la reserva con los datos ingresados",
-                    icon: 'question',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Sí, crear reserva',
-                    cancelButtonText: 'Cancelar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // Mostrar indicador de carga
-                        Swal.fire({
-                            title: 'Procesando...',
-                            text: 'Creando la reserva',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                            showConfirmButton: false,
-                            didOpen: () => {
-                                Swal.showLoading();
-                                // Enviar el formulario de forma tradicional
-                                form.submit();
-                            }
-                        });
-                    }
-                });
-            });
-
-            function actualizarHuespedesSeleccionados() {
-                var selectedOptions = $('#huespedes-select option:selected');
-                var container = $('#huespedes-seleccionados');
-                container.empty();
-
-                if(selectedOptions.length > 0) {
-                    var list = $('<div class="selected-guests"></div>');
-                    selectedOptions.each(function() {
-                        list.append(`
-                            <div class="guest-tag">
-                                <i class="bi bi-person-fill"></i>
-                                ${$(this).text()}
-                                <button type="button" class="btn-remove-guest" data-id="${$(this).val()}">
-                                    <i class="bi bi-x-circle"></i>
-                                </button>
-                            </div>
-                        `);
-                    });
-                    container.append(list);
-                }
-
-                // Agregar evento de clic para eliminar huéspedes
-                $('.btn-remove-guest').click(function() {
-                    var id = $(this).data('id');
-                    var option = $(`#huespedes-select option[value='${id}']`);
-                    option.prop('selected', false);
-                    $('#huespedes-select').trigger('change');
-                });
-            }
-
-            const huespedesDisponibles = $('#huespedes-disponibles');
-            const huespedesSeleccionados = $('#huespedes-seleccionados');
-            const numeroPersonas = $('#numeroPersonas');
-            
-            // Función para validar el número de huéspedes
-            function validarNumeroHuespedes() {
-                const numHuespedes = huespedesSeleccionados.children().length;
-                const maxPersonas = parseInt(numeroPersonas.val()) || 0;
-                
-                if (numHuespedes > maxPersonas) {
-                    $('#huespedes-error').show();
-                    return false;
-                }
-                $('#huespedes-error').hide();
-                return true;
-            }
-
-            // Mover huésped de disponibles a seleccionados
-            huespedesDisponibles.dblclick(function() {
-                const selectedOption = $(this).find('option:selected');
-                if (selectedOption.length) {
-                    const numHuespedes = huespedesSeleccionados.children().length;
-                    const maxPersonas = parseInt(numeroPersonas.val()) || 0;
-                    
-                    if (numHuespedes >= maxPersonas) {
-                        $('#huespedes-error').show();
-                        return;
-                    }
-                    
-                    selectedOption.remove();
-                    huespedesSeleccionados.append(selectedOption);
-                    validarNumeroHuespedes();
-                }
-            });
-
-            // Mover huésped de seleccionados a disponibles
-            huespedesSeleccionados.dblclick(function() {
-                const selectedOption = $(this).find('option:selected');
-                if (selectedOption.length) {
-                    selectedOption.remove();
-                    huespedesDisponibles.append(selectedOption);
-                    validarNumeroHuespedes();
-                }
-            });
-
-            // Validar cuando cambia el número de personas
-            numeroPersonas.change(function() {
-                validarNumeroHuespedes();
-            });
-
-            // Validar antes de enviar el formulario
-            $('#createForm').submit(function(e) {
-                if (!validarNumeroHuespedes()) {
-                    e.preventDefault();
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'El número de huéspedes no puede exceder el número de personas de la reserva',
-                        icon: 'error',
-                        confirmButtonColor: '#3085d6'
-                    });
-                    return false;
-                }
-                // ... resto del código del submit
-            });
-
-            // Inicializar tooltips
-            $('[data-bs-toggle="tooltip"]').tooltip();
-
-            // Función para actualizar los selectores después de crear un nuevo registro
-            function actualizarSelectores() {
-                // Actualizar selector de clientes
-                $.get('@Url.Action("GetClientes", "Reservas")', function(data) {
-                    var clienteSelect = $('#IdCliente');
-                    clienteSelect.empty();
-                    clienteSelect.append('<option value="">-- Seleccione un Cliente --</option>');
-                    $.each(data, function(index, item) {
-                        clienteSelect.append($('<option></option>')
-                            .val(item.value)
-                            .text(item.text));
-                    });
-                });
-
-                // Actualizar selector de huéspedes
-                $.get('@Url.Action("GetHuespedes", "Reservas")', function(data) {
-                    var huespedSelect = $('#huespedes-disponibles');
-                    huespedSelect.empty();
-                    $.each(data, function(index, item) {
-                        huespedSelect.append($('<option></option>')
-                            .val(item.value)
-                            .text(item.text));
-                    });
-                });
-            }
-
-            // Escuchar cuando se cierra una ventana popup
-            window.addEventListener('message', function(e) {
-                if (e.data === 'clienteCreado' || e.data === 'huespedCreado') {
-                    actualizarSelectores();
-                }
-            });
-
-            // Función para filtrar huéspedes
-            $('#filtroHuespedes').on('keyup', function() {
-                var valor = $(this).val().toLowerCase();
-                $('#huespedes-disponibles option').filter(function() {
-                    var texto = $(this).text().toLowerCase();
-                    $(this).toggle(texto.indexOf(valor) > -1);
-                });
-            });
         });
 
-           $('#huespedes-disponibles option').filter(function() {
-                    var texto = $(this).text().toLowerCase();
-                    $(this).toggle(texto.indexOf(valor) > -1);
-                });
-            });
+        huespedesSeleccionados.on('dblclick', 'option', function() {
+            $(this).appendTo(huespedesDisponibles);
+            validarHuespedes();
+            calcularPrecioTotal();
         });
-ById('ClienteEstado').checked);
-            
-            $.ajax({
-                url: '@Url.Action("CreateAjax", "Clientes")',
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire({
-                            title: '¡Éxito!',
-                            text: response.message,
-                            icon: 'success',
-                            confirmButtonColor: '#3085d6'
-                        }).then(() => {
-                            // Limpiar el formulario
-                            form.reset();
-                            
-                            // Cerrar el modal
-                            $('#modalNuevoCliente').modal('hide');
-                            
-                            // Actualizar el select de clientes
-                            if (response.cliente) {
-                                const clienteSelect = $('#IdCliente');
-                                const newOption = new Option(response.cliente.nombre, response.cliente.id, true, true);
-                                clienteSelect.append(newOption).trigger('change');
-                            }
-                        });
-                    } else {
-                        let errorMessage = response.message;
-                        if (response.errors && response.errors.length > 0) {
-                            errorMessage += ':\n' + response.errors.join('\n');
-                        }
-                        
-                        Swal.fire({
-                            title: 'Error',
-                            text: errorMessage,
-                            icon: 'error',
-                            confirmButtonColor: '#3085d6'
-                        });
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error:', error);
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'Error al procesar la solicitud: ' + error,
-                        icon: 'error',
-                        confirmButtonColor: '#3085d6'
-                    });
-                }
-            });
-        }
+    }
 
-        function guardarHuesped() {
-            const form = document.getElementById('formNuevoHuesped');
-            const formData = new FormData(form);
-            
-            // Validar campos requeridos
-            if (!form.checkValidity()) {
+    // 2. Validación de huéspedes
+    function validarHuespedes() {
+        const numHuespedes = $('#huespedes-seleccionados option').length;
+        const maxPersonas = parseInt($('#numeroPersonas').val()) || 0;
+        const habitacionId = $('#habitacionSelect').val();
+        const capacidadHabitacion = capacidades[habitacionId] || 0;
+
+        const isValid = numHuespedes <= maxPersonas && maxPersonas <= capacidadHabitacion;
+        
+        $('#huespedes-error').toggle(!isValid);
+        return isValid;
+    }
+
+    // 3. Cálculo del precio total
+    function calcularPrecioTotal() {
+        const habitacionId = $('#habitacionSelect').val();
+        const precioHabitacion = precios[habitacionId] || 0;
+        
+        // Calcular días
+        const fechaInicio = new Date($('#FechaInicio').val());
+        const fechaFin = new Date($('#FechaFin').val());
+        const diffDays = Math.ceil(Math.abs(fechaFin - fechaInicio) / (1000 * 60 * 60 * 24)) || 1;
+
+        // Calcular precio base
+        let precioBase = precioHabitacion * diffDays;
+
+        // Sumar servicios seleccionados
+        let precioServicios = 0;
+        $('.servicio-checkbox:checked').each(function() {
+            precioServicios += parseFloat($(this).data('precio')) || 0;
+        });
+
+        // Calcular total y actualizar campos
+        const precioTotal = precioBase + precioServicios;
+        const anticipo = parseFloat($('#Anticipo').val()) || 0;
+        const saldo = precioTotal - anticipo;
+
+        $('#PrecioTotal').val(precioTotal.toFixed(2));
+        $('#Saldo').val(saldo.toFixed(2));
+    }
+
+    // 4. Manejo del formulario
+    function setupFormHandlers() {
+        $('#createForm').on('submit', function(e) {
+            e.preventDefault();
+
+            if (!validarHuespedes()) {
                 Swal.fire({
                     title: 'Error',
-                    text: 'Por favor, complete todos los campos requeridos',
-                    icon: 'error',
-                    confirmButtonColor: '#3085d6'
+                    text: 'La cantidad de huéspedes no es válida',
+                    icon: 'error'
                 });
-                return;
+                return false;
             }
-            
+
+            // Seleccionar todos los huéspedes
+            $('#huespedes-seleccionados option').prop('selected', true);
+
+            // Crear FormData con todos los datos del formulario
+            const formData = new FormData(this);
+
+            // Obtener los huéspedes seleccionados
+            const huespedesSeleccionados = [];
+            $('#huespedes-seleccionados option').each(function() {
+                huespedesSeleccionados.push($(this).val());
+            });
+
+            // Obtener los servicios seleccionados
+            const serviciosSeleccionados = [];
+            $('.servicio-checkbox:checked').each(function() {
+                serviciosSeleccionados.push($(this).val());
+            });
+
+            // Crear objeto con todos los datos
+            const reservaData = {
+                IdCliente: $('#IdCliente').val(),
+                IdHabitacion: $('#habitacionSelect').val(),
+                FechaInicio: $('#FechaInicio').val(),
+                FechaFin: $('#FechaFin').val(),
+                NumeroPersonas: $('#numeroPersonas').val(),
+                PrecioTotal: $('#PrecioTotal').val(),
+                Anticipo: $('#Anticipo').val(),
+                Notas: $('#Notas').val(),
+                IdEstado: $('#IdEstado').val(),
+                HuespedesSeleccionados: huespedesSeleccionados,
+                ServiciosSeleccionados: serviciosSeleccionados
+            };
+
             $.ajax({
-                url: '@Url.Action("CreateAjax", "Huespedes")',
+                url: $('#createForm').attr('action'),
                 type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
+                data: JSON.stringify(reservaData),
+                contentType: 'application/json',
+                headers: {
+                    'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                },
                 success: function(response) {
                     if (response.success) {
                         Swal.fire({
-                            title: '¡Éxito!',
-                            text: 'Huésped creado correctamente',
-                            icon: 'success',
-                            confirmButtonColor: '#3085d6'
+                            title: 'Éxito',
+                            text: 'Reserva creada correctamente',
+                            icon: 'success'
                         }).then(() => {
-                            // Limpiar el formulario
-                            form.reset();
-                            
-                            // Cerrar el modal
-                            $('#modalNuevoHuesped').modal('hide');
-                            
-                            // Actualizar únicamente la lista de huéspedes disponibles una sola vez
-                            $.get('@Url.Action("GetHuespedes", "Reservas")', function(data) {
-                                const huespedSelect = $('#huespedes-disponibles');
-                                huespedSelect.empty();
-                                
-                                // Agregar los huéspedes existentes
-                                data.forEach(function(huesped) {
-                                    huespedSelect.append(new Option(huesped.text, huesped.value));
-                                });
-                            });
+                            window.location.href = '/Reservas/Index';
                         });
                     } else {
                         Swal.fire({
                             title: 'Error',
-                            text: response.message || 'Error al crear el huésped',
-                            icon: 'error',
-                            confirmButtonColor: '#3085d6'
+                            text: response.message || 'Error al crear la reserva',
+                            icon: 'error'
                         });
                     }
                 },
                 error: function(xhr, status, error) {
-                    console.error('Error:', error);
                     Swal.fire({
                         title: 'Error',
-                        text: 'Error al procesar la solicitud: ' + error,
-                        icon: 'error',
-                        confirmButtonColor: '#3085d6'
+                        text: 'Error al crear la reserva: ' + error,
+                        icon: 'error'
                     });
                 }
             });
-        }
+        });
+    }
 
-        // Limpiar formularios cuando se cierren los modales
-        $('#modalNuevoCliente').on('hidden.bs.modal', function () {
-            document.getElementById('formNuevoCliente').reset();
+    // 5. Event Listeners
+    function setupEventListeners() {
+        $('#habitacionSelect, #FechaInicio, #FechaFin').change(function() {
+            calcularPrecioTotal();
+            validarHuespedes();
         });
 
-        $('#modalNuevoHuesped').on('hidden.bs.modal', function () {
-            document.getElementById('formNuevoHuesped').reset();
+        $('#Anticipo').on('input', calcularPrecioTotal);
+        
+        $('.servicio-checkbox').change(calcularPrecioTotal);
+
+        $('#numeroPersonas').change(function() {
+            validarHuespedes();
+            calcularPrecioTotal();
         });
 
-        // Agregar estas funciones en tu script
-        function calcularPrecioTotal() {
-            // Obtener precio de la habitación
-            const habitacionId = $('#habitacionSelect').val();
-            const preciosHabitaciones = @Html.Raw(Json.Serialize(ViewBag.HabitacionesPrecios));
-            const precioHabitacion = parseFloat(preciosHabitaciones[habitacionId]) || 0;
-            console.log('Precio habitación por día:', precioHabitacion);
-            
-            // Calcular días
-            const fechaInicio = new Date($('#FechaInicio').val());
-            const fechaFin = new Date($('#FechaFin').val());
-            
-            if (fechaInicio && fechaFin && fechaInicio <= fechaFin) {
-                const diffTime = Math.abs(fechaFin - fechaInicio);
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 1;
-                console.log('Número de días:', diffDays);
-                
-                // Calcular precio por días
-                const precioHabitacionTotal = precioHabitacion * diffDays;
-                console.log('Precio total habitación:', precioHabitacionTotal);
-                
-                // Sumar servicios seleccionados
-                let precioServicios = 0;
-                $('.servicio-checkbox:checked').each(function() {
-                    precioServicios += parseFloat($(this).data('precio')) || 0;
-                });
-                console.log('Precio servicios:', precioServicios);
-                
-                // Obtener anticipo
-                const anticipo = parseFloat($('#Anticipo').val()) || 0;
-                console.log('Anticipo:', anticipo);
-                
-                // Calcular total
-                const precioTotal = precioHabitacionTotal + precioServicios;
-                console.log('Precio total:', precioTotal);
-                
-                // Actualizar campos
-                $('#PrecioTotal').val(precioTotal.toFixed(2));
-                
-                // Calcular y mostrar el saldo
-                const saldo = precioTotal - anticipo;
-                $('#Saldo').val(saldo.toFixed(2));
-            }
-        }
-
-        // Agregar eventos para recalcular
-        $(document).ready(function() {
-            $('#habitacionSelect').change(calcularPrecioTotal);
-            $('#FechaInicio, #FechaFin').change(calcularPrecioTotal);
-            $('#Anticipo').on('input', calcularPrecioTotal);
-            $('.servicio-checkbox').change(calcularPrecioTotal);
+        // Filtro de huéspedes
+        $('#filtroHuespedes').on('keyup', function() {
+            const valor = $(this).val().toLowerCase();
+            $('#huespedes-disponibles option').each(function() {
+                $(this).toggle($(this).text().toLowerCase().includes(valor));
+            });
         });
+    }
+
+    // 6. Inicialización
+    function init() {
+        setupHuespedesHandlers();
+        setupFormHandlers();
+        setupEventListeners();
+        calcularPrecioTotal();
+    }
+
+    // Iniciar todo cuando el documento esté listo
+    init();
+});
     </script>
 </body>
 </html>

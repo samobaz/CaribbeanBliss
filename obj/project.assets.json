@@ -7919,24 +7919,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MSI\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\JUAN GARCIA\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\Caribbean2.csproj",
+      "projectUniqueName": "C:\\Caribbeannnnnn blissss gitttttt\\FINALLLLLLLLLLLLLPROYECTOOOOO\\CaribbeanBliss\\Caribbean2.csproj",
       "projectName": "Caribbean2",
-      "projectPath": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\Caribbean2.csproj",
-      "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\obj\\",
+      "projectPath": "C:\\Caribbeannnnnn blissss gitttttt\\FINALLLLLLLLLLLLLPROYECTOOOOO\\CaribbeanBliss\\Caribbean2.csproj",
+      "packagesPath": "C:\\Users\\JUAN GARCIA\\.nuget\\packages\\",
+      "outputPath": "C:\\Caribbeannnnnn blissss gitttttt\\FINALLLLLLLLLLLLLPROYECTOOOOO\\CaribbeanBliss\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\MSI\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\JUAN GARCIA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7961,9 +7956,8 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
-      },
-      "SdkAnalysisLevel": "9.0.100"
+        "auditMode": "direct"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -8017,7 +8011,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
