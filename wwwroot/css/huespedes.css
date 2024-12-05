@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+th {
+    background-color: #000; /* Fondo negro para la barra de encabezado */
+    color: white;
+    padding: 12px;
+}
+
+button {
+    padding: 6px 20px;
+    border: none;
+    border-radius: 50px; /* Botones tipo cápsula */
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-registrar {
+    background-color: #28a745;
+    color: white;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+}
+
+.btn-editar, .btn-eliminar {
+    border-radius: 50px; /* Cápsula redondeada */
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Animación suave al hacer hover */
+}
+
+.btn-editar {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+    color: white;
+    margin-left
+
+
+button:hover {
+    opacity: 0.9;
+}
+.btn-modern {
+    background-color: #4CAF50; /* Color de fondo de los botones */
+    color: white; /* Color del texto */
+    border-radius: 12px; /* Redondear bordes */
+    padding: 10px 20px; /* Ajustar padding */
+    border: none; /* Sin bordes */
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.btn-modern i {
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+}
+
+.btn-modern:hover {
+    background-color: #45a049; /* Cambiar color al hacer hover */
+}
+
+/* General button style for capsule buttons */
+.btn-capsula {
+    padding: 10px 20px;
+    border-radius: 50px; /* Cápsula redondeada */
+    font-weight: bold;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Animación suave al hacer hover */
+}
+
+.btn-capsula:hover {
+    background-color: #218838; /* Color al hacer hover */
+    opacity: 0.9;
+}
+
+.btn-capsula a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Botón adicional (usar clase específica) */
+.btn-capsula .btn-danger {
+    background-color: #dc3545;
+    border-radius: 50px;
+}
+.dropdown-toggle {
+    border-radius: 50px; /* Para un estilo de cápsula */
+    padding: 10px 20px; /* Espaciado del botón */
+}
+

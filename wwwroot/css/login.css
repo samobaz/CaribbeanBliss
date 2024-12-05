@@ -1,0 +1,452 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: url("/img/login.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 110vh;
+    background: rgba(39, 39, 39, 0.4);
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    background: linear-gradient(rgba(39, 39, 39, 0.6), transparent);
+    z-index: 100;
+}
+
+.nav-logo img {
+    width: 50% !important;
+}
+
+.nav-menu ul {
+    display: flex;
+}
+
+.nav-menu ul li {
+    list-style-type: none;
+}
+
+.nav-menu ul li .link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+    padding-bottom: 15px;
+    margin: 0 25px;
+}
+
+.link:hover, .active {
+    border-bottom: 2px solid #fff;
+}
+
+.nav-button .btn {
+    width: 130px;
+    height: 40px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#registerBtn {
+    margin-left: 15px;
+    color: #fff;
+}
+
+.btn.white-btn {
+    background: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.btn.white-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.nav-menu-btn {
+    display: none;
+}
+
+.form-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 522px;     /* Increased from 380px */
+    height: 670px;    /* Increased from 500px */
+    overflow-y: auto;
+    z-index: 2;
+    padding: 20px;    /* Increased from 12px */
+    background: rgba(39, 39, 39, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Personalización del scrollbar */
+.form-box::-webkit-scrollbar {
+    width: 8px; /* Ancho del scrollbar */
+}
+
+.form-box::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Color del scrollbar */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+.form-box::-webkit-scrollbar-thumb:hover {
+    background-color: transparent; /* Color del scrollbar al pasar el mouse */
+}
+
+.form-box::-webkit-scrollbar-track {
+    background: transparent; /* Color de fondo del track */
+    border-radius: 10px; /* Bordes redondeados del track */
+}
+
+.input-box-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Espacio entre los campos */
+}
+
+/* Update the input-box styles */
+.input-box {
+    position: relative;
+    margin-bottom: 35px;
+    display: flex;
+    align-items: center;
+}
+
+
+.input-box i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 18px;
+    z-index: 1;
+  }
+
+/* Ensure input fields maintain consistent spacing */
+.input-box .input-field {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 45px;
+}
+
+/* For select elements */
+.input-box select.input-field {
+    padding-left: 40px;
+    height: 45px;
+}
+
+/* Add specific styling for password toggle icon */
+.input-box .toggle-password {
+    right: 10px;
+    left: auto;
+}
+
+.input-box .validation-message {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 5px;
+    font-size: 14px; /* Increased from 12px */
+    color: red;
+    white-space: nowrap;
+}
+
+.login-container, .register-container, .forgot-password-container {
+    position: absolute;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease-in-out;
+    opacity: 0;
+    padding: 20px;
+}
+
+.login-container {
+    right: 0;
+    opacity: 1;
+}
+
+    .register-container {
+        right: 100%;
+    }
+
+.forgot-password-container {
+    right: 200%;
+}
+
+.top {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.top span {
+    font-size: 14px;
+}
+
+.top span a { 
+    text-decoration: none;
+    font-weight: 500;
+}
+
+header {
+    color: #fff;
+    font-size: 24px;  /* Increased from 20px */
+    text-align: center;
+    padding: 10px 0;   /* Increased from 8px */
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.Contraseña-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+.registrar-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom:30px;
+    font-size: 40px;
+    color: white;
+    border-bottom: #fff;
+}
+.Recuperar-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    font-size: 40px;
+    color: white;
+}
+
+
+.avatar-container i {
+    font-size: 60px;  /* Increased from 50px */
+    color: #fff;
+    background-color: rgba(111, 111, 111, 0.2);
+    border-radius: 50%;
+    padding: 20px;    /* Increased from 15px */
+}
+
+.input-field {
+    font-size: 16px;
+    height: 45px;
+    width: 100%;
+    padding: 0 15px 0 45px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 25px;
+    outline: none;
+    background: rgba(111, 111, 111, 0.9) !important; /* Added !important */
+    color: #fff;
+    transition: none; /* Removed transition */
+}
+
+/* Remove hover and focus effects */
+.input-field:hover,
+.input-field:focus {
+    background: rgba(111, 111, 111, 0.9) !important;
+    border-color: rgba(255, 255, 255, 0.4);
+    outline: none;
+    box-shadow: none;
+}
+
+/* Update select field styles */
+select.input-field {
+    background: rgba(111, 111, 111, 0.9) !important;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+select.input-field:hover,
+select.input-field:focus {
+    background: rgba(111, 111, 111, 0.9) !important;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Update placeholder color to stay consistent */
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+    opacity: 1;
+}
+
+.submit {
+    font-size: 16px;  /* Increased from 13px */
+    font-weight: 500;
+    color: black;
+    height: 45px;     /* Increased from 35px */
+    width: 100%;
+    border: 2px solid #fff;
+    border-radius: 25px; /* Increased from 20px */
+    outline: none;
+    background: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.submit:hover {
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Para el select también */
+select.input-field {
+    border-radius: 50px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 45px;  /* Increased padding for dropdown arrow */
+    height: 45px;     /* Increased from 38px */
+    background: rgba(97, 97, 97, 0.9); /* Matched with container background */
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Style select options */
+.input-field option {
+    background: rgba(97, 97, 97, 0.9);
+    color: #fff;
+}
+
+/* Remove hover/focus background change */
+.input-field:hover, .input-field:focus {
+    background: rgba(97, 97, 97, 0.9);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.two-col {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 14px;  /* Increased from 12px */
+    margin-top: 12px;  /* Increased from 8px */
+}
+
+.two-col .one {
+    display: flex;
+    gap: 5px;
+}
+
+.two-col a {
+    color: #fff;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 786px) {
+    .nav-button {
+        display: none;
+    }
+
+    .nav-menu.responsive {
+        top: 100px;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: -800px;
+        display: flex;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.2);
+        width: 100%;
+        height: 90vh;
+        backdrop-filter: blur(20px);
+        transition: .3s;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-menu-btn {
+        display: block;
+    }
+
+    .nav-menu-btn i {
+        font-size: 25px;
+        color: #fff;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    .nav-menu-btn i:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .wrapper {
+        min-height: 100vh;
+        padding: 0 10px;
+    }
+
+    .form-box {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .register-container, .login-container, .forgot-password-container {
+        width: 100%;
+    }
+}
+
+.input-validation-error {
+    border-color: #dc3545 !important;
+}
+
+/* Update validation message positioning */
+.field-validation-error {
+    position: absolute;
+    bottom: -20px;
+    left: 15px;
+    font-size: 12px;
+    color: #dc3545;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.field-validation-error {
+    color: #dc3545;
+    /* font-size: 0.875rem;
+    margin-top: 0.25rem; */
+}

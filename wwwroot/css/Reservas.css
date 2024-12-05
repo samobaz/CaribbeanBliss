@@ -1,0 +1,110 @@
+/* Add this to your roles.css or create a new hotel-booking.css */
+
+:root {
+    --primary-color: #1e3d59;
+    --secondary-color: #ff6e40;
+    --accent-color: #ffc13b;
+    --light-bg: #f5f5f5;
+    --text-dark: #2c3e50;
+}
+
+body {
+    background-color: var(--light-bg);
+    font-family: 'Playfair Display', serif;
+    color: var(--text-dark);
+}
+
+.container {
+    padding: 2rem 0;
+}
+
+.booking-header {
+    background: linear-gradient(rgba(30, 61, 89, 0.9), rgba(30, 61, 89, 0.9)),
+                url('/images/hotel-bg.jpg') center/cover;
+    color: white;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+}
+.booking-header h1 {
+    color: white;
+}
+.roles-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.roles-card-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 1.5rem;
+}
+
+.roles-card-title {
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: 300;
+    color:white
+}
+
+.roles-card-body {
+    padding: 2rem !important;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(30, 61, 89, 0.1);
+    border-color: var(--primary-color);
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-success {
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #15304d;
+    transform: translateY(-2px);
+}
+
+.form-check {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.form-check:hover {
+    background: #e9ecef;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .roles-card-body {
+        padding: 1rem !important;
+    }
+}

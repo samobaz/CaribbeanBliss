@@ -1,0 +1,408 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="~/css/sideBar.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div class=""></div>
+    </div>
+
+    <header>
+        <div class="container-fluid bg-dark">
+            <div class="row gx-0">
+                <!-- Sección de botones visibles en pantallas pequeñas y grandes -->
+                <div class="btn-group-container d-flex justify-content-between p-2">
+                    <a class="navbar-brand" href="#">
+                        <div class="logo-container">
+                            <img class="caribean_logo" src="~/img/caribeanbliss_logo.png" width="30" height="30" alt="">
+                        </div>
+                        CaribbeanBliss
+                    </a>
+
+                    <div>
+
+                        <!-- Íconos visibles solo en pantallas pequeñas con tooltips -->
+                        <!-- Botones para pantallas pequeñas -->
+                        <!-- Botones para pantallas pequeñas -->
+                        <a class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Iniciar sesión"
+                           asp-controller="Caribbean" asp-action="Login">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </a>
+                        <a class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Registrarse"
+                           asp-controller="Caribbean" asp-action="Registro">
+                            <i class="fas fa-user-plus"></i>
+                        </a>
+
+                        <!-- Botones completos visibles solo en pantallas grandes -->
+                        <a asp-controller="Caribbean" asp-action="Login" class="btn-modern me-2 d-none d-lg-inline-flex">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                        </a>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div>
+        <!-- Cabecera central -->
+        <div class="container-fluid bg-primary py-5 mb-5 hero-header position-relative">
+            <video autoplay muted loop class="video-bg">
+                <source src="~/video/CaribbeanBliss.mp4" type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+            <div class="container py-5 position-relative z-index-2">
+                <div class="row justify-content-center py-5">
+                    <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                        <h1 class="display-3 text-white mb-3 animated slideInDown caribean-font">Hotel CaribbeanBliss</h1>
+                        <p class="fs-4 text-white mb-4 animated slideInDown">Hacemos de cada momento una experiencia inolvidable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Cabecera central -->
+
+    </div>
+
+    <!-- About Start -->
+    <div class="container-fluid mt-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" src="~/img/about.jpg" alt="" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Acerca de Nosotros</h6>
+                    <h1 class="mb-4">Bienvenidos a <span class="text-primary">CaribeanBliss</span></h1>
+                    <p class="mb-4">Ubicado en el corazón del Caribe, nuestro hotel combina la elegancia moderna con la tradición caribeña. Disfruta de impresionantes vistas al mar, explora nuestras exuberantes áreas verdes y déjate envolver por el sonido de las olas y la brisa tropical. Cada día es una celebración de la belleza natural y la tranquilidad que solo el Caribe puede ofrecer.</p>
+                    <p class="mb-4">Nuestro equipo está dedicado a ofrecerte una experiencia personalizada y cálida. Desde el momento en que llegas hasta tu partida, te aseguramos un servicio atento y amable que hará que te sientas como en casa. Nos enorgullece hacer que cada huésped se sienta especial y bienvenido.</p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Vuelos de Primera Clase</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Alojamiento 5 Estrellas</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Vehículos de Último Modelo</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Tours Premium por la Ciudad</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Servicio 24/7</p>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary py-3 px-5 mt-2" asp-controller="Caribbean" asp-action="Reservas">+ Información</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <div class="container-fluid mt-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3" id="ubicacion">Ubicación</h6>
+                <h1 class="mb-5">Encuéntranos aquí</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.763064458573!2d-77.346366!3d8.637199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMzcnMTMuNiJOIDc3wrA0My43Ilc!5e0!3m2!1ses!2sco!4v1635761345001!5m2!1ses!2sco"
+                            width="100%"
+                            height="450"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!--Servicios-->
+    <!-- Proceso Inicio -->
+    <div class="container-fluid mt-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Servicios</h6>
+                <h1 class="mb-5">Nuestros Servicios</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-globe text-primary mb-4"></i>
+                            <h5>Excursiones Internacionales</h5>
+                            <p>Explora destinos globales con nuestros paquetes de excursiones exclusivos, adaptados a tus preferencias y necesidades.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-hotel text-primary mb-4"></i>
+                            <h5>Reservas de Hoteles</h5>
+                            <p>Disfruta de alojamientos de lujo en los mejores hoteles seleccionados para ofrecerte una experiencia inolvidable.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-user text-primary mb-4"></i>
+                            <h5>Guías de Viaje Personalizadas</h5>
+                            <p>Recibe asesoramiento experto con nuestras guías de viaje personalizadas que te ayudarán a descubrir lo mejor del Caribe.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-cog text-primary mb-4"></i>
+                            <h5>Organización de Eventos</h5>
+                            <p>Desde bodas hasta reuniones corporativas, nos encargamos de todos los detalles para que tu evento sea un éxito rotundo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-car text-primary mb-4"></i>
+                            <h5>Transporte de Lujo</h5>
+                            <p>Viaja con comodidad en nuestros vehículos de lujo, equipados para ofrecerte la mejor experiencia de transporte.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-umbrella-beach text-primary mb-4"></i>
+                            <h5>Actividades de Ocio</h5>
+                            <p>Disfruta de una variedad de actividades recreativas y deportivas en la playa y en la ciudad para todos los gustos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-spa text-primary mb-4"></i>
+                            <h5>Servicios de Spa</h5>
+                            <p>Relájate y rejuvenece con nuestros servicios de spa de primera clase, diseñados para ofrecerte una experiencia de bienestar.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-utensils text-primary mb-4"></i>
+                            <h5>Cenas Gourmet</h5>
+                            <p>Saborea una selección de platos gourmet preparados por chefs expertos, con ingredientes frescos y locales.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center pb-4 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Proceso</h6>
+                <h1 class="mb-5">3 Pasos Sencillos para Reservar</h1>
+            </div>
+            <div class="row gy-5 gx-4 justify-content-center">
+                <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="position-relative border border-primary pt-5 pb-4 px-4">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow" style="width: 100px; height: 100px;">
+                            <i class="fa fa-globe fa-3x text-white"></i>
+                        </div>
+                        <h5 class="mt-4">Elige un Destino</h5>
+                        <hr class="w-25 mx-auto bg-primary mb-1">
+                        <hr class="w-50 mx-auto bg-primary mt-0">
+                        <p class="mb-0">Selecciona el destino de tus sueños entre nuestras opciones exóticas y paradisíacas para unas vacaciones inolvidables.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="position-relative border border-primary pt-5 pb-4 px-4">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow" style="width: 100px; height: 100px;">
+                            <i class="fa fa-dollar-sign fa-3x text-white"></i>
+                        </div>
+                        <h5 class="mt-4">Paga en Línea</h5>
+                        <hr class="w-25 mx-auto bg-primary mb-1">
+                        <hr class="w-50 mx-auto bg-primary mt-0">
+                        <p class="mb-0">Realiza tu pago de manera segura a través de nuestro sistema en línea y asegura tu lugar en el paraíso.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 text-center pt-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="position-relative border border-primary pt-5 pb-4 px-4">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle position-absolute top-0 start-50 translate-middle shadow" style="width: 100px; height: 100px;">
+                            <i class="fa fa-plane fa-3x text-white"></i>
+                        </div>
+                        <h5 class="mt-4">Vuela Hoy</h5>
+                        <hr class="w-25 mx-auto bg-primary mb-1">
+                        <hr class="w-50 mx-auto bg-primary mt-0">
+                        <p class="mb-0">Empieza tu aventura caribeña de inmediato. Tu viaje de ensueño está a solo un vuelo de distancia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Proceso Fin -->
+    
+    <!-- Inicio del Footer -->
+    <!-- Inicio del Footer -->
+    <div class="container-fluid mt-5 bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-white mb-3">Compañía</h4>
+                    <a class="btn btn-link" href="">Sobre Nosotros</a>
+                    <a class="btn btn-link" href="">Contáctanos</a>
+                    <a class="btn btn-link" href="">Política de Privacidad</a>
+                    <a class="btn btn-link" href="">Términos y Condiciones</a>
+                    <a class="btn btn-link" href="">FAQs y Ayuda</a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-white mb-3">Contacto</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Calle 123, Nueva York, EE.UU.</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-white mb-3">Boletín Informativo</h4>
+                    <p>Recibe nuestras últimas noticias y ofertas especiales.</p>
+
+                    <!-- Inicio del Formulario -->                    
+                    <form asp-action="CreateIndex" asp-controller="Suscripciones" method="post" class="position-relative mx-auto" style="max-width: 400px;">
+                        <!-- Input para el nombre -->
+                        <input class="form-control border-primary w-100 py-3 ps-4 mb-2" type="text" placeholder="Nombre" name="Nombre" required>
+
+                        <!-- Input para el email -->
+                        <input class="form-control border-primary w-100 py-3 ps-4 mb-2" type="email" placeholder="E-mail" name="Email" required>
+
+                        <!-- Botón de Suscribirse -->
+                        <button type="submit" class="btn btn-primary w-100 py-2">Suscribirse</button>
+                    </form>
+                    <!-- Fin del Formulario -->
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        &copy; <a class="border-bottom" href="#">CaribeanBliss</a> Todos los Derechos Reservados.
+
+                        Diseñado por <a class="border-bottom" asp-controller="Caribbean" asp-action="Index">The Secret Code</a>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin del Footer -->
+
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="~/js/index.js"></script>
+<script src="~/js/login.js"></script>
+<script src="~/js/sidebar.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/tempusdominus/js/moment.min.js"></script>
+<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    // Mostrar alerta si hay datos en TempData
+    document.addEventListener("DOMContentLoaded", function () {
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <text>
+                        Swal.fire({
+                            icon: 'error',
+                        title: 'Error',
+                        text: '@TempData["ErrorMessage"]'
+                                });
+            </text>
+        }
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                        Swal.fire({
+                            icon: 'success',
+                        title: 'Éxito',
+                        text: '@TempData["SuccessMessage"]'
+                                });
+            </text>
+        }
+        });
+    
+</script>
+
+</body>
+</html>

@@ -1,0 +1,356 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "_Layout";
+}
+
+@section Styles {
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+                      body {
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/imgpagina.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.; /* Reduced opacity for darker effect */
+    z-index: -1;
+    filter: brightness(0.5) contrast(1.2); /* Reduced brightness for darker image */
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}   
+        .dashboard-container {
+            padding: 20px;
+        }
+
+        .filter-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Change to 2 columns */
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: 300px; /* Increased height */
+            overflow: hidden;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            height: 300px; /* Match metric-card height */
+            position: relative;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .metric-title {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .trend-positive {
+            color: #2ecc71;
+        }
+
+        .trend-negative {
+            color: #e74c3c;
+        }
+
+        canvas {
+            max-height: 200px !important; /* Increased chart height */
+        }
+    </style>
+}
+
+<div class="dashboard-container">
+    <h1 style="color: white;" class="mb-4">Dashboard de Métricas</h1>
+
+    <!-- Filtro de fechas -->
+    <div class="filter-section">
+        <div class="row align-items-end">
+            <div class="col-md-4">
+                <label class="form-label">Fecha Inicio</label>
+                <input type="date" id="startDate" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Fecha Fin</label>
+                <input type="date" id="endDate" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <button id="filterBtn" class="btn btn-primary w-100">Aplicar Filtro</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Métricas principales -->
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-title">Ingresos Totales</div>
+            <div class="metric-value">$<span id="ingresosTotales">0</span></div>
+            <canvas id="ingresosChart"></canvas>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Tasa de Ocupación</div>
+            <div class="metric-value"><span id="tasaOcupacion">0</span>%</div>
+            <canvas id="ocupacionChart"></canvas>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Reservas Nuevas</div>
+            <div class="metric-value"><span id="reservasNuevas">0</span></div>
+            <canvas id="reservasChart"></canvas>
+        </div>
+        <div class="metric-card">
+            <div class="metric-title">Cancelaciones</div>
+            <div class="metric-value"><span id="cancelaciones">0</span></div>
+            <canvas id="cancelacionesChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Gráficos detallados -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="chart-container">
+                <h5>Ocupación por Período</h5>
+                <canvas id="ocupacionDetalladaChart"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="chart-container">
+                <h5>Análisis de Huéspedes</h5>
+                <canvas id="huespedesChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 2, // Width:Height ratio of 2:1
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: {
+                    display: true,
+                    grid: { display: false },
+                    ticks: { maxRotation: 0 } // Prevent label rotation
+                },
+                y: {
+                    beginAtZero: true,
+                    grid: { display: true },
+                    ticks: {
+                        maxTicksLimit: 5 // Limit number of Y-axis ticks
+                    }
+                }
+            }
+        };
+
+        let charts = {};
+        
+        function initializeCharts() {
+            // Gráficos de métricas principales
+            charts.ingresos = new Chart(document.getElementById('ingresosChart'), {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+                        borderColor: '#2ecc71',
+                        tension: 0.4,
+                        fill: false
+                    }]
+                },
+                options: commonOptions
+            });
+
+            charts.ocupacion = new Chart(document.getElementById('ocupacionChart'), {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+                        borderColor: '#3498db',
+                        tension: 0.4,
+                        fill: false
+                    }]
+                },
+                options: commonOptions
+            });
+
+            charts.reservas = new Chart(document.getElementById('reservasChart'), {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+                        borderColor: '#f1c40f',
+                        tension: 0.4,
+                        fill: false
+                    }]
+                },
+                options: commonOptions
+            });
+
+            charts.cancelaciones = new Chart(document.getElementById('cancelacionesChart'), {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+                        borderColor: '#e74c3c',
+                        tension: 0.4,
+                        fill: false
+                    }]
+                },
+                options: commonOptions
+            });
+
+            // Gráfico de ocupación detallada
+            charts.ocupacionDetallada = new Chart(document.getElementById('ocupacionDetalladaChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Diaria', 'Semanal', 'Mensual'],
+                    datasets: [{
+                        data: [],
+                        backgroundColor: ['#3498db', '#2ecc71', '#f1c40f']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+
+            // Gráfico de análisis de huéspedes
+            charts.huespedes = new Chart(document.getElementById('huespedesChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Huéspedes Actuales', 'Suscritos Boletín'],
+                    datasets: [{
+                        data: [],
+                        backgroundColor: ['#3498db', '#2ecc71']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        }
+
+        function updateDashboard(startDate = null, endDate = null) {
+            $.ajax({
+                url: '@Url.Action("GetMetricasFiltradas", "Metricas")',
+                type: 'GET',
+                data: { startDate, endDate },
+                success: function(response) {
+                    if (response.success) {
+                        updateMetrics(response.data);
+                        updateCharts(response.data);
+                    } else {
+                        alert(response.error || 'Error al cargar los datos');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                    alert('Error al cargar los datos');
+                }
+            });
+        }
+
+        function updateMetrics(data) {
+            $('#ingresosTotales').text(data.ingresosTotales.toLocaleString('es-CO'));
+            $('#tasaOcupacion').text(data.tasaOcupacion.toFixed(2));
+            $('#reservasNuevas').text(data.reservasNuevas.toLocaleString());
+            $('#cancelaciones').text(data.cancelaciones.toLocaleString());
+        }
+
+        function updateCharts(data) {
+            if (!data.datosGraficos || !data.datosGraficos.length) return;
+
+            const fechas = data.datosGraficos.map(d => d.fecha);
+            
+            // Actualizar gráficos principales
+            updateChartData(charts.ingresos, fechas, data.datosGraficos.map(d => d.ingresos));
+            updateChartData(charts.ocupacion, fechas, data.datosGraficos.map(d => d.ocupacion));
+            updateChartData(charts.reservas, fechas, data.datosGraficos.map(d => d.reservas));
+            updateChartData(charts.cancelaciones, fechas, data.datosGraficos.map(d => d.cancelaciones));
+
+            // Actualizar gráficos detallados
+            const ocupacionData = [
+                data.ocupacionDiaria,
+                data.ocupacionSemanal,
+                data.ocupacionMensual
+            ];
+            updateChartData(charts.ocupacionDetallada, null, ocupacionData);
+
+            const huespedesData = [
+                data.huespedes,
+                data.suscritosBoletin
+            ];
+            updateChartData(charts.huespedes, null, huespedesData);
+        }
+
+        function updateChartData(chart, labels, data) {
+            if (labels) chart.data.labels = labels;
+            chart.data.datasets[0].data = data;
+            chart.update();
+        }
+
+        $(document).ready(function() {
+            initializeCharts();
+            updateDashboard();
+
+            $('#filterBtn').click(function() {
+                const startDate = $('#startDate').val();
+                const endDate = $('#endDate').val();
+                
+                if (startDate && endDate && startDate > endDate) {
+                    alert('La fecha inicial no puede ser posterior a la fecha final');
+                    return;
+                }
+                
+                updateDashboard(startDate, endDate);
+            });
+        });
+    </script>
+}

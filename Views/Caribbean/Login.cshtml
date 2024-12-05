@@ -1,0 +1,366 @@
+﻿@model UsuarioViewModel;
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="~/css/login.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+    <link rel="stylesheet" href="~/css/logeados.css">
+    <!-- Cambiado de .html a .css -->
+    <!-- Favicon -->
+    <link href="~/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div class=""></div> <!-- Eliminado el div sin cerrar -->
+    <main>
+        <!-- Inicio Seccion Modificable -->
+        <div class="wrapper">
+            <nav class="nav">
+                <div class="nav-logo">
+                    <img src="/img/caribeanbliss_logo.png" alt="">
+                </div>
+
+                <div class="nav-menu" id="navMenu"></div>
+
+                <div class="nav-button">
+                    <button class="btn white-btn" id="loginBtn" onclick="showLogin()">Iniciar sesión</button>
+                    <button class="btn" id="registerBtn" onclick="showRegister()">Registrarse</button>
+                </div>
+
+                <div class="nav-menu-btn">
+                    <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+                </div>
+            </nav>
+
+            <!-- Form box -->
+            <div class="form-box">
+                <!-- Login form -->
+                <div class="login-container" id="login">
+                    <span style="color: white;">¿Quieres Crear tu Cuenta? <a href="#" onclick="showRegister()" style="color: rgb(130, 201, 86); text-decoration: underline;">Registrarse</a></span>
+                    <header>Inicio de sesión</header>
+
+                    <div class="avatar-container">
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                    <form id="loginForm" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="input-box">
+                            <i class="fas fa-user"></i>
+                            <input type="email" 
+                                   name="Correo" 
+                                   class="input-field" 
+                                   placeholder="Correo" 
+                                   required>
+                        </div>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" 
+                                   name="Contrasena" 
+                                   class="input-field" 
+                                   placeholder="Contraseña" 
+                                   required>
+                            <i class="fa fa-eye toggle-password" onclick="togglePasswordVisibility(this)"></i>
+                        </div>
+
+                        <div class="input-box">
+                            <button type="submit" class="submit">Iniciar Sesión</button>
+                        </div>
+                        
+                        <!-- Agregar enlace de recuperación de contraseña -->
+                        <div class="forgot-link">
+                            <a href="#" onclick="showForgotPassword()" style="color: rgb(130, 201, 86); text-decoration: underline;">
+                                ¿Olvidaste tu contraseña?
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Registration form -->
+                <div class="register-container" id="register">
+                    <div class="top">
+                        <span style="color: black;">¿Tienes una cuenta? <a href="#" onclick="showLogin()" style="color: white; text-decoration: underline;">Iniciar Sesión</a></span>
+                        <header>Registrarse</header> <!-- Cambiado a minúsculas -->
+                    </div>
+                    <div class="registrar-container">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <form id="registerForm" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="input-box">
+                            <i class="fa-regular fa-user"></i>
+                            <input asp-for="NombreUsuario" class="input-field" placeholder="Nombre de Usuario">
+                            <span asp-validation-for="NombreUsuario" class="field-validation-error"></span>
+                        </div>
+
+                        <div class="input-box-group">
+                            <div class="input-box">
+                                <i class="fa-sharp-duotone fa-solid fa-id-card"></i>
+                                <select asp-for="TipoIdentificacion" class="input-field">
+                                    <option value="" disabled selected>Tipo de Documento</option>
+                                    <option value="CC">Cédula de Ciudadanía</option>
+                                    <option value="TI">Tarjeta de Identidad</option>
+                                    <option value="CE">Cédula de Extranjería</option>
+                                    <option value="PAS">Pasaporte</option>
+                                    <option value="NIT">NIT</option>
+                                </select>
+                                <span asp-validation-for="TipoIdentificacion" class="field-validation-error"></span>
+                            </div>
+
+                            <div class="input-box">
+                                <i class="fa-regular fa-id-card"></i>
+                                <input asp-for="Identificacion" class="input-field" placeholder="Identificación">
+                                <span asp-validation-for="Identificacion" class="field-validation-error"></span>
+                            </div>
+                        </div>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <input asp-for="Telefono" class="input-field" placeholder="Telefono">
+                            <span asp-validation-for="Telefono" class="field-validation-error"></span>
+                        </div>
+
+                        <div class="input-box">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input asp-for="Correo" class="input-field" placeholder="Correo">
+                            <span asp-validation-for="Correo" class="field-validation-error"></span>
+                        </div>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-lock"></i>
+                            <input asp-for="Contrasena" type="password" class="input-field" placeholder="Contraseña">
+                            <i class="fa fa-eye toggle-password" onclick="togglePasswordVisibility(this)"></i>
+                            <span asp-validation-for="Contrasena" class="field-validation-error"></span>
+                        </div>
+                        <div class="input-box">
+                            <i class="fa-solid fa-lock"></i>
+                            <input asp-for="ConfirmarContrasena" type="password" class="input-field" placeholder="Confirmar Contraseña">
+                               <i class="fa fa-eye toggle-password" onclick="togglePasswordVisibility(this)"></i>
+                            <span asp-validation-for="ConfirmarContrasena" class="field-validation-error"></span>
+                        </div>
+
+                        <div class="input-box">
+                            <button type="submit" class="submit">Registrarse</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Forgot password form -->
+                <div class="forgot-password-container" id="forgotPassword">
+                    <div class="top">
+                        <span style="color: black;">
+                            <a href="#" onclick="showLogin()" style="color: rgb(130, 201, 86); text-decoration: underline;">Volver al login</a>
+                        </span>
+                        <header>Recuperar contraseña</header> <!-- Cambiado a minúsculas -->
+                    </div>
+
+                    <div class="Recuperar-container">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <form id="forgotPasswordForm" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="input-box">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" 
+                                   name="email" 
+                                   class="input-field" 
+                                   placeholder="Correo">
+                        </div>
+
+                        <div class="input-box">
+                            <button type="submit" class="submit">Enviar Recuperación</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-to-index">
+            <a asp-controller="Caribbean" asp-action="Index" class="btn btn-lg btn-primary btn-lg-square">
+                <i class="bi bi-arrow-left"></i>
+                <i class="fa fa-home"></i>
+            </a>
+        </div>
+        <!-- Fin Seccion Modificable -->
+    </main>
+
+    <script src="~/js/login.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+$(document).ready(function() {
+    // Single login form handler
+    $('#loginForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        $.ajax({
+            url: '@Url.Action("Login", "Usuarios")',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function(response) {
+                if (response.success) {
+                    Swal.fire({
+                        title: '¡Bienvenido!',
+                        text: response.message,
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.href = response.redirectUrl;
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Error',
+                        text: response.message,
+                        icon: 'error'
+                    });
+                }
+            },
+            error: function() {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Error al intentar iniciar sesión',
+                    icon: 'error'
+                });
+            }
+        });
+    });
+
+    // Registration form handler
+    $('#registerForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        if ($(this).valid()) {
+            $.ajax({
+                url: '@Url.Action("Create", "Usuarios")',
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: '¡Registro exitoso!',
+                            text: response.message,
+                            icon: 'success'
+                        }).then(() => {
+                            showLogin();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Error',
+                            text: response.message,
+                            icon: 'error'
+                        });
+                    }
+                },
+                error: function() {
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Error al registrar usuario',
+                        icon: 'error'
+                    });
+                }
+            });
+        }
+    });
+
+    // Forgot password form handler
+    $('#forgotPasswordForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        $.ajax({
+            url: '@Url.Action("ForgotPassword", "Usuarios")',
+            type: 'POST',
+            data: $(this).serialize(),
+            beforeSend: function() {
+                Swal.fire({
+                    title: 'Procesando...',
+                    text: 'Enviando correo de recuperación',
+                    allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading()
+                });
+            },
+            success: function(response) {
+                if (response.success) {
+                    Swal.fire({
+                        title: '¡Enviado!',
+                        text: response.message,
+                        icon: 'success'
+                    }).then(() => {
+                        showLogin();
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Error',
+                        text: response.message,
+                        icon: 'error'
+                    });
+                }
+            }
+        });
+    });
+
+    // Password visibility toggle
+    $('.toggle-password').click(function() {
+        const input = $(this).prev('input');
+        if (input.attr('type') === 'password') {
+            input.attr('type', 'text');
+            $(this).removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+            input.attr('type', 'password');
+            $(this).removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+    });
+
+    // Handle TempData messages if present
+    @if (!string.IsNullOrEmpty(TempData["Success"]?.ToString()))
+    {
+        <text>
+        Swal.fire({
+            title: '¡Éxito!',
+            text: '@TempData["Success"]',
+            icon: 'success'
+        });
+        </text>
+    }
+
+    @if (!string.IsNullOrEmpty(TempData["Error"]?.ToString()))
+    {
+        <text>
+        Swal.fire({
+            title: 'Error',
+            text: '@TempData["Error"]',
+            icon: 'error'
+        });
+        </text>
+    }
+});
+</script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+</body>
+</html>

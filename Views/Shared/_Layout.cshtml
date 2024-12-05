@@ -1,0 +1,438 @@
+﻿@{
+    var userRoleId = Context.Session.GetInt32("UserRoleId");
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Caribbean2</title>
+    <link rel="stylesheet" href="~/css/sideBar.css">
+    <link rel="stylesheet" href="~/css/roles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+    <style>
+        /* DataTables Styles */
+        .dataTables_length select {
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            padding-right: 1.5rem;
+            background: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='none'%20stroke='currentColor'%20d='M2%201L0%200M2%201l2-1'/%3E%3C/svg%3E") no-repeat right center;
+            background-size: 10px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .dataTables_wrapper .dataTables_length label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            background-color: transparent;
+            border: none;
+            padding: 6px 12px;
+            margin: 0 2px;
+            color: #007bff;
+            border-radius: 4px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background-color: #28a745;
+            color: white !important;
+            border: 1px solid #1e7e34;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background-color: #28a745;
+            color: white !important;
+            border: 1px solid #1e7e34;
+            pointer-events: none;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+            color: #6c757d !important;
+            background-color: transparent;
+            border: none;
+        }
+    </style>
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <header>
+        @*         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Caribbean2</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Caribbean" asp-action="Index">Index</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Caribbean" asp-action="Logeados">Logeados</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+ *@ 
+
+        <div class="menu">
+            <ion-icon name="menu-outline"></ion-icon>
+            <ion-icon name="close-outline"></ion-icon>
+        </div>
+        
+
+        <div class="barra-lateral">
+            <div>
+                <div class="nombre-pagina">
+                    <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+                    <span>CaribeanBliss</span>
+                </div>
+            </div>
+
+            <nav class="navegacion">
+                <ul>
+                    @if (userRoleId.HasValue)
+                    {
+                        @if (userRoleId == 1 || userRoleId == 2 || userRoleId == 3 || userRoleId == 4)
+                        {
+                            @* <li>
+                                <a asp-controller="Caribbean" asp-action="Index">
+                                    <ion-icon name="home-outline"></ion-icon>
+                                    <span>Inicio</span>
+                                </a>
+                            </li> *@
+                            <li>
+                                <a asp-controller="Usuarios" asp-action="Profile">
+                                    <ion-icon name="person-outline"></ion-icon>
+                                    <span>Mi Perfil</span>
+                                </a>
+                            </li>
+                            @if (userRoleId == 1)
+                            {
+                                <li>
+                                    <a asp-controller="Caribbean" asp-action="Contacto">
+                                        <ion-icon name="call-outline"></ion-icon>
+                                        <span>Contacto</span>
+                                    </a>
+                                </li>
+                                
+                            }
+                            @if (userRoleId == 1)
+                            {
+                                <li>
+                                    <a asp-controller="ClienteReservas" asp-action="Index">
+                                        <ion-icon name="mail-outline"></ion-icon>
+                                        <span>Reservar</span>
+                                    </a>
+                                </li>
+                            }
+                            @if (userRoleId == 2 || userRoleId == 3 || userRoleId == 4)
+                            {
+                                <li>
+                                    <a asp-controller="Clientes" asp-action="ClientesAdmin">
+                                        <ion-icon name="people-outline"></ion-icon>
+                                        <span>Clientes</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Metricas" asp-action="Dashboard">
+                                        <ion-icon name="stats-chart-outline"></ion-icon>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+                                @if (userRoleId == 3 || userRoleId == 4)
+                                    {
+                                        <li>
+                                            <div class="nav-item dropdown">
+                                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                                    <ion-icon name="settings-outline"></ion-icon>
+                                                    <span>Config.</span>
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="@Url.Action("Index", "Roles")">
+                                                        <ion-icon name="key-outline"></ion-icon>
+                                                        <span>Roles</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="@Url.Action("Index", "Empleados")">
+                                                        <ion-icon name="person-outline"></ion-icon>
+                                                        <span>Empleados</span>
+                                                    </a>                                                 
+                                                    <a class="dropdown-item" href="@Url.Action("Index", "Permisos")">
+                                                        <ion-icon name="shield-checkmark-outline"></ion-icon>
+                                                        <span>Permisos</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="@Url.Action("Index", "Metricas")">
+                                                        <ion-icon name="shield-checkmark-outline"></ion-icon>
+                                                        <span>Metricas</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>    
+                                        <li>
+                                            <a asp-controller="Usuarios" asp-action="Index">
+                                                <ion-icon name="person-circle-outline"></ion-icon>
+                                                <span>Usuarios</span>
+                                            </a>
+                                        </li>                        
+                                    }
+                                
+                                <li>
+                                    <div class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                            <ion-icon name="bed-outline"></ion-icon>
+                                            <span>Alojamiento</span>
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" asp-controller="Habitaciones" asp-action="Index">
+                                                <ion-icon name="business-outline"></ion-icon>
+                                                <span>Habitaciones</span>
+                                            </a>
+                                            <a class="dropdown-item" asp-controller="Huespedes" asp-action="Index">
+                                                <ion-icon name="people-outline"></ion-icon>
+                                                <span>Huéspedes</span>
+                                            </a>
+                                            <a class="dropdown-item" asp-controller="Servicios" asp-action="Index">
+                                                <ion-icon name="construct-outline"></ion-icon>
+                                                <span>Servicios</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a asp-controller="Reservas" asp-action="Index">
+                                        <ion-icon name="mail-outline"></ion-icon>
+                                        <span>Reservas</span>
+                                    </a>
+                                </li>  
+                                <li>
+                                    <a asp-controller="Suscripciones" asp-action="Index">
+                                        <ion-icon name="mail-outline"></ion-icon>
+                                        <span>Suscripciones</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Consultas" asp-action="Index">
+                                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                                        <span>Consultas</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Manual" asp-action="Index">
+                                        <ion-icon name="school-sharp"></ion-icon>
+                                        <span>Manual</span>
+                                    </a>
+                                </li>                         
+                            }
+                            
+                        }
+                    }
+                </ul>
+            </nav>
+
+            <div class="caribean_logo">
+                <img src="~/img/caribeanbliss_logo.png" alt="Home" srcset="">
+            </div>
+
+            <div>
+                <div class="linea"></div>
+
+                <div class="modo-oscuro">
+                    <div class="info">
+                        <ion-icon name="moon-outline"></ion-icon>
+                        <span>Modo Dark</span>
+                    </div>
+                    <div class="switch">
+                        <div class="base">
+                            <div class="circulo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+            <div class="container-fluid" style="background: linear-gradient(135deg, #000306 0%, #2b5278 100%);">
+                <div class="row gx-0">
+                    <!-- Sección de botones visibles en pantallas pequeñas y grandes -->
+                    <div class="btn-group-container d-flex justify-content-end p-2">
+                        <a class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cerrar sesión"
+                            asp-controller="Usuarios" asp-action="Logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>                     
+
+                        <!-- Botones completos visibles solo en pantallas grandes -->
+                        <a asp-controller="Usuarios" asp-action="Logout" class="btn-modern me-2 d-none d-lg-inline-flex">
+                            <i class="fas fa-sign-in-alt"></i> Cerrar sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="container">
+        <main role="main" class="">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Scripts necesarios -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Scripts personalizados -->
+    <script src="~/js/index.js"></script>
+    <script src="~/js/sidebar.js"></script>
+    <script src="~/js/login.js"></script>
+    <script src="~/js/roles.js"></script>
+
+    <!-- Bootstrap y jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Librerías adicionales -->
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- Scripts personalizados adicionales -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Actualiza los labels al cargar la página
+            document.querySelectorAll('.form-check-input').forEach(function (switchInput) {
+                updateEstadoLabel(switchInput);
+            });
+
+            // Mostrar mensajes de TempData con SweetAlert2
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: '@TempData["ErrorMessage"]'
+                    });
+                </text>
+            }
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: '@TempData["SuccessMessage"]'
+                    });
+                </text>
+            }
+        });
+
+        // Función para actualizar el texto del label según el estado del switch
+        function updateEstadoLabel(switchInput) {
+            var label = switchInput.nextElementSibling;
+            if (switchInput.checked) {
+                label.textContent = "Activado";
+                label.style.color = "green"; // Cambia el color de "Activado" a verde
+            } else {
+                label.textContent = "Inactivo";
+                label.style.color = "red"; // Cambia el color de "Inactivo" a rojo
+            }
+        }
+
+        // Script para manejar los dropdowns
+        document.addEventListener("DOMContentLoaded", function () {
+            var dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+            dropdownToggles.forEach(function (toggle) {
+                toggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var parent = this.closest('.nav-item');
+                    parent.classList.toggle('show');
+
+                    dropdownToggles.forEach(function (otherToggle) {
+                        if (otherToggle !== toggle) {
+                            var otherParent = otherToggle.closest('.nav-item');
+                            otherParent.classList.remove('show');
+                        }
+                    });
+                });
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('.nav-item')) {
+                    dropdownToggles.forEach(function (toggle) {
+                        var parent = toggle.closest('.nav-item');
+                        parent.classList.remove('show');
+                    });
+                }
+            });
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

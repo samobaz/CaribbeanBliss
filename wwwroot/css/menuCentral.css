@@ -1,0 +1,415 @@
+:root {
+    --primary: #86B817;
+    --secondary: #FE8800;
+    --light: #F5F5F5;
+    --dark: #14141F;
+}
+
+.fw-medium {
+    font-weight: 600 !important;
+}
+
+.fw-semi-bold {
+    font-weight: 700 !important;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+.back-to-index {
+    position: fixed;
+    left: 45px;
+    bottom: 45px;
+    z-index: 99;
+    width: 120px !important;
+    text-decoration: none;
+}
+
+.logo-container {
+    background-color: white; /* Fondo blanco */
+    border-radius: 5px; /* Esquinas redondeadas (opcional) */
+    padding: 5px; /* Espaciado alrededor de la imagen */
+    display: inline-block; /* Para ajustar al tamaño de la imagen */
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.navbar-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 28px; /* Tamaño de fuente ajustable */
+    color: white; /* Color blanco */
+    text-decoration: none; /* Sin subrayado */
+}
+
+.caribean-font{
+    font-family: 'Cinzel', serif;
+    font-size: 72px; /* Tamaño de fuente ajustable */
+    color: white; /* Color blanco */
+}
+
+
+/*** Button ***/
+.btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    border-radius: 0px;
+}
+
+/* Asegura que el topbar mantenga los botones alineados en pantallas grandes */
+@media (min-width: 992px) {
+    .btn-group-container {
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+        margin-left: auto; /* Alinea los botones a la derecha */
+    }
+
+    /* Asegúrate de que los botones no se envuelvan en pantallas grandes */
+    .btn-group-container {
+        flex-wrap: nowrap;
+    }
+
+    /* Estilos para los botones en pantallas grandes */
+    .btn-modern {
+        --color: #00A97F;
+        padding: 0.5em 1em;
+        background-color: #fff;
+        border-radius: .3em;
+        border: 1px solid var(--color);
+        color: var(--color);
+        cursor: pointer;
+        transition: .5s;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 100px;
+        white-space: nowrap;
+    }
+
+    /* Diferenciar claramente el botón de "Registrarse" con un color diferente */
+    .btn-modern:nth-of-type(2),
+    .btn-modern:nth-of-type(4) {
+        --color: #007BFF; /* Azul para el botón de Registrarse */
+        border-color: #007BFF;
+        color: #007BFF;
+    }
+
+    .btn-modern:hover {
+        color: #fff;
+        background-color: var(--color);
+    }
+
+    .btn-modern:active {
+        filter: brightness(0.9);
+    }
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 991px) {
+    .btn-modern {
+        --color: #00A97F;
+        padding: 0.3em 0.6em;
+        border-radius: .3em;
+        border: 1px solid var(--color);
+        background-color: #fff;
+        color: var(--color);
+        font-size: 12px;
+    }
+
+    .btn-modern:nth-of-type(2) {
+        --color: #007BFF;
+        border-color: #007BFF;
+    }
+
+    /* Asegura que los íconos se vean correctamente */
+    .btn-modern i {
+        margin-right: 0.5em;
+    }
+}
+
+/*** Hero Header ***/
+.hero-header {
+    position: relative;
+    height: 100vh; /* Asegúrate de ajustar la altura si es necesario */
+    overflow: hidden; /* Para que el video no se salga de los límites del contenedor */
+}
+
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta el tamaño del video para cubrir todo el área */
+    z-index: 1;
+}
+
+.hero-header .container {
+    z-index: 2; /* Asegúrate de que el contenido esté por encima del video */
+    position: relative;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, .5);
+}
+
+.hero-header h1, 
+.hero-header p {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+    padding: 10px 20px; /* Añade un poco de espacio alrededor del texto */
+    border-radius: 8px; /* Bordes redondeados para un aspecto más suave */
+    display: inline-block; /* Mantiene el fondo ajustado al texto */
+}
+
+
+/*** Section Title ***/
+.section-title {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.section-title::before {
+    position: absolute;
+    content: "";
+    width: calc(100% + 80px);
+    height: 2px;
+    top: 4px;
+    left: -40px;
+    background: var(--primary);
+    z-index: -1;
+}
+
+.section-title::after {
+    position: absolute;
+    content: "";
+    width: calc(100% + 120px);
+    height: 2px;
+    bottom: 5px;
+    left: -60px;
+    background: var(--primary);
+    z-index: -1;
+}
+
+
+
+.section-title.text-start::before {
+    width: calc(100% + 40px);
+    left: 0;
+}
+
+.section-title.text-start::after {
+    width: calc(100% + 60px);
+    left: 0;
+}
+
+.card-img-top{
+    height: 200px;
+    width: 160px;
+}
+
+
+/*** Service ***/
+.service-item {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    transition: .5s;
+}
+
+.service-item:hover {
+    background: var(--primary);
+}
+
+.service-item * {
+    transition: .5s;
+}
+
+.service-item:hover * {
+    color: var(--light) !important;
+}
+
+/* Estilos adicionales para ajustes */
+@media (min-width: 992px) {
+    .col-lg-2 {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+}
+
+@media (max-width: 767px) {
+    .team-item img {
+        max-height: 150px; /* Ajusta según el tamaño deseado para pantallas más pequeñas */
+    }
+}
+
+/*** Footer ***/
+/* Estilo general del footer */
+footer {
+    background-color: #343a40; /* Color de fondo oscuro */
+    color: #f8f9fa; /* Color del texto claro */
+    margin-left: 250px; /* Deja espacio para el sidebar fijo */
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1); /* Opcional: sombra en la parte superior del footer */
+    width: auto !important;
+    height: auto;
+}
+
+/* Contenido del footer */
+footer .container {
+    max-width: auto; /* Limita el ancho máximo del contenido del footer */
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+}
+
+/* Estilo para las columnas del footer */
+footer .row {
+    margin: 0; /* Elimina márgenes de las filas */
+}
+
+/* Ajuste de la columna de la compañía */
+footer .col-lg-4:nth-child(1) {
+    flex: 1; /* Asegura que la primera columna ocupe el espacio disponible */
+}
+
+/* Ajuste de la columna de contacto */
+footer .col-lg-4:nth-child(2) {
+    flex: 1; /* Asegura que la segunda columna ocupe el espacio disponible */
+}
+
+/* Ajuste de la columna del boletín informativo */
+footer .col-lg-4:nth-child(3) {
+    flex: 1; /* Asegura que la tercera columna ocupe el espacio disponible */
+}
+
+/* Estilo para los enlaces sociales */
+.footer .btn.btn-social {
+    margin-right: 10px; /* Espaciado más amplio entre los iconos */
+    width: 40px; /* Tamaño ajustado para los iconos sociales */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f8f9fa; /* Color de los iconos */
+    font-weight: normal;
+    border: 1px solid #f8f9fa; /* Borde blanco */
+    border-radius: 50%; /* Borde redondeado */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilo del hover para los iconos sociales */
+.footer .btn.btn-social:hover {
+    background-color: #007bff; /* Color de fondo en hover */
+    color: #fff; /* Color de los iconos en hover */
+}
+
+/* Estilo de los enlaces del footer */
+.footer .btn.btn-link {
+    display: block;
+    margin-bottom: 10px; /* Espaciado más amplio entre los enlaces */
+    padding: 0;
+    text-align: left;
+    color: #f8f9fa;
+    font-size: 15px;
+    text-transform: capitalize;
+    transition: color 0.3s, letter-spacing 0.3s;
+}
+
+/* Estilo del hover para los enlaces */
+.footer .btn.btn-link:hover {
+    letter-spacing: 1px;
+    color: #007bff; /* Color en hover */
+    text-decoration: none;
+}
+
+/* Estilo del boletín informativo */
+.footer .position-relative {
+    position: relative;
+}
+
+.footer .form-control {
+    border-radius: 50px; /* Bordes redondeados para el campo de texto */
+}
+
+.footer .btn.btn-primary {
+    border-radius: 50px; /* Bordes redondeados para el botón */
+}
+
+/* Estilo del copyright */
+.footer .copyright {
+    padding: 20px 0; /* Espaciado ajustado */
+    font-size: 14px; /* Tamaño de fuente ajustado */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Borde superior */
+}
+
+/* Estilo para el menú de pie de página */
+.footer .footer-menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que los enlaces se ajusten en varias líneas si es necesario */
+}
+
+.footer .footer-menu a {
+    margin-right: 20px; /* Espaciado entre los enlaces */
+    padding-right: 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1); /* Borde derecho */
+}
+
+.footer .footer-menu a:last-child {
+    margin-right: 0;
+    padding-right: 0;
+    border-right: none; /* Quitar borde en el último enlace */
+}
+
+.nav-link {
+    color: #f8f9fa; /* Blanco suave */
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .nav-link:hover {
+        background-color: #6c757d; /* Gris neutral */
+        color: #ffffff; /* Blanco puro */
+    }
+
+    .nav-link:focus {
+        outline: none;
+        background-color: #495057; /* Gris oscuro */
+    }
+

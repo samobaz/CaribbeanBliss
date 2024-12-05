@@ -1,0 +1,333 @@
+@model Caribbean2.Models.Usuarios
+
+@{
+    ViewData["Title"] = "Mi Perfil";
+}
+
+<style>
+                  body {
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/imgpagina.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.; /* Reduced opacity for darker effect */
+    z-index: -1;
+    filter: brightness(0.5) contrast(1.2); /* Reduced brightness for darker image */
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}   
+.profile-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.profile-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.profile-header {
+    background: linear-gradient(135deg, #000306 0%, #2b5278 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.profile-header h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+    color: white;
+}
+
+.profile-body {
+    padding: 2rem;
+    background: #f8f9fa;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #1e3d59;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-control {
+    border: 2px solid #f1f4f8;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #1e3d59;
+    box-shadow: 0 0 0 0.2rem rgba(30, 61, 89, 0.25);
+}
+
+.input-icon {
+    position: absolute;
+    right: 1rem;
+    top: 2.5rem;
+    color: #495057;
+}
+
+.btn-save {
+    background: #1e3d59;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.btn-save:hover {
+    background: #ff5722;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 110, 64, 0.3);
+}
+
+.text-danger {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.form-text {
+    color: #495057;
+    font-size: 0.875rem;
+}
+
+select.form-control {
+    background-color: #f8f9fa;
+}
+
+select.form-control:focus {
+    background-color: #fff;
+}
+
+@@media (max-width: 768px) {
+    .profile-container {
+        margin: 1rem auto;
+    }
+
+    .btn-save {
+        width: 100%;
+    }
+}
+</style>
+
+<div class="profile-container">
+    <div class="profile-card">
+        <div class="profile-header">
+            <h3><i class="fas fa-user-circle me-2"></i>Mi Perfil</h3>
+        </div>
+        <div class="profile-body">
+            <form id="profileForm" asp-action="Profile" method="post">
+                <div class="form-group">
+                    <label asp-for="NombresApellidos">
+                        <i class="fas fa-user me-2"></i>Nombres y Apellidos
+                    </label>
+                    <input asp-for="NombresApellidos" class="form-control" 
+                           pattern="^[a-zA-Z0-9]{6,30}$" 
+                           title="El nombre debe ser alfanumérico y tener entre 6 y 30 caracteres" required />
+                    <span asp-validation-for="NombresApellidos" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="TipoIdentificacion">
+                                <i class="fas fa-id-card me-2"></i>Tipo de Identificación
+                            </label>
+                            <select asp-for="TipoIdentificacion" class="form-control" required>
+                                <option value="" disabled selected>Seleccione tipo de documento</option>
+                                <option value="CC">Cédula de Ciudadanía</option>
+                                <option value="TI">Tarjeta de Identidad</option>
+                                <option value="CE">Cédula de Extranjería</option>
+                                <option value="PAS">Pasaporte</option>
+                                <option value="NIT">NIT</option>
+                            </select>
+                            <span asp-validation-for="TipoIdentificacion" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Identificacion">
+                                <i class="fas fa-fingerprint me-2"></i>Número de Identificación
+                            </label>
+                            <input asp-for="Identificacion" class="form-control" 
+                                   pattern="^[0-9]{6,15}$" 
+                                   title="El número de identificación debe ser numérico y tener entre 6 y 15 dígitos" required />
+                            <span asp-validation-for="Identificacion" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Telefono">
+                                <i class="fas fa-phone me-2"></i>Teléfono
+                            </label>
+                            <input asp-for="Telefono" class="form-control" 
+                                   pattern="^\d{10}$" 
+                                   title="El número de teléfono debe contener exactamente 10 dígitos" required />
+                            <span asp-validation-for="Telefono" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Correo">
+                                <i class="fas fa-envelope me-2"></i>Correo Electrónico
+                            </label>
+                            <input asp-for="Correo" class="form-control" type="email"
+                                   pattern="^[a-zA-Z0-9]{5,}[a-zA-Z0-9.-]+\.com$"
+                                   title="El correo debe ser válido" required />
+                            <span asp-validation-for="Correo" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="CurrentPassword">
+                        <i class="fas fa-lock me-2"></i>Contraseña Actual
+                    </label>
+                    <input type="password" id="CurrentPassword" name="CurrentPassword" class="form-control" required />
+                    <small class="form-text text-muted">Ingrese su contraseña actual para guardar los cambios</small>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Contrasena">
+                                <i class="fas fa-key me-2"></i>Nueva Contraseña
+                            </label>
+                            <input type="password" id="Contrasena" name="Contrasena" class="form-control"
+                                   pattern="^[a-zA-Z0-9!#$%^&*()_+=-]{8,20}$" />
+                            <small class="form-text text-muted">Dejar en blanco si no desea cambiar la contraseña</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="ConfirmarContrasena">
+                                <i class="fas fa-key me-2"></i>Confirmar Contraseña
+                            </label>
+                            <input type="password" id="ConfirmarContrasena" name="ConfirmarContrasena" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-save">
+                        <i class="fas fa-save me-2"></i>Guardar Cambios
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>
+        $(document).ready(function () {
+            $("#profileForm").on("submit", function (e) {
+                e.preventDefault();
+                
+                // Validar contraseña actual
+                var currentPassword = $("#CurrentPassword").val();
+                if (!currentPassword) {
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Debe ingresar su contraseña actual para guardar los cambios',
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    });
+                    return;
+                }
+                
+                // Validar contraseñas nuevas
+                var password = $("#Contrasena").val();
+                var confirmPassword = $("#ConfirmarContrasena").val();
+                
+                if (password || confirmPassword) {
+                    if (password !== confirmPassword) {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Las contraseñas nuevas no coinciden',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                        return;
+                    }
+                }
+                
+                // Validar el formulario antes de enviarlo
+                if (!$(this)[0].checkValidity()) {
+                    $(this)[0].reportValidity();
+                    return;
+                }
+                
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function (result) {
+                        if (result.success) {
+                            Swal.fire({
+                                title: '¡Éxito!',
+                                text: result.message,
+                                icon: 'success',
+                                confirmButtonText: 'Ok'
+                            });
+                            $("#CurrentPassword").val(''); // Limpiar contraseña actual
+                            $("#Contrasena").val(''); // Limpiar nueva contraseña
+                            $("#ConfirmarContrasena").val(''); // Limpiar confirmación
+                        } else {
+                            Swal.fire({
+                                title: 'Error',
+                                text: result.message,
+                                icon: 'error',
+                                confirmButtonText: 'Ok'
+                            });
+                        }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Ocurrió un error al actualizar el perfil',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}

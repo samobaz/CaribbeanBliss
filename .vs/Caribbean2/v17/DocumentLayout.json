@@ -1,0 +1,156 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\REPLICA PRUEBA MI PERFIL\\CaribbeanBliss-1\\Caribbean2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F5612309-F4AB-4D85-BE50-8DDF2C4EDFD3}|Caribbean2.csproj|c:\\replica prueba mi perfil\\caribbeanbliss-1\\caribbean2\\controllers\\suscripcionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5612309-F4AB-4D85-BE50-8DDF2C4EDFD3}|Caribbean2.csproj|solutionrelative:controllers\\suscripcionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5612309-F4AB-4D85-BE50-8DDF2C4EDFD3}|Caribbean2.csproj|c:\\replica prueba mi perfil\\caribbeanbliss-1\\caribbean2\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5612309-F4AB-4D85-BE50-8DDF2C4EDFD3}|Caribbean2.csproj|solutionrelative:controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5612309-F4AB-4D85-BE50-8DDF2C4EDFD3}|Caribbean2.csproj|c:\\replica prueba mi perfil\\caribbeanbliss-1\\caribbean2\\models\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5612309-F4AB-4D85-BE50-8DDF2C4EDFD3}|Caribbean2.csproj|solutionrelative:models\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5612309-F4AB-4D85-BE50-8DDF2C4EDFD3}|Caribbean2.csproj|c:\\replica prueba mi perfil\\caribbeanbliss-1\\caribbean2\\controllers\\permisoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5612309-F4AB-4D85-BE50-8DDF2C4EDFD3}|Caribbean2.csproj|solutionrelative:controllers\\permisoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5612309-F4AB-4D85-BE50-8DDF2C4EDFD3}|Caribbean2.csproj|c:\\replica prueba mi perfil\\caribbeanbliss-1\\caribbean2\\controllers\\metricascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5612309-F4AB-4D85-BE50-8DDF2C4EDFD3}|Caribbean2.csproj|solutionrelative:controllers\\metricascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F5612309-F4AB-4D85-BE50-8DDF2C4EDFD3}|Caribbean2.csproj|c:\\replica prueba mi perfil\\caribbeanbliss-1\\caribbean2\\controllers\\empleadoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F5612309-F4AB-4D85-BE50-8DDF2C4EDFD3}|Caribbean2.csproj|solutionrelative:controllers\\empleadoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 356,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SuscripcionesController.cs",
+              "DocumentMoniker": "C:\\REPLICA PRUEBA MI PERFIL\\CaribbeanBliss-1\\Caribbean2\\Controllers\\SuscripcionesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SuscripcionesController.cs",
+              "ToolTip": "C:\\REPLICA PRUEBA MI PERFIL\\CaribbeanBliss-1\\Caribbean2\\Controllers\\SuscripcionesController.cs",
+              "RelativeToolTip": "Controllers\\SuscripcionesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T19:59:09.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "C:\\REPLICA PRUEBA MI PERFIL\\CaribbeanBliss-1\\Caribbean2\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RolesController.cs",
+              "ToolTip": "C:\\REPLICA PRUEBA MI PERFIL\\CaribbeanBliss-1\\Caribbean2\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "Controllers\\RolesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T19:58:15.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Rol.cs",
+              "DocumentMoniker": "C:\\REPLICA PRUEBA MI PERFIL\\CaribbeanBliss-1\\Caribbean2\\Models\\Rol.cs",
+              "RelativeDocumentMoniker": "Models\\Rol.cs",
+              "ToolTip": "C:\\REPLICA PRUEBA MI PERFIL\\CaribbeanBliss-1\\Caribbean2\\Models\\Rol.cs",
+              "RelativeToolTip": "Models\\Rol.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T19:57:31.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PermisosController.cs",
+              "DocumentMoniker": "C:\\REPLICA PRUEBA MI PERFIL\\CaribbeanBliss-1\\Caribbean2\\Controllers\\PermisosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PermisosController.cs",
+              "ToolTip": "C:\\REPLICA PRUEBA MI PERFIL\\CaribbeanBliss-1\\Caribbean2\\Controllers\\PermisosController.cs",
+              "RelativeToolTip": "Controllers\\PermisosController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T19:56:17.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MetricasController.cs",
+              "DocumentMoniker": "C:\\REPLICA PRUEBA MI PERFIL\\CaribbeanBliss-1\\Caribbean2\\Controllers\\MetricasController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MetricasController.cs",
+              "ToolTip": "C:\\REPLICA PRUEBA MI PERFIL\\CaribbeanBliss-1\\Caribbean2\\Controllers\\MetricasController.cs",
+              "RelativeToolTip": "Controllers\\MetricasController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T19:55:26.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EmpleadosController.cs",
+              "DocumentMoniker": "C:\\REPLICA PRUEBA MI PERFIL\\CaribbeanBliss-1\\Caribbean2\\Controllers\\EmpleadosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EmpleadosController.cs",
+              "ToolTip": "C:\\REPLICA PRUEBA MI PERFIL\\CaribbeanBliss-1\\Caribbean2\\Controllers\\EmpleadosController.cs",
+              "RelativeToolTip": "Controllers\\EmpleadosController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T19:54:25.8Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 356,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

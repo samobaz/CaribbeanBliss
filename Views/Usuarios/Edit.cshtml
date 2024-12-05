@@ -1,0 +1,238 @@
+﻿@model Caribbean2.Models.Usuarios
+@{
+    ViewData["Title"] = "Edit";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <style>
+        body {
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/imgpagina.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.; /* Reduced opacity for darker effect */
+    z-index: -1;
+    filter: brightness(0.5) contrast(1.2); /* Reduced brightness for darker image */
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}
+        .booking-header {
+            background: linear-gradient(rgba(30, 61, 89, 0.9), rgba(30, 61, 89, 0.9)),
+                        url('/images/hotel-bg.jpg') center/cover;
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+        }
+
+        .user-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .user-card-header {
+            background: linear-gradient(135deg, #1e3d59 0%, #2b5278 100%);
+            padding: 1.5rem;
+            border: none;
+        }
+
+        .user-card-title {
+            color: white;
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+        }
+
+        .form-control {
+            border: 2px solid #f1f4f8;
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: #1e3d59;
+            box-shadow: 0 0 0 0.2rem rgba(30, 61, 89, 0.25);
+        }
+
+        .btn-success {
+            background: #ff6e40;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-success:hover {
+            background: #ff5722;
+            transform: translateY(-2px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .toggle-container .form-check-input:checked {
+            background-color: #198754;
+            border-color: #198754;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="booking-header text-center">
+            <h1>Gestión de Usuarios</h1>
+            <p class="lead">Editar usuario existente en Caribbean Hotel</p>
+        </div>
+
+        <div class="user-card">
+            <div class="user-card-header">
+                <div class="text-center">
+                    <h2 class="user-card-title">Editar Usuario</h2>
+                </div>
+            </div>
+
+            <div class="card-body p-4">
+                <form asp-action="Edit" id="editForm">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="UsuarioID" />
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="NombresApellidos">Nombre Usuario</label>
+                                <input asp-for="NombresApellidos" class="form-control" required />
+                                <span asp-validation-for="NombresApellidos" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="TipoIdentificacion">Tipo Identificación</label>
+                                <select asp-for="TipoIdentificacion" class="form-control" required>
+                                    <option value="">Seleccione...</option>
+                                    <option value="CC">CC</option>
+                                    <option value="TI">TI</option>
+                                    <option value="CE">CE</option>
+                                    <option value="PAS">PAS</option>
+                                    <option value="NIT">NIT</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Identificacion"></label>
+                                <input asp-for="Identificacion" class="form-control" required />
+                                <span asp-validation-for="Identificacion" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Telefono"></label>
+                                <input asp-for="Telefono" class="form-control" required />
+                                <span asp-validation-for="Telefono" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Correo"></label>
+                                <input asp-for="Correo" class="form-control" required />
+                                <span asp-validation-for="Correo" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="IdRol">Rol</label>
+                                <select asp-for="IdRol" class="form-control" required>
+                                    <option value="">Seleccione un rol...</option>
+                                    <option value="1">Usuario</option>
+                                    <option value="2">Administrador</option>
+                                    <option value="3">Empleado</option>
+                                    <option value="4">Supervisor</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="FechaRegistro"></label>
+                                <input asp-for="FechaRegistro" class="form-control" readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Estado">Estado</label>
+                                <div class="toggle-container">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" asp-for="Estado" type="checkbox" role="switch" id="estadoSwitch">
+                                        <label class="form-check-label" for="estadoSwitch">
+                                            <span id="estadoLabel">@(Model.Estado ? "Activo" : "Inactivo")</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center mt-4">
+                        <button type="submit" class="btn btn-success me-2">
+                            <i class="bi bi-check-circle"></i> Guardar Cambios
+                        </button>
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left-circle"></i> Regresar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('editForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "Estás a punto de editar este usuario.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, guardar cambios',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

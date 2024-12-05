@@ -1,0 +1,449 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Caribbean2.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Caribbean2.s7luh85nle.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\css\\Reservas.css",
+      "PackagePath": "staticwebassets\\css\\Reservas.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\css\\dashboard.css",
+      "PackagePath": "staticwebassets\\css\\dashboard.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\css\\fontello.css",
+      "PackagePath": "staticwebassets\\css\\fontello.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\css\\habitaciones.css",
+      "PackagePath": "staticwebassets\\css\\habitaciones.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\css\\huespedes.css",
+      "PackagePath": "staticwebassets\\css\\huespedes.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\css\\logeados.css",
+      "PackagePath": "staticwebassets\\css\\logeados.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\css\\menuCentral.css",
+      "PackagePath": "staticwebassets\\css\\menuCentral.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\css\\registro.css",
+      "PackagePath": "staticwebassets\\css\\registro.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\css\\roles.css",
+      "PackagePath": "staticwebassets\\css\\roles.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\css\\sideBar.css",
+      "PackagePath": "staticwebassets\\css\\sideBar.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\css\\sitew.css",
+      "PackagePath": "staticwebassets\\css\\sitew.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\Habitacion Premium.jpg",
+      "PackagePath": "staticwebassets\\img\\Habitacion Premium.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\Habitacion deluxe.jpg",
+      "PackagePath": "staticwebassets\\img\\Habitacion deluxe.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\Habitacion familiar.jpg",
+      "PackagePath": "staticwebassets\\img\\Habitacion familiar.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\about.jpg",
+      "PackagePath": "staticwebassets\\img\\about.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\bg-hero.jpg",
+      "PackagePath": "staticwebassets\\img\\bg-hero.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\booking.jpg",
+      "PackagePath": "staticwebassets\\img\\booking.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\caribeanbliss_logo.png",
+      "PackagePath": "staticwebassets\\img\\caribeanbliss_logo.png"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\destination-1.jpg",
+      "PackagePath": "staticwebassets\\img\\destination-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\destination-2.jpg",
+      "PackagePath": "staticwebassets\\img\\destination-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\destination-3.jpg",
+      "PackagePath": "staticwebassets\\img\\destination-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\destination-4.jpg",
+      "PackagePath": "staticwebassets\\img\\destination-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\habitacion individual.jpg",
+      "PackagePath": "staticwebassets\\img\\habitacion individual.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\imgpagina.jpg",
+      "PackagePath": "staticwebassets\\img\\imgpagina.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\login.jpg",
+      "PackagePath": "staticwebassets\\img\\login.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\package-1.jpg",
+      "PackagePath": "staticwebassets\\img\\package-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\package-2.jpg",
+      "PackagePath": "staticwebassets\\img\\package-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\package-3.jpg",
+      "PackagePath": "staticwebassets\\img\\package-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\team-1.jpg",
+      "PackagePath": "staticwebassets\\img\\team-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\team-2.jpg",
+      "PackagePath": "staticwebassets\\img\\team-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\team-3.jpg",
+      "PackagePath": "staticwebassets\\img\\team-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\team-4.jpg",
+      "PackagePath": "staticwebassets\\img\\team-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\team-5.jpg",
+      "PackagePath": "staticwebassets\\img\\team-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\testimonial-1.jpg",
+      "PackagePath": "staticwebassets\\img\\testimonial-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\testimonial-2.jpg",
+      "PackagePath": "staticwebassets\\img\\testimonial-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\testimonial-3.jpg",
+      "PackagePath": "staticwebassets\\img\\testimonial-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\img\\testimonial-4.jpg",
+      "PackagePath": "staticwebassets\\img\\testimonial-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\js\\dashboard.js",
+      "PackagePath": "staticwebassets\\js\\dashboard.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\js\\index.js",
+      "PackagePath": "staticwebassets\\js\\index.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\js\\logeados.js",
+      "PackagePath": "staticwebassets\\js\\logeados.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\js\\login.js",
+      "PackagePath": "staticwebassets\\js\\login.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\js\\roles.js",
+      "PackagePath": "staticwebassets\\js\\roles.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\js\\sidebar.js",
+      "PackagePath": "staticwebassets\\js\\sidebar.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\MSI\\Desktop\\proyexto sam\\CaribbeanBliss R\\CaribbeanBliss - mio\\wwwroot\\video\\CaribbeanBliss.mp4",
+      "PackagePath": "staticwebassets\\video\\CaribbeanBliss.mp4"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Caribbean2.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Caribbean2.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Caribbean2.props",
+      "PackagePath": "build\\Caribbean2.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Caribbean2.props",
+      "PackagePath": "buildMultiTargeting\\Caribbean2.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Caribbean2.props",
+      "PackagePath": "buildTransitive\\Caribbean2.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

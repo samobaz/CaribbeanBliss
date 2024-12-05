@@ -1,0 +1,106 @@
+@{
+    ViewData["Title"] = "Manual de Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Agregar estos enlaces en el head de la vista o en _Layout.cshtml -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="roles-card mt-4">
+                <div class="roles-card-header">
+                    <h2 class="roles-card-title text-center">Manual de Usuario</h2>
+                </div>
+                <div class="roles-card-body p-4">
+                    <!-- Descripción -->
+                    <div class="mb-4">
+                        <p class="lead text-center">
+                            Bienvenido al Manual de Usuario de Caribbean Bliss Hotel. 
+                            Este manual le ayudará a comprender todas las funcionalidades 
+                            del sistema de gestión hotelera.
+                        </p>
+                        <p class="text-center">
+                            Puede acceder al manual de dos formas diferentes según su preferencia:
+                        </p>
+                    </div>
+
+                    <!-- Botones de acceso -->
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-md-6 text-center mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="bi bi-file-earmark-pdf-fill text-danger fs-3"></i>
+                                    </h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Versión Descargable</h6>
+                                    <p class="card-text">Descargue el manual en formato PDF para consultarlo sin conexión</p>
+                                    <a href="~/manuales/manual-usuario.pdf" download class="btn btn-primary">
+                                        <i class="bi bi-download"></i> Descargar Manual
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-center mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="bi bi-book-half text-success fs-3"></i>
+                                    </h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Versión en Línea</h6>
+                                    <p class="card-text">Acceda al manual en línea para una consulta inmediata y sin consumir espacio</p>
+                                    <a href="https://docs.google.com/document/d/1y31dpDgVMdUw_c8ZwjfYU0TcdHpfZJg-CsxMUzWtHBQ/edit?tab=t.0" target="_blank" class="btn btn-success">
+                                        <i class="bi bi-book"></i> Leer en Línea
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.roles-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.roles-card-header {
+    background: linear-gradient(135deg, #1e3d59 0%, #2b5278 100%);
+    padding: 1.5rem;
+    border: none;
+}
+
+.roles-card-title {
+    color: white;
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+}
+
+.card {
+    transition: transform 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.btn {
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+</style>

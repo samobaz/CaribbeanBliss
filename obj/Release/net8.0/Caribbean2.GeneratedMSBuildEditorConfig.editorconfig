@@ -1,0 +1,395 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Caribbean2
+build_property.RootNamespace = Caribbean2
+build_property.ProjectDir = C:\Users\cris7\Downloads\CaribbeanBliss-FinalOne Integrado - seguridad\CaribbeanBliss-FinalOne Integrado - seguridad\CaribbeanBliss-2\Caribbean2\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\cris7\Downloads\CaribbeanBliss-FinalOne Integrado - seguridad\CaribbeanBliss-FinalOne Integrado - seguridad\CaribbeanBliss-2\Caribbean2
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/AgregarHabitacion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXEFncmVnYXJIYWJpdGFjaW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/AgregarServicio.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXEFncmVnYXJTZXJ2aWNpby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/Contacto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXENvbnRhY3RvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXERhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/EmpleadosRoles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXEVtcGxlYWRvc1JvbGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/Habitaciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXEhhYml0YWNpb25lcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/Huespedes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXEh1ZXNwZWRlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/Logeados.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXExvZ2VhZG9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/Registro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXFJlZ2lzdHJvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/Reservas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXFJlc2VydmFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/Roles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXFJvbGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Caribbean/Servicios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyaWJiZWFuXFNlcnZpY2lvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Clientes/ClientesAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcQ2xpZW50ZXNBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Clientes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Clientes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Clientes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Clientes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Clientes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Empleados/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Empleados/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Empleados/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Empleados/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Empleados/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/HabitacionEstado/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRhY2lvbkVzdGFkb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/HabitacionEstado/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRhY2lvbkVzdGFkb1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/HabitacionEstado/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRhY2lvbkVzdGFkb1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/HabitacionEstado/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRhY2lvbkVzdGFkb1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/HabitacionEstado/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRhY2lvbkVzdGFkb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Habitaciones/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRhY2lvbmVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Habitaciones/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRhY2lvbmVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Habitaciones/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRhY2lvbmVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Habitaciones/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRhY2lvbmVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Habitaciones/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGFiaXRhY2lvbmVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/HuespedEstado/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVlc3BlZEVzdGFkb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/HuespedEstado/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVlc3BlZEVzdGFkb1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/HuespedEstado/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVlc3BlZEVzdGFkb1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/HuespedEstado/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVlc3BlZEVzdGFkb1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/HuespedEstado/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVlc3BlZEVzdGFkb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Huespedes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVlc3BlZGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Huespedes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVlc3BlZGVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Huespedes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVlc3BlZGVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Huespedes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVlc3BlZGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Huespedes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVlc3BlZGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Metricas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWV0cmljYXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Metricas/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWV0cmljYXNcRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Metricas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWV0cmljYXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Metricas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWV0cmljYXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Metricas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWV0cmljYXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Metricas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWV0cmljYXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Permisos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Permisos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Permisos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Permisos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Permisos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVybWlzb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Reservas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Reservas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Reservas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Reservas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Reservas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Reservas/ReservaAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXNcUmVzZXJ2YUFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Roles/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Roles/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Roles/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Roles/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Roles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Servicios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljaW9zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Servicios/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljaW9zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Servicios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljaW9zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Servicios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljaW9zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Servicios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljaW9zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Suscripciones/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VzY3JpcGNpb25lc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Suscripciones/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VzY3JpcGNpb25lc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Suscripciones/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VzY3JpcGNpb25lc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Suscripciones/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VzY3JpcGNpb25lc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Suscripciones/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VzY3JpcGNpb25lc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Usuarios/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQWNjZXNzRGVuaWVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Usuarios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Usuarios/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Usuarios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Usuarios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Usuarios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Usuarios/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Usuarios/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcUmVzZXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cris7/Downloads/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-FinalOne Integrado - seguridad/CaribbeanBliss-2/Caribbean2/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-urovech7hu

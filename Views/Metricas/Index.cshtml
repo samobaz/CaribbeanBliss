@@ -1,0 +1,280 @@
+﻿@model IEnumerable<Caribbean2.Models.Metrica>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+                  body {
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/imgpagina.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.; /* Reduced opacity for darker effect */
+    z-index: -1;
+    filter: brightness(0.5) contrast(1.2); /* Reduced brightness for darker image */
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}   
+.reservation-container {
+
+    padding: 2rem 0;
+}
+
+.roles-card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.roles-card-header {
+    background: linear-gradient(135deg, #1e3d59 0%, #2b5278 100%);
+    padding: 1.5rem;
+    border: none;
+}
+
+.roles-card-title {
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.button {
+    background: #111141;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    color: white;
+    text-decoration: none;
+}
+
+.button:hover {
+    background: #072468;
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* Table Styling */
+.table {
+    margin: 0;
+}
+
+.table thead th {
+    background: #f1f4f8;
+    color: #1e3d59;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 1rem;
+    border: none;
+}
+
+.table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+}
+
+.table td {
+    padding: 1rem;
+    vertical-align: middle;
+    color: #495057;
+    border-color: #f1f4f8;
+}
+
+/* Agregar estos estilos al bloque <style> existente */
+.table th:last-child, 
+.table td:last-child {
+    min-width: 160px;
+    text-align: center;
+}
+
+.icon-button {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    margin: 0 0.2rem;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+}
+
+.icon-button:hover {
+    color: white;
+    opacity: 0.9;
+}
+
+/* Action Buttons */
+.icon-button {
+    padding: 0.4rem 0.8rem;
+    margin: 0 0.2rem;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+}
+
+.edit-btn {
+    background: #ffc13b;
+}
+
+.details-btn {
+    background: #17a2b8;
+}
+
+.delete-btn {
+    background: #dc3545;
+}
+
+/* DataTables Custom Styling */
+.dataTables_wrapper .dataTables_length select {
+    border-radius: 6px;
+    padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    border-radius: 6px;
+    padding: 0.375rem 0.75rem;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: #1e3d59;
+    border: none;
+    color: white !important;
+    border-radius: 6px;
+}
+
+.dataTables_info {
+    color: #6c757d !important;
+}
+
+/* Responsive Design */
+@@media (max-width: 768px) {
+    .roles-card-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .button {
+        width: 100%;
+    }
+    
+    .table td {
+        padding: 0.75rem;
+    }
+}
+</style>
+
+        <!-- Topbar End -->
+        <!-- Inicio Seccion Modificable -->
+        <h1 style="color: white;"class="d-flex justify-content-center mt-3">Gestión de Métricas</h1>
+        <div class="main-content">
+            <div class="roles-section">
+                <div class="roles-card">
+                    <div class="roles-card-header d-flex justify-content-between align-items-center">
+                        <div class="text-center flex-grow-1">
+                            <h2 class="roles-card-title">Métricas</h2>
+                        </div>
+                        <div class="button-group">
+                            <a class="button" asp-action="Create">Crear Nuevo Registro</a>
+                        </div>
+                    </div>
+                    <div class="roles-card-body p-3">
+                        <table id="table" class="table">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>
+                                        Ingresos Totales
+                                    </th>
+                                    <th>
+                                        Reservas Nuevas
+                                    </th>
+                                    
+                                    <th>
+                                        Número Huespedes
+                                    </th>
+                                    <th>
+                                        Suscritos Boletín
+                                    </th>
+                                    
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        @foreach (var item in Model) {
+                                <tr>
+                                    
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IngresosTotales)
+                                    </td>                                    
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ReservasNuevas)
+                                    </td>
+                                                                        
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NumeroHuespedes)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SuscritosBoletin)
+                                    </td>
+                                    
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.IdMetrica" title="Editar" class="icon-button edit-btn">
+                                            <ion-icon name="pencil-outline"></ion-icon>
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.IdMetrica" title="Detalles" class="icon-button details-btn">
+                                            <ion-icon name="eye-outline"></ion-icon>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.IdMetrica" title="Eliminar" class="icon-button delete-btn">
+                                            <ion-icon name="trash-outline"></ion-icon>
+                                        </a>
+                                    </td>
+                                </tr>
+                        }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Destruir la tabla si ya está inicializada
+            if ($.fn.DataTable.isDataTable('#table')) {
+                $('#table').DataTable().destroy();
+            }
+            
+            // Inicializar DataTables
+            $('#table').DataTable({
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+                },
+                pageLength: 5,
+                lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
+                responsive: true,
+                dom: '<"top"lf>rt<"bottom"ip><"clear">'
+            });
+        });
+    </script>
+}

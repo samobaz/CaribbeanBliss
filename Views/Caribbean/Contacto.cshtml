@@ -1,0 +1,144 @@
+﻿@model Caribbean2.Models.Consulta
+@{
+    ViewData["Title"] = "Contacto";
+}
+
+
+<body>
+   
+        <div class="container-fluid">
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <h6 class="section-title bg-white text-center text-primary px-3">Contáctanos</h6>
+                        <h1 class="mb-5">Contacto para Cualquier Consulta</h1>
+                    </div>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <h5>Ponte en Contacto</h5>
+                            <p class="mb-4">Temporalmente, en rebum elitr clita. Diam dolor, diam ipsum sit. Aliqu diam amet diam et eos</p>
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                                    <i class="fa fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="text-primary">Oficina</h5>
+                                    <p class="mb-0">123 Calle, Nueva York, EE.UU.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                                    <i class="fa fa-phone-alt text-white"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="text-primary">Teléfono</h5>
+                                    <p class="mb-0">+012 345 67890</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                                    <i class="fa fa-envelope-open text-white"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="text-primary">Correo Electrónico</h5>
+                                    <p class="mb-0">info@ejemplo.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                            <iframe class="position-relative rounded w-100 h-100"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.763064458573!2d-77.346366!3d8.637199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMzcnMTMuNiJOIDc3wrA0My43Ilc!5e0!3m2!1ses!2sco!4v1635761345001!5m2!1ses!2sco"
+                                    frameborder="0" style="min-height: 300px; border:0;" allowfullscreen="" aria-hidden="false"
+                                    tabindex="0"></iframe>
+                        </div>
+                        <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                            <form asp-controller="Consultas" asp-action="Create" method="post">
+                                @Html.AntiForgeryToken()
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input asp-for="NombresApellidos" class="form-control" placeholder="Tu Nombre">
+                                            <label asp-for="NombresApellidos">Nombre</label>
+                                            <span asp-validation-for="NombresApellidos" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating">
+                                            <input asp-for="Email" class="form-control" placeholder="Tu Correo Electrónico">
+                                            <label asp-for="Email">Email</label>
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input asp-for="Asunto" class="form-control" placeholder="Asunto">
+                                            <label asp-for="Asunto">Asunto</label>
+                                            <span asp-validation-for="Asunto" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea asp-for="Mensaje" class="form-control" placeholder="Deja tu mensaje aquí" style="height: 100px"></textarea>
+                                            <label asp-for="Mensaje">Mensaje</label>
+                                            <span asp-validation-for="Mensaje" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100 py-3" type="submit">Enviar Mensaje</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="~/js/index.js"></script>
+    <script src="~/js/sidebar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+         document.addEventListener("DOMContentLoaded", function () {
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <text>
+                            Swal.fire({
+                                icon: 'error',
+                            title: 'Error',
+                            text: '@TempData["ErrorMessage"]'
+                                                });
+                </text>
+            }
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <text>
+                            Swal.fire({
+                                icon: 'success',
+                            title: 'Éxito',
+                            text: '@TempData["SuccessMessage"]'
+                                                });
+                </text>
+            }
+         });
+    </script>
+
+
+</body>
+
+</html>

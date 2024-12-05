@@ -1,0 +1,200 @@
+﻿@model Caribbean2.Models.Metrica
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Métrica</title>
+    <link rel="stylesheet" href="~/css/sideBar.css">
+    <link rel="stylesheet" href="~/css/roles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+                      body {
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/imgpagina.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.; /* Reduced opacity for darker effect */
+    z-index: -1;
+    filter: brightness(0.5) contrast(1.2); /* Reduced brightness for darker image */
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}   
+        .booking-header {
+            background: linear-gradient(rgba(30, 61, 89, 0.9), rgba(30, 61, 89, 0.9)),
+                        url('/images/hotel-bg.jpg') center/cover;
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+        }
+
+        .roles-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .roles-card-header {
+            background: linear-gradient(135deg, #1e3d59 0%, #2b5278 100%);
+            padding: 1.5rem;
+            border: none;
+        }
+
+        .roles-card-title {
+            color: white;
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+        }
+
+        .roles-card-body {
+            padding: 2rem;
+        }
+
+        dl.row {
+            margin-bottom: 0;
+        }
+
+        dt {
+            color: #1e3d59;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+        }
+
+        dd {
+            color: #495057;
+            background: #f8f9fa;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary {
+            background: #ff6e40;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #ff5722;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="booking-header text-center">
+            <h1 style="color: white;">Gestión de Métricas</h1>
+            <p class="lead">Detalles de la métrica en Caribbean Hotel</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <div class="roles-card">
+                    <div class="roles-card-header">
+                        <h2 class="roles-card-title text-center">Detalles de la Métrica</h2>
+                    </div>
+                    <div class="roles-card-body">
+                        <dl class="row">
+                            <dt class="col-sm-4">Fecha</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Fecha)</dd>
+
+                            <dt class="col-sm-4">Ingresos Totales</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.IngresosTotales)</dd>
+
+                            <dt class="col-sm-4">Tasa Ocupación</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.TasaOcupacion)%</dd>
+
+                            <dt class="col-sm-4">Ocupación Diaria</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.OcupacionDiaria)</dd>
+
+                            <dt class="col-sm-4">Ocupación Semanal</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.OcupacionSemanal)</dd>
+
+                            <dt class="col-sm-4">Ocupación Mensual</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.OcupacionMensual)</dd>
+
+                            <dt class="col-sm-4">Reservas Nuevas</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.ReservasNuevas)</dd>
+
+                            <dt class="col-sm-4">Cancelaciones</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Cancelaciones)</dd>
+
+                            <dt class="col-sm-4">Impacto Financiero</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.ImpactoFinancieroCancelaciones)</dd>
+
+                            <dt class="col-sm-4">Días Promedio Anticipación</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.PromedioDiasAnticipacionReserva)</dd>
+
+                            <dt class="col-sm-4">Número Huéspedes</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.NumeroHuespedes)</dd>
+
+                            <dt class="col-sm-4">Suscritos al Boletín</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.SuscritosBoletin)</dd>
+
+                            <dt class="col-sm-4">Promedio Estadía</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.DuracionPromedioEstadia) días</dd>
+                        </dl>
+
+                        <div class="text-center mt-4">
+                            <a asp-action="Edit" asp-route-id="@Model?.IdMetrica" class="btn btn-primary me-2">
+                                <i class="bi bi-pencil-square"></i> Editar
+                            </a>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left-circle"></i> Regresar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+﻿@model Caribbean2.Models.Metrica
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Métrica</title>
+    <link rel="stylesheet" href="~/css/sideBar.css">
+    <link rel="stylesheet" href="~/css/roles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+                      body {
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/imgpagina.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.; /* Reduced opacity for darker effect */
+    z-index: -1;
+    filter: brightness(0.5) contrast(1.2); /* Reduced brightness for darker image */
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}   
+        .booking-header {
+            background: linear-gradient(rgba(30, 61, 89, 0.9), rgba(30, 61, 89, 0.9)),
+                        url('/images/hotel-bg.jpg') center/cover;
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+        }
+
+        .roles-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .roles-card-header {
+            background: linear-gradient(135deg, #1e3d59 0%, #2b5278 100%);
+            padding: 1.5rem;
+            border: none;
+        }
+
+        .roles-card-title {
+            color: white;
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+        }
+
+        .roles-card-body {
+            padding: 2rem;
+        }
+
+        dl.row {
+            margin-bottom: 1.5rem;
+        }
+
+        dt {
+            color: #1e3d59;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        dd {
+            color: #495057;
+            background: #f8f9fa;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            margin-bottom: 1rem;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            background: #bb2d3b;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="booking-header text-center">
+            <h1 style="color: white;">Gestión de Métricas</h1>
+            <p class="lead">Eliminar métrica de Caribbean Hotel</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <div class="roles-card">
+                    <div class="roles-card-header">
+                        <h2 class="roles-card-title text-center">Eliminar Métrica</h2>
+                    </div>
+                    <div class="roles-card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl class="row">
+                                    <dt>Fecha</dt>
+                                    <dd>@Html.DisplayFor(model => model.Fecha)</dd>
+
+                                    <dt>Ingresos Totales</dt>
+                                    <dd>@Html.DisplayFor(model => model.IngresosTotales)</dd>
+
+                                    <dt>Tasa Ocupación</dt>
+                                    <dd>@Html.DisplayFor(model => model.TasaOcupacion)%</dd>
+
+                                    <dt>Ocupación Diaria</dt>
+                                    <dd>@Html.DisplayFor(model => model.OcupacionDiaria)</dd>
+
+                                    <dt>Ocupación Semanal</dt>
+                                    <dd>@Html.DisplayFor(model => model.OcupacionSemanal)</dd>
+
+                                    <dt>Ocupación Mensual</dt>
+                                    <dd>@Html.DisplayFor(model => model.OcupacionMensual)</dd>
+
+                                    <dt>Reservas Nuevas</dt>
+                                    <dd>@Html.DisplayFor(model => model.ReservasNuevas)</dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-6">
+                                <dl class="row">
+                                    <dt>Cancelaciones</dt>
+                                    <dd>@Html.DisplayFor(model => model.Cancelaciones)</dd>
+
+                                    <dt>Impacto Financiero</dt>
+                                    <dd>@Html.DisplayFor(model => model.ImpactoFinancieroCancelaciones)</dd>
+
+                                    <dt>Días Promedio Anticipación</dt>
+                                    <dd>@Html.DisplayFor(model => model.PromedioDiasAnticipacionReserva)</dd>
+
+                                    <dt>Número Huéspedes</dt>
+                                    <dd>@Html.DisplayFor(model => model.NumeroHuespedes)</dd>
+
+                                    <dt>Suscritos Boletín</dt>
+                                    <dd>@Html.DisplayFor(model => model.SuscritosBoletin)</dd>
+
+                                    <dt>Promedio Estadía</dt>
+                                    <dd>@Html.DisplayFor(model => model.DuracionPromedioEstadia) días</dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <form asp-action="Delete" id="deleteForm">
+                            <input type="hidden" asp-for="IdMetrica" />
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-danger me-2">
+                                    <i class="bi bi-trash"></i> Eliminar
+                                </button>
+                                <a asp-action="Index" class="btn btn-secondary">
+                                    <i class="bi bi-arrow-left-circle"></i> Regresar
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('deleteForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "No podrás revertir esta acción.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

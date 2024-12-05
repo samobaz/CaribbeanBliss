@@ -1,0 +1,136 @@
+﻿@model Caribbean2.Models.ClienteReserva
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Reserva</title>
+    <link rel="stylesheet" href="~/css/sideBar.css">
+    <link rel="stylesheet" href="~/css/roles.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/menuCentral.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Mantener los estilos existentes -->
+    <style>
+        /* Mantener los estilos actuales */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="booking-header text-center">
+            <h1>Gestión de Reservas</h1>
+            <p class="lead">Crear nueva reserva</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="roles-card">
+                    <div class="roles-card-header">
+                        <h2 class="roles-card-title text-center">Nueva Reserva</h2>
+                    </div>
+                    <div class="roles-card-body p-4">
+                        <form asp-action="Create" id="createForm">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            
+                            <div class="form-group mb-3">
+                                <label asp-for="NombreCliente" class="control-label">Nombre del Cliente</label>
+                                <input asp-for="NombreCliente" class="form-control" />
+                                <span asp-validation-for="NombreCliente" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label asp-for="Huespedes" class="control-label">Huéspedes</label>
+                                <input asp-for="Huespedes" class="form-control" />
+                                <span asp-validation-for="Huespedes" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label asp-for="TipoDocumento" class="control-label">Tipo de Documento</label>
+                                <select asp-for="TipoDocumento" class="form-control">
+                                    <option value="">Seleccione un tipo</option>
+                                    <option value="CC">Cédula de Ciudadanía</option>
+                                    <option value="CE">Cédula de Extranjería</option>
+                                    <option value="PAS">Pasaporte</option>
+                                </select>
+                                <span asp-validation-for="TipoDocumento" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label asp-for="NumeroDocumento" class="control-label">Número de Documento</label>
+                                <input asp-for="NumeroDocumento" class="form-control" />
+                                <span asp-validation-for="NumeroDocumento" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label asp-for="fechaLlegada" class="control-label">Fecha de Llegada</label>
+                                <input asp-for="fechaLlegada" class="form-control" type="date" />
+                                <span asp-validation-for="fechaLlegada" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label asp-for="fechaSalida" class="control-label">Fecha de Salida</label>
+                                <input asp-for="fechaSalida" class="form-control" type="date" />
+                                <span asp-validation-for="fechaSalida" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label asp-for="TipodeHabitacion" class="control-label">Tipo de Habitación</label>
+                                <select asp-for="TipodeHabitacion" class="form-control">
+                                    <option value="">Seleccione tipo</option>
+                                    <option value="Individual">Individual</option>
+                                    <option value="Doble">Doble</option>
+                                    <option value="Suite">Suite</option>
+                                    <option value="Familiar">Familiar</option>
+                                </select>
+                                <span asp-validation-for="TipodeHabitacion" class="text-danger"></span>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-success me-2">
+                                    <i class="bi bi-check-circle"></i> Crear Reserva
+                                </button>
+                                <a asp-action="Index" class="btn btn-secondary">
+                                    <i class="bi bi-arrow-left-circle"></i> Regresar
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.getElementById('createForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "Estás a punto de crear una nueva reserva.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, crear',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

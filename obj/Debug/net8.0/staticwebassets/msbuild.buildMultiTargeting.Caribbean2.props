@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Caribbean2.props" />
+</Project>
