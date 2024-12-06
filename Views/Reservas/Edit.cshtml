@@ -1,7 +1,7 @@
 ﻿@model Caribbean2.Models.Reserva
 @{
     ViewData["Title"] = "Editar Reserva";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Restaurar el layout
 }
 
 <!DOCTYPE html>
@@ -167,20 +167,35 @@
                                 <span asp-validation-for="IdEstado" class="text-danger"></span>
                             </div>
 
-                            <div class="form-group">
-                                <label class="control-label">Servicios</label>
-                                <div>
-                                    @foreach (var servicio in ViewBag.ServiciosActivos)
+                            @* <div class="form-group">
+                                <label class="control-label">Servicios Adicionales</label>
+                                <div class="row">
+                                    @if (ViewBag.ServiciosActivos != null && ((System.Collections.IList)ViewBag.ServiciosActivos).Count > 0)
                                     {
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="ServiciosSeleccionados" value="@servicio.IdServicio" id="servicio_@servicio.IdServicio">
-                                            <label class="form-check-label" for="servicio_@servicio.IdServicio">
-                                                @servicio.Nombre
-                                            </label>
-                                        </div>
+                                        @foreach (dynamic servicio in ViewBag.ServiciosActivos)
+                                        {
+                                            <div class="col-md-6">
+                                                <div class="form-check mb-2">
+                                                    <input class="form-check-input servicio-checkbox" 
+                                                           type="checkbox" 
+                                                           name="ServiciosSeleccionados" 
+                                                           value="@servicio.IdServicio" 
+                                                           id="servicio_@servicio.IdServicio"
+                                                           data-precio="@servicio.PrecioServicio"
+                                                           @(servicio.Seleccionado ? "checked" : "")>
+                                                    <label class="form-check-label" for="servicio_@servicio.IdServicio">
+                                                        @servicio.Nombre - $@(((decimal)servicio.PrecioServicio).ToString("N2"))
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <p>No hay servicios disponibles</p>
                                     }
                                 </div>
-                            </div>
+                            </div> *@
 
                             <div class="form-group text-center mt-4">
                                 <button type="submit" class="btn btn-success me-2">
@@ -204,6 +219,46 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        $(document).ready(function () {
+            // Variables globales para precios
+            const precios = @Html.Raw(Json.Serialize(ViewBag.HabitacionesPrecios));
+
+            function calcularPrecioTotal() {
+                const habitacionId = $('#IdHabitacion').val();
+                const precioHabitacion = precios[habitacionId] || 0;
+                
+                // Calcular días
+                const fechaInicio = new Date($('#FechaInicio').val());
+                const fechaFin = new Date($('#FechaFin').val());
+                const diffDays = Math.ceil(Math.abs(fechaFin - fechaInicio) / (1000 * 60 * 60 * 24)) || 1;
+
+                // Calcular precio base
+                let precioBase = precioHabitacion * diffDays;
+
+                // Sumar servicios seleccionados
+                let precioServicios = 0;
+                $('.servicio-checkbox:checked').each(function() {
+                    precioServicios += parseFloat($(this).data('precio')) || 0;
+                });
+
+                // Calcular total y actualizar campos
+                const precioTotal = precioBase + precioServicios;
+                const anticipo = parseFloat($('#Anticipo').val()) || 0;
+                const saldo = precioTotal - anticipo;
+
+                $('#PrecioTotal').val(precioTotal.toFixed(2));
+                $('#Saldo').val(saldo.toFixed(2));
+            }
+
+            // Event listeners
+            $('#IdHabitacion, #FechaInicio, #FechaFin').change(calcularPrecioTotal);
+            $('#Anticipo').on('input', calcularPrecioTotal);
+            $('.servicio-checkbox').change(calcularPrecioTotal);
+
+            // Calcular precio inicial
+            calcularPrecioTotal();
+        });
+
         document.getElementById('editForm').addEventListener('submit', function (e) {
             e.preventDefault();
             Swal.fire({
