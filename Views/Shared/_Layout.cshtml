@@ -39,6 +39,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 
+    <!-- Add SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
     <style>
         /* DataTables Styles */
         .dataTables_length select {
@@ -303,13 +306,13 @@
                 <div class="row gx-0">
                     <!-- Sección de botones visibles en pantallas pequeñas y grandes -->
                     <div class="btn-group-container d-flex justify-content-end p-2">
-                        <a class="btn-modern d-flex d-lg-none" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cerrar sesión"
-                            asp-controller="Usuarios" asp-action="Logout">
+                        <a class="btn-modern d-flex d-lg-none logout-btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Cerrar sesión"
+                            href="@Url.Action("Logout", "Usuarios")">
                             <i class="fas fa-sign-out-alt"></i>
                         </a>                     
 
                         <!-- Botones completos visibles solo en pantallas grandes -->
-                        <a asp-controller="Usuarios" asp-action="Logout" class="btn-modern me-2 d-none d-lg-inline-flex">
+                        <a href="@Url.Action("Logout", "Usuarios")" class="btn-modern me-2 d-none d-lg-inline-flex logout-btn">
                             <i class="fas fa-sign-in-alt"></i> Cerrar sesión
                         </a>
                     </div>
@@ -429,6 +432,40 @@
                         parent.classList.remove('show');
                     });
                 }
+            });
+        });
+
+        // Script para manejar el cierre de sesión con SweetAlert2
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutButtons = document.querySelectorAll('.logout-btn');
+            
+            logoutButtons.forEach(button => {
+                button.addEventListener('click', async function(e) {
+                    e.preventDefault();
+                    
+                    const result = await Swal.fire({
+                        title: '¿Cerrar sesión?',
+                        text: '¿Estás seguro que deseas cerrar la sesión?',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Sí, cerrar sesión',
+                        cancelButtonText: 'Cancelar'
+                    });
+
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: '¡Hasta pronto!',
+                            text: 'La sesión se ha cerrado exitosamente',
+                            icon: 'success',
+                            timer: 1500,
+                            showConfirmButton: false
+                        }).then(() => {
+                            window.location.href = this.href;
+                        });
+                    }
+                });
             });
         });
     </script>

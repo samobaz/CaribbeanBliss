@@ -1,7 +1,7 @@
 ﻿@model Caribbean2.Models.Reserva
 @{
     ViewData["Title"] = "Editar Reserva";
-    Layout = "~/Views/Shared/_Layout.cshtml"; // Restaurar el layout
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -167,7 +167,7 @@
                                 <span asp-validation-for="IdEstado" class="text-danger"></span>
                             </div>
 
-                            @* <div class="form-group">
+                            <div class="form-group">
                                 <label class="control-label">Servicios Adicionales</label>
                                 <div class="row">
                                     @if (ViewBag.ServiciosActivos != null && ((System.Collections.IList)ViewBag.ServiciosActivos).Count > 0)
@@ -195,7 +195,7 @@
                                         <p>No hay servicios disponibles</p>
                                     }
                                 </div>
-                            </div> *@
+                            </div>
 
                             <div class="form-group text-center mt-4">
                                 <button type="submit" class="btn btn-success me-2">

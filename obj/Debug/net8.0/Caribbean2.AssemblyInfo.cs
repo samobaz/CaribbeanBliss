@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Caribbean2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d498089b74c1692b689c7136462f92a2b1f2aeeb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c58fbe7620d4780e4c3fc1b082542fe2cc201c33")]
 [assembly: System.Reflection.AssemblyProductAttribute("Caribbean2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Caribbean2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,13 +1,11 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Caribbean2.Models
 {
     public class Consulta
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdConsulta { get; set; }
 
         [Required(ErrorMessage = "El campo Nombres y Apellidos es obligatorio")]
