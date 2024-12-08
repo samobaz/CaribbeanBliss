@@ -74,7 +74,8 @@ namespace Caribbean2.Controllers
                         NumeroHabitacion = random.Next(1, 101),
                         h.Nombre,
                         h.PrecioHabitacion,
-                        h.Capacidad
+                        h.Capacidad,
+                        h.HabitacionesDisponibles // Include HabitacionesDisponibles
                     })
                     .ToList();
 
@@ -89,6 +90,12 @@ namespace Caribbean2.Controllers
                 ViewBag.HabitacionesPrecios = habitaciones.ToDictionary(
                     h => h.IdHabitacion,
                     h => h.PrecioHabitacion
+                );
+
+                // Guardar las habitaciones disponibles para JavaScript
+                ViewBag.HabitacionesDisponibles = habitaciones.ToDictionary(
+                    h => h.IdHabitacion,
+                    h => h.HabitacionesDisponibles
                 );
 
                 // Preparar el resto de ViewBag
@@ -132,10 +139,21 @@ namespace Caribbean2.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    // Check if habitación is available
+                    var habitacion = await _context.Habitaciones.FindAsync(reservaData.IdHabitacion);
+                    if (habitacion == null || habitacion.HabitacionesDisponibles <= 0)
+                    {
+                        return Json(new { success = false, message = "No hay habitaciones disponibles" });
+                    }
+
+                    // Generar número de habitación basado en las disponibles
+                    var numeroAsignado = habitacion.HabitacionesDisponibles;
+
                     var reserva = new Reserva
                     {
                         IdCliente = reservaData.IdCliente,
                         IdHabitacion = reservaData.IdHabitacion,
+                        NumeroHabitacion = numeroAsignado, // Asignar el número generado
                         FechaInicio = reservaData.FechaInicio,
                         FechaFin = reservaData.FechaFin,
                         NumeroPersonas = reservaData.NumeroPersonas,
@@ -146,6 +164,10 @@ namespace Caribbean2.Controllers
                         Huespedes = new List<Huesped>(),
                         Servicios = new List<Servicio>()
                     };
+
+                    // Decrease available rooms
+                    habitacion.HabitacionesDisponibles--;
+                    _context.Habitaciones.Update(habitacion);
 
                     // Agregar huéspedes
                     if (reservaData.HuespedesSeleccionados != null)
@@ -293,6 +315,29 @@ namespace Caribbean2.Controllers
                 if (reservaExistente == null)
                 {
                     return NotFound();
+                }
+
+                // If room is changing, update availability
+                if (reservaExistente.IdHabitacion != reserva.IdHabitacion)
+                {
+                    // Increase old room availability
+                    var oldHabitacion = await _context.Habitaciones.FindAsync(reservaExistente.IdHabitacion);
+                    if (oldHabitacion != null)
+                    {
+                        oldHabitacion.HabitacionesDisponibles++;
+                        _context.Habitaciones.Update(oldHabitacion);
+                    }
+
+                    // Decrease new room availability
+                    var newHabitacion = await _context.Habitaciones.FindAsync(reserva.IdHabitacion);
+                    if (newHabitacion == null || newHabitacion.HabitacionesDisponibles <= 0)
+                    {
+                        ModelState.AddModelError("", "No hay habitaciones disponibles");
+                        PrepararViewBags(reserva);
+                        return View(reserva);
+                    }
+                    newHabitacion.HabitacionesDisponibles--;
+                    _context.Habitaciones.Update(newHabitacion);
                 }
 
                 // Actualizar propiedades básicas

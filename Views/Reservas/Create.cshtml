@@ -308,19 +308,25 @@ body::before {
                             </div>
 
                             <div class="form-group">
-                                <label asp-for="IdHabitacion" class="control-label">Habitación</label>
-                                <select asp-for="IdHabitacion" id="habitacionSelect" class="form-control">
-                                    <option value="">-- Seleccione una Habitación --</option>
-                                    @foreach (var item in ViewBag.IdHabitacion)
-                                    {
-                                        <option value="@item.Value" 
-                                                data-precio="@ViewBag.HabitacionesPrecios[int.Parse(item.Value)]">
-                                            @item.Text
-                                        </option>
-                                    }
-                                </select>
-                                <span asp-validation-for="IdHabitacion" class="text-danger"></span>
-                            </div>
+                            <label asp-for="IdHabitacion" class="control-label">Habitación</label>
+                            <select asp-for="IdHabitacion" class="form-control" id="habitacionSelect">
+                            <option value="">Seleccione una habitación</option>
+        @foreach (var item in ViewBag.IdHabitacion)
+        {
+            <option value="@item.Value" 
+                    data-precio="@ViewBag.HabitacionesPrecios[int.Parse(item.Value)]"
+                    data-disponibles="@ViewBag.HabitacionesDisponibles[int.Parse(item.Value)]">
+                @item.Text
+            </option>
+        }
+    </select>
+    <span asp-validation-for="IdHabitacion" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label class="control-label">Habitaciones Disponibles</label>
+    <input type="text" id="habitacionesDisponibles" class="form-control" readonly />
+</div>
 
                             <div class="row">
                                 <div class="col-md-6">
@@ -454,6 +460,7 @@ body::before {
     // Variables globales para precios y capacidades
     const precios = @Html.Raw(Json.Serialize(ViewBag.HabitacionesPrecios));
     const capacidades = @Html.Raw(Json.Serialize(ViewBag.HabitacionesCapacidad));
+    const disponibilidad = @Html.Raw(Json.Serialize(ViewBag.HabitacionesDisponibles));
 
     // 1. Gestión de huéspedes
     function setupHuespedesHandlers() {
@@ -638,6 +645,46 @@ body::before {
     init();
 });
     </script>
+    <script>
+$(document).ready(function () {
+    // Variables globales para precios y disponibilidad
+    const precios = @Html.Raw(Json.Serialize(ViewBag.HabitacionesPrecios));
+    const disponibilidad = @Html.Raw(Json.Serialize(ViewBag.HabitacionesDisponibles));
+
+    function actualizarDisponibilidad() {
+        const habitacionId = $('#habitacionSelect').val();
+        if (habitacionId) {
+            const habitacionesDisponibles = disponibilidad[habitacionId] || 0;
+            $('#habitacionesDisponibles').val(habitacionesDisponibles);
+
+            // Deshabilitar el botón de submit si no hay habitaciones disponibles
+            const submitButton = $('button[type="submit"]');
+            if (habitacionesDisponibles <= 0) {
+                submitButton.prop('disabled', true);
+                Swal.fire({
+                    title: 'Advertencia',
+                    text: 'No hay habitaciones disponibles',
+                    icon: 'warning'
+                });
+            } else {
+                submitButton.prop('disabled', false);
+            }
+        } else {
+            $('#habitacionesDisponibles').val('');
+        }
+    }
+
+    // Event listeners
+    $('#habitacionSelect').change(function() {
+        actualizarDisponibilidad();
+        calcularPrecioTotal();
+        validarHuespedes();
+    });
+
+    // Inicializar disponibilidad
+    actualizarDisponibilidad();
+});
+</script>
 </body>
 </html>
 

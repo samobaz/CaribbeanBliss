@@ -55,7 +55,7 @@ namespace Caribbean2.Controllers
         // POST: Habitaciones/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdHabitacion,Nombre,Descripcion,Capacidad,NumeroHabitacion,PrecioHabitacion,IdEstado")] Habitacion habitacion)
+        public async Task<IActionResult> Create([Bind("IdHabitacion,Nombre,Descripcion,Capacidad,NumeroHabitacion,PrecioHabitacion,HabitacionesDisponibles,IdEstado")] Habitacion habitacion)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace Caribbean2.Controllers
         // POST: Habitaciones/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdHabitacion,Nombre,Descripcion,Capacidad,NumeroHabitacion,PrecioHabitacion,IdEstado")] Habitacion habitacion)
+        public async Task<IActionResult> Edit(int id, [Bind("IdHabitacion,Nombre,Descripcion,Capacidad,NumeroHabitacion,PrecioHabitacion,HabitacionesDisponibles,IdEstado")] Habitacion habitacion)
         {
             if (id != habitacion.IdHabitacion)
             {
@@ -129,9 +129,18 @@ namespace Caribbean2.Controllers
             var habitacion = await _context.Habitaciones
                 .Include(h => h.EstadoHabitacion)
                 .FirstOrDefaultAsync(m => m.IdHabitacion == id);
+
             if (habitacion == null)
             {
                 return NotFound();
+            }
+
+            // Check if the room is associated with any reservations
+            var hasReservations = await _context.Reservas.AnyAsync(r => r.IdHabitacion == id);
+            if (hasReservations)
+            {
+                TempData["ErrorMessage"] = "No se puede eliminar la habitación porque está asociada a una o más reservas.";
+                return RedirectToAction(nameof(Index));
             }
 
             return View(habitacion);
@@ -143,11 +152,16 @@ namespace Caribbean2.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var habitacion = await _context.Habitaciones.FindAsync(id);
-            if (habitacion != null)
+
+            // Check again if the room is associated with any reservations
+            var hasReservations = await _context.Reservas.AnyAsync(r => r.IdHabitacion == id);
+            if (hasReservations)
             {
-                _context.Habitaciones.Remove(habitacion);
+                TempData["ErrorMessage"] = "No se puede eliminar la habitación porque está asociada a una o más reservas.";
+                return RedirectToAction(nameof(Index));
             }
 
+            _context.Habitaciones.Remove(habitacion);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
