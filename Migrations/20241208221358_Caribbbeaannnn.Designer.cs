@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Caribbean2.Migrations
 {
     [DbContext(typeof(CaribbeanContext))]
-    partial class CaribbeanContextModelSnapshot : ModelSnapshot
+    [Migration("20241208221358_Caribbbeaannnn")]
+    partial class Caribbbeaannnn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,7 +130,7 @@ namespace Caribbean2.Migrations
                     b.Property<string>("TipodeHabitacion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UsuarioId")
+                    b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -756,7 +759,7 @@ namespace Caribbean2.Migrations
                             Contrasena = "nimad4321",
                             Correo = "admin@admincorreo.com",
                             Estado = true,
-                            FechaRegistro = new DateTime(2024, 12, 8, 17, 31, 7, 136, DateTimeKind.Local).AddTicks(9988),
+                            FechaRegistro = new DateTime(2024, 12, 8, 17, 13, 56, 941, DateTimeKind.Local).AddTicks(8297),
                             IdRol = 3,
                             Identificacion = "1",
                             NombresApellidos = "admin",

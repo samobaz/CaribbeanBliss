@@ -12,6 +12,10 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<CaribbeanContext>(options =>
     options.UseSqlServer(connectionString));
 
+// In Program.cs
+builder.Services.AddDbContext<CaribbeanContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 // Configurar sesiones
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
@@ -20,6 +24,9 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
+// In Program.cs
+builder.Services.AddHttpContextAccessor();
 
 // Construir la aplicación
 var app = builder.Build();

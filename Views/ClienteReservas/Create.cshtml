@@ -133,7 +133,8 @@
                         <h2 class="roles-card-title text-center">Nueva Reserva</h2>
                     </div>
                     <div class="roles-card-body p-4">
-                        <form asp-action="Create" id="createForm">
+                        <form asp-action="Create" asp-controller="ClienteReservas" method="post" id="createForm">
+                            @Html.AntiForgeryToken()
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             
                             <div class="row">
@@ -195,7 +196,7 @@
                             </div>
 
                             <div class="form-group text-center mt-4">
-                                <button type="submit" class="btn btn-success me-2">
+                                <button type="submit" class="btn btn-success me-2" id="submitButton">
                                     <i class="bi bi-check-circle"></i> Crear Reserva
                                 </button>
                                 <a asp-action="Index" class="btn btn-secondary">
@@ -214,37 +215,82 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        document.getElementById('createForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            Swal.fire({
-                title: '¿Estás seguro?',
-                text: "Estás a punto de crear una nueva reserva.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Sí, crear',
-                cancelButtonText: 'Cancelar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    this.submit();
+        $(document).ready(function () {
+            $('#createForm').on('submit', function (e) {
+                e.preventDefault();
+                
+                if (!this.checkValidity()) {
+                    e.stopPropagation();
+                    $(this).addClass('was-validated');
+                    return;
+                }
+
+                var formData = new FormData(this);
+                
+                // Log form data for debugging
+                for (var pair of formData.entries()) {
+                    console.log(pair[0] + ': ' + pair[1]);
+                }
+
+                $.ajax({
+                    url: '@Url.Action("Create", "ClienteReservas")',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        console.log('Server response:', response); // Add debugging
+                        if (response.success) {
+                            Swal.fire({
+                                title: 'Éxito',
+                                text: response.message,
+                                icon: 'success',
+                                confirmButtonText: 'Ok'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = response.redirectUrl;
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'Error',
+                                text: response.message,
+                                icon: 'error',
+                                confirmButtonText: 'Ok'
+                            });
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error details:', {
+                            status: status,
+                            error: error,
+                            response: xhr.responseText
+                        });
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Ha ocurrido un error al procesar la solicitud',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                    }
+                });
+            });
+
+            // Keep your existing date validation code
+            $('input[name="fechaSalida"]').on('change', function() {
+                var fechaLlegada = new Date($('input[name="fechaLlegada"]').val());
+                var fechaSalida = new Date($(this).val());
+                
+                if (fechaSalida < fechaLlegada) {
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'La fecha de salida no puede ser anterior a la fecha de llegada',
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    });
+                    $(this).val('');
                 }
             });
-        });
-
-        document.querySelector('input[name="fechaSalida"]').addEventListener('change', function() {
-            var fechaLlegada = new Date(document.querySelector('input[name="fechaLlegada"]').value);
-            var fechaSalida = new Date(this.value);
-            
-            if (fechaSalida < fechaLlegada) {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'La fecha de salida no puede ser anterior a la fecha de llegada',
-                    icon: 'error',
-                    confirmButtonText: 'Ok'
-                });
-                this.value = '';
-            }
         });
     </script>
 </body>

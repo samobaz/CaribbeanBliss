@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cris7\\OneDrive\\Documentos\\GitHub\\Github\\CaribbeanBliss\\Caribbean2.csproj": {}
+    "C:\\Caribbeannnnnn blissss gitttttt\\FINALLLLLLLLLLLLLPROYECTOOOOO\\CaribbeanBliss\\Caribbean2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cris7\\OneDrive\\Documentos\\GitHub\\Github\\CaribbeanBliss\\Caribbean2.csproj": {
+    "C:\\Caribbeannnnnn blissss gitttttt\\FINALLLLLLLLLLLLLPROYECTOOOOO\\CaribbeanBliss\\Caribbean2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cris7\\OneDrive\\Documentos\\GitHub\\Github\\CaribbeanBliss\\Caribbean2.csproj",
+        "projectUniqueName": "C:\\Caribbeannnnnn blissss gitttttt\\FINALLLLLLLLLLLLLPROYECTOOOOO\\CaribbeanBliss\\Caribbean2.csproj",
         "projectName": "Caribbean2",
-        "projectPath": "C:\\Users\\cris7\\OneDrive\\Documentos\\GitHub\\Github\\CaribbeanBliss\\Caribbean2.csproj",
-        "packagesPath": "C:\\Users\\cris7\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cris7\\OneDrive\\Documentos\\GitHub\\Github\\CaribbeanBliss\\obj\\",
+        "projectPath": "C:\\Caribbeannnnnn blissss gitttttt\\FINALLLLLLLLLLLLLPROYECTOOOOO\\CaribbeanBliss\\Caribbean2.csproj",
+        "packagesPath": "C:\\Users\\JUAN GARCIA\\.nuget\\packages\\",
+        "outputPath": "C:\\Caribbeannnnnn blissss gitttttt\\FINALLLLLLLLLLLLLPROYECTOOOOO\\CaribbeanBliss\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\cris7\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\JUAN GARCIA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -98,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
