@@ -248,7 +248,6 @@ namespace Caribbean2.Controllers
                 return NotFound();
             }
 
-            // Cargar la reserva con sus relaciones
             var reserva = await _context.Reservas
                 .Include(r => r.Cliente)
                 .Include(r => r.Habitacion)
@@ -261,33 +260,13 @@ namespace Caribbean2.Controllers
                 return NotFound();
             }
 
-            // Obtener IDs de servicios seleccionados
-            var serviciosSeleccionadosIds = reserva.Servicios.Select(s => s.IdServicio).ToList();
+            ViewBag.IdCliente = new SelectList(_context.Clientes.Where(c => c.ClienteEstado), "idCliente", "nombre", reserva.IdCliente);
+            ViewBag.IdHabitacion = new SelectList(_context.Habitaciones.Where(h => h.IdEstado == 1), "IdHabitacion", "Nombre", reserva.IdHabitacion);
+            ViewBag.IdEstado = new SelectList(_context.ReservaEstados, "IdEstado", "Nombre", reserva.IdEstado);
 
-            // Preparar las listas desplegables
-            ViewData["IdCliente"] = new SelectList(_context.Clientes.Where(c => c.ClienteEstado), "idCliente", "nombre", reserva.IdCliente);
-            ViewData["IdHabitacion"] = new SelectList(_context.Habitaciones.Where(h => h.IdEstado == 1), "IdHabitacion", "Nombre", reserva.IdHabitacion);
-            ViewData["IdEstado"] = new SelectList(_context.ReservaEstados, "IdEstado", "Nombre", reserva.IdEstado);
-
-            // Cargar servicios activos con MaterializeAsync() para debug
-            var serviciosActivos = await _context.Servicios
-                .Where(s => s.EstadoServicio)
-                .Select(s => new
-                {
-                    s.IdServicio,
-                    s.Nombre,
-                    s.PrecioServicio,
-                    Seleccionado = serviciosSeleccionadosIds.Contains(s.IdServicio)
-                })
-                .ToListAsync();
-
-            // Debug - verificar datos
-            foreach (var servicio in serviciosActivos)
-            {
-                System.Diagnostics.Debug.WriteLine($"Servicio: {servicio.Nombre} - Precio: {servicio.PrecioServicio}");
-            }
-
-            ViewBag.ServiciosActivos = serviciosActivos;
+            // Pasar el ID del estado "Completada" a la vista
+            var estadoCompletada = _context.ReservaEstados.FirstOrDefault(e => e.Nombre == "Completada")?.IdEstado;
+            ViewBag.EstadoCompletada = estadoCompletada;
 
             return View(reserva);
         }
@@ -372,7 +351,7 @@ namespace Caribbean2.Controllers
             catch (Exception ex)
             {
                 await transaction.RollbackAsync();
-                ModelState.AddModelError("", "Ocurrió un error al guardar los cambios.");
+                ModelState.AddModelError("", "Ocurrió un error al guardar los cambios." + ex.Message);
                 PrepararViewBags(reserva);
                 return View(reserva);
             }

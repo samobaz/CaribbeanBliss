@@ -24,6 +24,7 @@
                             <th>Precio Total</th>
                             <th>Estado</th>
                             <th>Acciones</th>
+                            <th>Calificar</th> <!-- Nueva columna -->
                         </tr>
                     </thead>
                     <tbody>
@@ -46,6 +47,20 @@
                                             <ion-icon name="trash-outline"></ion-icon>
                                         </a>
                                     </div>
+                                </td>
+                                <td>
+                                    @if (item.Estado.Nombre == "Completada")
+                                    {
+                                        <a asp-action="Create" asp-controller="Calificaciones" asp-route-reservaId="@item.IdReserva" asp-route-clienteId="@item.IdCliente" class="btn btn-sm btn-success" data-bs-toggle="tooltip" title="Calificar">
+                                            <ion-icon name="star-outline"></ion-icon>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-sm btn-secondary" disabled data-bs-toggle="tooltip" title="Calificar">
+                                            <ion-icon name="star-outline"></ion-icon>
+                                        </button>
+                                    }
                                 </td>
                             </tr>
                         }

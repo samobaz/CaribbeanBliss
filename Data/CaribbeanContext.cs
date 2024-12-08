@@ -21,6 +21,8 @@ public class CaribbeanContext : DbContext
     public DbSet<Reserva> Reservas { get; set; }
     public DbSet<ReservaEstado> ReservaEstados { get; set; }
     public DbSet<Pago> Pagos { get; set; }
+    public DbSet<Calificacion> Calificaciones { get; set; } // Agregar DbSet para Calificaciones
+
     public CaribbeanContext(DbContextOptions<CaribbeanContext> options)
         : base(options)
     {
@@ -31,7 +33,6 @@ public class CaribbeanContext : DbContext
        optionsBuilder.ConfigureWarnings(warnings =>
            warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
     }
-
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -232,12 +233,10 @@ public class CaribbeanContext : DbContext
             }
         );
 
-
-
-       modelBuilder.Entity<Reserva>()
-        .HasOne(r => r.Cliente)
-        .WithMany(c => c.Reservas)
-        .HasForeignKey(r => r.IdCliente);
+        modelBuilder.Entity<Reserva>()
+            .HasOne(r => r.Cliente)
+            .WithMany(c => c.Reservas)
+            .HasForeignKey(r => r.IdCliente);
 
         modelBuilder.Entity<Reserva>()
             .HasOne(r => r.Habitacion)
@@ -270,7 +269,37 @@ public class CaribbeanContext : DbContext
             .WithOne(p => p.Reserva)
             .HasForeignKey(p => p.IdReserva)
             .OnDelete(DeleteBehavior.Restrict);
-                
+
+        // Configuración de Calificaciones
+        modelBuilder.Entity<Calificacion>()
+            .HasKey(c => c.IdCalificacion);
+
+        modelBuilder.Entity<Calificacion>()
+            .Property(c => c.IdCalificacion)
+            .ValueGeneratedOnAdd();
+
+        // Relación con Reserva
+        modelBuilder.Entity<Calificacion>()
+            .HasOne(c => c.Reserva)
+            .WithMany(r => r.Calificaciones)
+            .HasForeignKey(c => c.IdReserva)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        // Relación con Cliente
+        modelBuilder.Entity<Calificacion>()
+            .HasOne(c => c.Cliente)
+            .WithMany()
+            .HasForeignKey(c => c.IdCliente)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<Calificacion>()
+            .Property(c => c.FechaCalificacion)
+            .HasDefaultValueSql("GETDATE()");
+
+        modelBuilder.Entity<Calificacion>()
+            .Property(c => c.EstadoCalificacion)
+            .HasDefaultValue(true);
+
         // Configuraciones adicionales si es necesario
         modelBuilder.Entity<Usuarios>()
                 .HasIndex(u => u.Identificacion)
@@ -383,11 +412,8 @@ public class CaribbeanContext : DbContext
             .HasForeignKey(e => e.RolId)
             .OnDelete(DeleteBehavior.Restrict); // Evita eliminación en cascada de empleados si el rol es eliminado
 
-            
-
         base.OnModelCreating(modelBuilder);
-
     }
 
-public DbSet<Caribbean2.Models.ClienteReserva> ClienteReserva { get; set; }
+    public DbSet<Caribbean2.Models.ClienteReserva> ClienteReserva { get; set; }
 }
