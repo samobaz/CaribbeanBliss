@@ -150,7 +150,10 @@
                             </dd>
 
                             <dt class="col-sm-4">Habitación</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Habitacion.NumeroHabitacion)</dd>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Habitacion.Nombre)</dd>
+
+                            <dt class="col-sm-4">Número de Habitación</dt>
+                            <dd class="col-sm-8">@Html.DisplayFor(model => model.NumeroHabitacion)</dd>
 
                             <dt class="col-sm-4">Fecha Inicio</dt>
                             <dd class="col-sm-8">@Html.DisplayFor(model => model.FechaInicio)</dd>
@@ -161,17 +164,35 @@
                             <dt class="col-sm-4">Número de Personas</dt>
                             <dd class="col-sm-8">@Html.DisplayFor(model => model.NumeroPersonas)</dd>
 
+                            <dt class="col-sm-4">Servicios</dt>
+                            <dd class="col-sm-8">
+                                @if (Model.Servicios != null && Model.Servicios.Any())
+                                {
+                                    @foreach (var servicio in Model.Servicios)
+                                    {
+                                        <p class="mb-1">@servicio.Nombre - $@servicio.PrecioServicio</p>
+                                    }
+                                }
+                                else
+                                {
+                                    <p class="mb-1">No hay servicios adicionales</p>
+                                }
+                            </dd>
+
                             <dt class="col-sm-4">Precio Total</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(model => model.PrecioTotal)</dd>
+                            <dd class="col-sm-8">$@Html.DisplayFor(model => model.PrecioTotal)</dd>
 
                             <dt class="col-sm-4">Anticipo</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Anticipo)</dd>
+                            <dd class="col-sm-8">$@Html.DisplayFor(model => model.Anticipo)</dd>
 
                             <dt class="col-sm-4">Estado</dt>
                             <dd class="col-sm-8">@Html.DisplayFor(model => model.Estado.Nombre)</dd>
 
-                            <dt class="col-sm-4">Notas</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(model => model.Notas)</dd>
+                            @if (!string.IsNullOrEmpty(Model.Notas))
+                            {
+                                <dt class="col-sm-4">Notas</dt>
+                                <dd class="col-sm-8">@Html.DisplayFor(model => model.Notas)</dd>
+                            }
                         </dl>
 
                         <div class="text-center mt-4">

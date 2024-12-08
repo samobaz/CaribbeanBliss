@@ -25,8 +25,10 @@ public class Habitacion
     [Required(ErrorMessage = "El precio de la habitación es obligatorio")]
     [Column(TypeName = "money")]
     public decimal PrecioHabitacion { get; set; }
-
+    [Required(ErrorMessage = "El número de habitaciones disponibles es obligatorio")]
+    [Range(0, int.MaxValue, ErrorMessage = "El número de habitaciones disponibles no puede ser negativo")]
     [DefaultValue(1)]
+    public int HabitacionesDisponibles { get; set; } = 1;
     public int IdEstado { get; set; } = 1;
 
     [ForeignKey("IdEstado")]

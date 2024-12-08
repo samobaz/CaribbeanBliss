@@ -42,15 +42,25 @@
                                 <td>@Html.DisplayFor(modelItem => item.TipodeHabitacion)</td>
                                 <td>
                                     <div class="action-buttons">
+                                         @if (ViewBag.UserRoleId.HasValue)
+                    {
+                        @if (ViewBag.UserRoleId == 1 || ViewBag.UserRoleId == 2 || ViewBag.UserRoleId == 3 || ViewBag.UserRoleId == 4)
+                            {
+                            <a asp-action="Details" asp-route-id="@item.IdClienteReserva" class="btn btn-sm btn-info" data-bs-toggle="tooltip" title="Detalles">
+                                            <ion-icon name="eye-outline"></ion-icon>
+                                            </a>
+                            }
+                                        @if (ViewBag.UserRoleId == 3 || ViewBag.UserRoleId == 4)
+                            {
                                         <a asp-action="Edit" asp-route-id="@item.IdClienteReserva" class="btn btn-sm btn-warning" data-bs-toggle="tooltip" title="Editar">
                                             <ion-icon name="pencil-outline"></ion-icon>
                                         </a>
-                                        <a asp-action="Details" asp-route-id="@item.IdClienteReserva" class="btn btn-sm btn-info" data-bs-toggle="tooltip" title="Detalles">
-                                            <ion-icon name="eye-outline"></ion-icon>
-                                        </a>
+                                        
                                         <a asp-action="Delete" asp-route-id="@item.IdClienteReserva" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" title="Eliminar">
                                             <ion-icon name="trash-outline"></ion-icon>
                                         </a>
+                                    }
+                                }
                                     </div>
                                 </td>
                             </tr>

@@ -20,6 +20,7 @@ namespace Caribbean2.Models
         public int IdHabitacion { get; set; }
         [ForeignKey("IdHabitacion")]
         public virtual Habitacion Habitacion { get; set; }
+        public int NumeroHabitacion { get; set; }
 
         [Required(ErrorMessage = "La fecha de inicio es obligatoria.")]
         public DateTime FechaInicio { get; set; }

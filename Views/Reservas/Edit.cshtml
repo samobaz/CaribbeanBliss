@@ -118,6 +118,11 @@
                                         <select asp-for="IdHabitacion" class="form-control" asp-items="ViewBag.IdHabitacion"></select>
                                         <span asp-validation-for="IdHabitacion" class="text-danger"></span>
                                     </div>
+                                    <div class="form-group">
+                                        <label asp-for="NumeroHabitacion" class="control-label">Número de Habitación</label>
+                                        <input asp-for="NumeroHabitacion" class="form-control" readonly />
+                                        <span asp-validation-for="NumeroHabitacion" class="text-danger"></span>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -223,6 +228,7 @@
         $(document).ready(function () {
             // Variables globales para precios
             const precios = @Html.Raw(Json.Serialize(ViewBag.HabitacionesPrecios));
+            const disponibilidad = @Html.Raw(Json.Serialize(ViewBag.HabitacionesDisponibles));
 
             function calcularPrecioTotal() {
                 const habitacionId = $('#IdHabitacion').val();
@@ -251,13 +257,25 @@
                 $('#Saldo').val(saldo.toFixed(2));
             }
 
+            function actualizarDisponibilidadYNumero() {
+                const habitacionId = $('#IdHabitacion').val();
+                if (habitacionId) {
+                    const habitacionesDisponibles = disponibilidad[habitacionId] || 0;
+                    $('#NumeroHabitacion').val(habitacionesDisponibles);
+                }
+            }
+
             // Event listeners
-            $('#IdHabitacion, #FechaInicio, #FechaFin').change(calcularPrecioTotal);
+            $('#IdHabitacion, #FechaInicio, #FechaFin').change(function() {
+                actualizarDisponibilidadYNumero();
+                calcularPrecioTotal();
+            });
             $('#Anticipo').on('input', calcularPrecioTotal);
             $('.servicio-checkbox').change(calcularPrecioTotal);
 
             // Calcular precio inicial
             calcularPrecioTotal();
+            actualizarDisponibilidadYNumero();
 
             // Evento change para el estado de la reserva
             $('#estadoReserva').change(function () {
