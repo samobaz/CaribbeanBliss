@@ -223,6 +223,21 @@ body::before {
         #huespedes-disponibles{
             height: 130px;
         }
+        
+        .btn-float {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-float .btn {
+            width: 200px;
+        }
     </style>
 </head>
 
@@ -252,6 +267,7 @@ body::before {
                                 <select asp-for="IdCliente" id="IdCliente" class="form-control" asp-items="ViewBag.IdCliente" required>
                                     <option value="">-- Seleccione un Cliente --</option>
                                 </select>
+                                
                                 <span asp-validation-for="IdCliente" class="text-danger"></span>
                             </div>
 
@@ -262,9 +278,7 @@ body::before {
                                                 <div class="flex-grow-1 me-2">
                                                     <input type="text" class="form-control" id="filtroHuespedes" placeholder="Buscar huésped...">
                                                 </div>
-                                                <button type="button" class="btn btn-link text-success p-0" data-bs-toggle="modal" data-bs-target="#modalNuevoHuesped">
-                                                    <i class="bi bi-person-plus-fill"></i>
-                                                </button>
+                                                
                                             </div>
                                 <div class="row">
                                     <!-- Columna izquierda: Huéspedes disponibles -->
@@ -410,109 +424,15 @@ body::before {
         </div>
     </div>
 
-    <!-- Modal Nuevo Cliente -->
-    <div class="modal fade" id="modalNuevoCliente" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Crear Nuevo Cliente</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="formNuevoCliente">
-                        <div class="form-group">
-                            <label for="nombre">Nombre Cliente</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefono">Teléfono</label>
-                            <input type="text" class="form-control" id="telefono" name="telefono" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="idRol">Rol</label>
-                            <select class="form-control" id="idRol" name="idRol" required>
-                                <option value="">Seleccione un rol</option>
-                                @foreach (var rol in ViewBag.RolId)
-                                {
-                                    <option value="@rol.Value">@rol.Text</option>
-                                }
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input type="hidden" name="ClienteEstado" value="false">
-                                <input type="checkbox" class="form-check-input" id="ClienteEstado" value="true" name="ClienteEstado" checked>
-                                <label class="form-check-label" for="ClienteEstado">Cliente Activo</label>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="guardarCliente()">Guardar</button>
-                </div>
-            </div>
-        </div>
+    <div class="btn-float">
+        <a href="@Url.Action("Create", "Clientes")" class="btn btn-info">
+            <i class="bi bi-person-plus-fill"></i> Crear Nuevo Cliente
+        </a>
+        <a href="@Url.Action("Create", "Huespedes")" class="btn btn-info">
+            <i class="bi bi-person-plus-fill"></i> Crear Nuevo Huésped
+        </a>
     </div>
 
-    <!-- Modal Nuevo Huésped -->
-    <div class="modal fade" id="modalNuevoHuesped" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Crear Nuevo Huésped</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="formNuevoHuesped">
-                        <div class="form-group">
-                            <label for="NombreCompleto">Nombre Completo</label>
-                            <input type="text" class="form-control" id="NombreCompleto" name="NombreCompleto" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="CorreoElectronico">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="CorreoElectronico" name="CorreoElectronico" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="TipoDocumento">Tipo de Documento</label>
-                            <select class="form-control" id="TipoDocumento" name="TipoDocumento" required>
-                                <option value="" disabled selected>Seleccione un tipo</option>
-                                <option value="CC">Cédula de Ciudadanía</option>
-                                <option value="TI">Tarjeta de Identidad</option>
-                                <option value="CE">Cédula de Extranjería</option>
-                                <option value="PAS">Pasaporte</option>
-                                <option value="NIT">NIT</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="NumeroIdentificacion">Número de Identificación</label>
-                            <input type="text" class="form-control" id="NumeroIdentificacion" name="NumeroIdentificacion" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="NumeroContacto">Número de Contacto</label>
-                            <input type="text" class="form-control" id="NumeroContacto" name="NumeroContacto" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="LugarResidencia">Lugar de Residencia</label>
-                            <input type="text" class="form-control" id="LugarResidencia" name="LugarResidencia" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="IdEstadoHuesped">Estado</label>
-                            <select class="form-control" id="IdEstadoHuesped" name="IdEstadoHuesped" asp-items="ViewBag.IdEstadoHuesped"></select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="guardarHuesped()">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -753,5 +673,20 @@ body::before {
     border: none !important;
     padding: 0 !important;
     overflow-y: auto;
+}
+
+.btn-float {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-float .btn {
+    width: 200px;
 }
 </style>

@@ -55,5 +55,8 @@ namespace Caribbean2.Models
 
         // Relación uno a muchos con Pago
         public virtual ICollection<Pago> Pagos { get; set; } = new List<Pago>();
+
+        // Relación uno a muchos con Calificacion
+        public virtual ICollection<Calificacion> Calificaciones { get; set; } = new List<Calificacion>();
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Caribbean2.Migrations
 {
     [DbContext(typeof(CaribbeanContext))]
-    partial class CaribbeanContextModelSnapshot : ModelSnapshot
+    [Migration("20241208184629_CeroCreate")]
+    partial class CeroCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,46 +23,6 @@ namespace Caribbean2.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Caribbean2.Models.Calificacion", b =>
-                {
-                    b.Property<int>("IdCalificacion")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCalificacion"));
-
-                    b.Property<string>("Comentario")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<bool>("EstadoCalificacion")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
-                    b.Property<DateTime>("FechaCalificacion")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
-
-                    b.Property<int>("IdCliente")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdReserva")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Puntuacion")
-                        .HasColumnType("int");
-
-                    b.HasKey("IdCalificacion");
-
-                    b.HasIndex("IdCliente");
-
-                    b.HasIndex("IdReserva");
-
-                    b.ToTable("Calificaciones");
-                });
 
             modelBuilder.Entity("Caribbean2.Models.Cliente", b =>
                 {
@@ -752,7 +715,7 @@ namespace Caribbean2.Migrations
                             Contrasena = "nimad4321",
                             Correo = "admin@admincorreo.com",
                             Estado = true,
-                            FechaRegistro = new DateTime(2024, 12, 8, 14, 39, 48, 641, DateTimeKind.Local).AddTicks(2922),
+                            FechaRegistro = new DateTime(2024, 12, 8, 13, 46, 27, 423, DateTimeKind.Local).AddTicks(5369),
                             IdRol = 3,
                             Identificacion = "1",
                             NombresApellidos = "admin",
@@ -919,25 +882,6 @@ namespace Caribbean2.Migrations
                     b.ToTable("RolPermiso");
                 });
 
-            modelBuilder.Entity("Caribbean2.Models.Calificacion", b =>
-                {
-                    b.HasOne("Caribbean2.Models.Cliente", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("IdCliente")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Caribbean2.Models.Reserva", "Reserva")
-                        .WithMany("Calificaciones")
-                        .HasForeignKey("IdReserva")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Cliente");
-
-                    b.Navigation("Reserva");
-                });
-
             modelBuilder.Entity("Caribbean2.Models.Cliente", b =>
                 {
                     b.HasOne("Caribbean2.Models.Rol", "idRolNavigation")
@@ -1088,8 +1032,6 @@ namespace Caribbean2.Migrations
 
             modelBuilder.Entity("Caribbean2.Models.Reserva", b =>
                 {
-                    b.Navigation("Calificaciones");
-
                     b.Navigation("Pagos");
                 });
 

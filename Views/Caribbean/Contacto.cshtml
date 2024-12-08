@@ -10,20 +10,20 @@
             <div class="container-xxl py-5">
                 <div class="container">
                     <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                        <h6 class="section-title bg-white text-center text-primary px-3">Contáctanos</h6>
-                        <h1 class="mb-5">Contacto para Cualquier Consulta</h1>
+                        
+                        <h1 style="color: white;"  class="mb-5">Contacto para Cualquier Consulta</h1>
                     </div>
                     <div class="row g-4 justify-content-center">
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <h5>Ponte en Contacto</h5>
-                            <p class="mb-4">Temporalmente, en rebum elitr clita. Diam dolor, diam ipsum sit. Aliqu diam amet diam et eos</p>
+                            <h5 style="color: white;">Ponte en Contacto</h5>
+                            <p  style="color: white;" class="mb-4">Temporalmente, en rebum elitr clita. Diam dolor, diam ipsum sit. Aliqu diam amet diam et eos</p>
                             <div class="d-flex align-items-center mb-4">
                                 <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
                                     <i class="fa fa-map-marker-alt text-white"></i>
                                 </div>
                                 <div class="ms-3">
                                     <h5 class="text-primary">Oficina</h5>
-                                    <p class="mb-0">123 Calle, Nueva York, EE.UU.</p>
+                                    <p  style="color: white;"class="mb-0">123 Calle, Nueva York, EE.UU.</p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center mb-4">
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="ms-3">
                                     <h5 class="text-primary">Teléfono</h5>
-                                    <p class="mb-0">+012 345 67890</p>
+                                    <p style="color: white;" class="mb-0">+012 345 67890</p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center">
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="ms-3">
                                     <h5 class="text-primary">Correo Electrónico</h5>
-                                    <p class="mb-0">info@ejemplo.com</p>
+                                    <p style="color: white;" class="mb-0">info@ejemplo.com</p>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,31 @@
                 </div>
             </div>
         </div>
+<style>
+                       body {
+    position: relative;
+    min-height: 100vh;
+}
 
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/imgpagina.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.; /* Reduced opacity for darker effect */
+    z-index: -1;
+    filter: brightness(0.5) contrast(1.2); /* Reduced brightness for darker image */
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+}   
+</style>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

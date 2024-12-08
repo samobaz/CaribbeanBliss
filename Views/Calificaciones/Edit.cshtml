@@ -1,0 +1,62 @@
+@model Caribbean2.Models.Calificacion
+
+@{
+    ViewData["Title"] = "Editar Calificación";
+    Layout = null;
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-warning text-white">
+                    <h2 class="card-title mb-0">Editar Calificación</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <div class="form-group">
+                            <label asp-for="IdCalificacion" class="control-label">ID de Calificación</label>
+                            <input asp-for="IdCalificacion" class="form-control" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="IdReserva" class="control-label">ID de Reserva</label>
+                            <input asp-for="IdReserva" class="form-control" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="IdCliente" class="control-label">Cliente</label>
+                            <input asp-for="IdCliente" class="form-control" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Puntuacion" class="control-label">Puntuación</label>
+                            <select asp-for="Puntuacion" class="form-control">
+                                <option value="1">1 - Muy Malo</option>
+                                <option value="2">2 - Malo</option>
+                                <option value="3">3 - Regular</option>
+                                <option value="4">4 - Bueno</option>
+                                <option value="5">5 - Excelente</option>
+                            </select>
+                            <span asp-validation-for="Puntuacion" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Comentario" class="control-label">Comentario</label>
+                            <textarea asp-for="Comentario" class="form-control" rows="4"></textarea>
+                            <span asp-validation-for="Comentario" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-center mt-4">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-check-circle"></i> Guardar Cambios
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left-circle"></i> Regresar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

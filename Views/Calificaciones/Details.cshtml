@@ -1,0 +1,47 @@
+@model Caribbean2.Models.Calificacion
+
+@{
+    ViewData["Title"] = "Detalles de la Calificación";
+    Layout = null;
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h2 class="card-title mb-0">Detalles de la Calificación</h2>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">ID de Calificación</dt>
+                        <dd class="col-sm-9">@Model.IdCalificacion</dd>
+
+                        <dt class="col-sm-3">ID de Reserva</dt>
+                        <dd class="col-sm-9">@Model.IdReserva</dd>
+
+                        <dt class="col-sm-3">Cliente</dt>
+                        <dd class="col-sm-9">@Model.Cliente.nombre</dd>
+
+                        <dt class="col-sm-3">Puntuación</dt>
+                        <dd class="col-sm-9">@Model.Puntuacion</dd>
+
+                        <dt class="col-sm-3">Comentario</dt>
+                        <dd class="col-sm-9">@Model.Comentario</dd>
+
+                        <dt class="col-sm-3">Fecha de Calificación</dt>
+                        <dd class="col-sm-9">@Model.FechaCalificacion.ToString("dd/MM/yyyy")</dd>
+                    </dl>
+                    <div class="form-group text-center mt-4">
+                        <a asp-action="Edit" asp-route-id="@Model.IdCalificacion" class="btn btn-warning">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left-circle"></i> Regresar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
