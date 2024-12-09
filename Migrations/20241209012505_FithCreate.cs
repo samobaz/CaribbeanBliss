@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Caribbean2.Migrations
 {
     /// <inheritdoc />
-    public partial class parcero : Migration
+    public partial class FithCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,8 +26,9 @@ namespace Caribbean2.Migrations
                     fechaReserva = table.Column<DateOnly>(type: "date", nullable: false),
                     fechaLlegada = table.Column<DateOnly>(type: "date", nullable: false),
                     fechaSalida = table.Column<DateOnly>(type: "date", nullable: false),
+                    UsuarioId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdHabitacion = table.Column<int>(type: "int", nullable: false),
-                    TipodeHabitacion = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    TipodeHabitacion = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -186,6 +187,7 @@ namespace Caribbean2.Migrations
                     Capacidad = table.Column<int>(type: "int", nullable: false),
                     NumeroHabitacion = table.Column<int>(type: "int", nullable: false),
                     PrecioHabitacion = table.Column<decimal>(type: "money", nullable: false),
+                    HabitacionesDisponibles = table.Column<int>(type: "int", nullable: false),
                     IdEstado = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -337,6 +339,7 @@ namespace Caribbean2.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdCliente = table.Column<int>(type: "int", nullable: false),
                     IdHabitacion = table.Column<int>(type: "int", nullable: false),
+                    NumeroHabitacion = table.Column<int>(type: "int", nullable: false),
                     FechaInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaFin = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NumeroPersonas = table.Column<int>(type: "int", nullable: false),
@@ -365,6 +368,36 @@ namespace Caribbean2.Migrations
                         column: x => x.IdEstado,
                         principalTable: "ReservaEstados",
                         principalColumn: "IdEstado",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Calificaciones",
+                columns: table => new
+                {
+                    IdCalificacion = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Puntuacion = table.Column<int>(type: "int", nullable: false),
+                    Comentario = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    IdReserva = table.Column<int>(type: "int", nullable: false),
+                    IdCliente = table.Column<int>(type: "int", nullable: false),
+                    FechaCalificacion = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    EstadoCalificacion = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Calificaciones", x => x.IdCalificacion);
+                    table.ForeignKey(
+                        name: "FK_Calificaciones_Clientes_IdCliente",
+                        column: x => x.IdCliente,
+                        principalTable: "Clientes",
+                        principalColumn: "idCliente",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Calificaciones_Reservas_IdReserva",
+                        column: x => x.IdReserva,
+                        principalTable: "Reservas",
+                        principalColumn: "IdReserva",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -499,19 +532,29 @@ namespace Caribbean2.Migrations
 
             migrationBuilder.InsertData(
                 table: "Habitaciones",
-                columns: new[] { "IdHabitacion", "Capacidad", "Descripcion", "IdEstado", "Nombre", "NumeroHabitacion", "PrecioHabitacion" },
+                columns: new[] { "IdHabitacion", "Capacidad", "Descripcion", "HabitacionesDisponibles", "IdEstado", "Nombre", "NumeroHabitacion", "PrecioHabitacion" },
                 values: new object[,]
                 {
-                    { 1, 2, "Habitación Deluxe con diseño moderno, equipada con comodidades premium para una experiencia única de confort.", 1, "Deluxe", 0, 359.99m },
-                    { 2, 8, "Habitación ideal para familias, amplia y cómoda, con capacidad para grupos grandes y servicios adaptados a sus necesidades.", 1, "Familiar", 0, 239.99m },
-                    { 3, 1, "Habitación perfecta para una sola persona, diseñada para garantizar privacidad y un espacio acogedor.", 1, "Individual", 0, 119.99m },
-                    { 4, 2, "Habitación VIP con servicios exclusivos, lujo excepcional y diseño elegante para huéspedes exigentes.", 1, "VIP", 0, 539.99m }
+                    { 1, 2, "Habitación Deluxe con diseño moderno, equipada con comodidades premium para una experiencia única de confort.", 1, 1, "Deluxe", 0, 359.99m },
+                    { 2, 8, "Habitación ideal para familias, amplia y cómoda, con capacidad para grupos grandes y servicios adaptados a sus necesidades.", 1, 1, "Familiar", 0, 239.99m },
+                    { 3, 1, "Habitación perfecta para una sola persona, diseñada para garantizar privacidad y un espacio acogedor.", 1, 1, "Individual", 0, 119.99m },
+                    { 4, 2, "Habitación VIP con servicios exclusivos, lujo excepcional y diseño elegante para huéspedes exigentes.", 1, 1, "VIP", 0, 539.99m }
                 });
 
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioID", "Contrasena", "Correo", "Estado", "FechaRegistro", "IdRol", "Identificacion", "NombresApellidos", "ResetPasswordExpiry", "ResetPasswordToken", "RolIdRol", "Telefono", "TipoIdentificacion" },
-                values: new object[] { 1, "nimad4321", "admin@admincorreo.com", true, new DateTime(2024, 12, 5, 11, 22, 57, 9, DateTimeKind.Local).AddTicks(9662), 3, "1", "admin", null, null, null, "1", "CC" });
+                values: new object[] { 1, "nimad4321", "admin@admincorreo.com", true, new DateTime(2024, 12, 8, 20, 25, 2, 686, DateTimeKind.Local).AddTicks(218), 3, "1", "admin", null, null, null, "1", "CC" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Calificaciones_IdCliente",
+                table: "Calificaciones",
+                column: "IdCliente");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Calificaciones_IdReserva",
+                table: "Calificaciones",
+                column: "IdReserva");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clientes_idRolNavigationIdRol",
@@ -618,6 +661,9 @@ namespace Caribbean2.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Calificaciones");
+
             migrationBuilder.DropTable(
                 name: "ClienteReserva");
 

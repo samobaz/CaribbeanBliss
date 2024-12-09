@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Mantener los mismos CSS y meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Reserva</title>
@@ -20,33 +21,33 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <!-- SweetAlert JS -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Mantener los mismos estilos -->
     <style>
-                  body {
-    position: relative;
-    min-height: 100vh;
-}
+        /* Copiar todos los estilos de Create2 */
+        body {
+            position: relative;
+            min-height: 100vh;
+        }
 
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('/img/imgpagina.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.; /* Reduced opacity for darker effect */
-    z-index: -1;
-    filter: brightness(0.5) contrast(1.2); /* Reduced brightness for darker image */
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-}   
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/img/imgpagina.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.; /* Reduced opacity for darker effect */
+            z-index: -1;
+            filter: brightness(0.5) contrast(1.2); /* Reduced brightness for darker image */
+            backdrop-filter: blur(1px);
+            -webkit-backdrop-filter: blur(1px);
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        }   
         .booking-header {
             background: linear-gradient(rgba(30, 61, 89, 0.9), rgba(30, 61, 89, 0.9)),
                         url('/images/hotel-bg.jpg') center/cover;
@@ -251,83 +252,77 @@ body::before {
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
                 <div class="roles-card">
-                    <div class="roles-card-header d-flex justify-content-between align-items-center">
-                        <div class="text-center flex-grow-1">
-                            <h2 class="roles-card-title">Nueva Reserva</h2>
-                        </div>
+                    <div class="roles-card-header">
+                        <h2 class="roles-card-title text-center">Nueva Reserva</h2>
                     </div>
                     <div class="roles-card-body p-4">
-                        <form asp-action="Create" method="post" id="createForm" enctype="multipart/form-data">
+                        <form asp-action="Create" method="post" id="createForm">
                             @Html.AntiForgeryToken()
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                            <!-- Modificar los botones -->
+                            <!-- Cliente -->
                             <div class="form-group">
                                 <label asp-for="IdCliente" class="control-label">Cliente</label>
-                                <select asp-for="IdCliente" id="IdCliente" class="form-control" asp-items="ViewBag.IdCliente" required>
+                                <select asp-for="IdCliente" class="form-control" asp-items="ViewBag.IdCliente">
                                     <option value="">-- Seleccione un Cliente --</option>
                                 </select>
-                                
                                 <span asp-validation-for="IdCliente" class="text-danger"></span>
                             </div>
 
-                            <!-- Reemplazar la sección de huéspedes -->
+                            <!-- Huéspedes -->
                             <div class="form-group">
                                 <label class="control-label">Huéspedes</label>
                                 <div class="d-flex justify-content-between align-items-center mb-1">
-                                                <div class="flex-grow-1 me-2">
-                                                    <input type="text" class="form-control" id="filtroHuespedes" placeholder="Buscar huésped...">
-                                                </div>
-                                                
-                                            </div>
+                                    <input type="text" class="form-control" id="filtroHuespedes" placeholder="Buscar huésped...">
+                                </div>
                                 <div class="row">
-                                    <!-- Columna izquierda: Huéspedes disponibles -->
                                     <div class="col-md-6">
-                                        <div class="huespedes-box">                                            
+                                        <div class="huespedes-box">
                                             <h6>Huéspedes Disponibles</h6>
                                             <select id="huespedes-disponibles" class="form-control" multiple>
-                                                @foreach (var huesped in ViewBag.Huespedes)
+                                                @foreach (var item in ViewBag.Huespedes)
                                                 {
-                                                    <option value="@huesped.Value">@huesped.Text</option>
+                                                    <option value="@item.Value">@item.Text</option>
                                                 }
                                             </select>
                                         </div>
                                     </div>
-                                    <!-- Columna derecha: Huéspedes seleccionados -->
                                     <div class="col-md-6">
                                         <div class="huespedes-box">
                                             <h6>Huéspedes Seleccionados</h6>
-                                            <select id="huespedes-seleccionados" class="form-control" multiple name="HuespedesSeleccionados">
+                                            <select id="huespedes-seleccionados" name="HuespedesSeleccionados" class="form-control" multiple>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                <span id="huespedes-error" class="text-danger mt-2" style="display:none">
-                                    El número de huéspedes no puede exceder el número de personas de la reserva
-                                </span>
                             </div>
 
+                            <!-- Número de Personas -->
                             <div class="form-group">
-                            <label asp-for="IdHabitacion" class="control-label">Habitación</label>
-                            <select asp-for="IdHabitacion" class="form-control" id="habitacionSelect">
-                            <option value="">Seleccione una habitación</option>
-        @foreach (var item in ViewBag.IdHabitacion)
-        {
-            <option value="@item.Value" 
-                    data-precio="@ViewBag.HabitacionesPrecios[int.Parse(item.Value)]"
-                    data-disponibles="@ViewBag.HabitacionesDisponibles[int.Parse(item.Value)]">
-                @item.Text
-            </option>
-        }
-    </select>
-    <span asp-validation-for="IdHabitacion" class="text-danger"></span>
-</div>
+                                <label asp-for="NumeroPersonas" class="control-label">Número de Personas</label>
+                                <input asp-for="NumeroPersonas" class="form-control" type="number" min="1" id="numeroPersonas" />
+                                <span asp-validation-for="NumeroPersonas" class="text-danger"></span>
+                                <span id="capacidadError" class="text-danger" style="display:none"></span>
+                            </div>
 
-<div class="form-group">
-    <label class="control-label">Habitaciones Disponibles</label>
-    <input type="text" id="habitacionesDisponibles" class="form-control" readonly />
-</div>
+                            <!-- Habitación -->
+                            <div class="form-group">
+                                <label asp-for="IdHabitacion" class="control-label">Habitación</label>
+                                <select asp-for="IdHabitacion" class="form-control" id="habitacionSelect">
+                                    <option value="">Seleccione una habitación</option>
+                                    @foreach (var item in ViewBag.IdHabitacion)
+                                    {
+                                        <option value="@item.Value" 
+                                                data-precio="@ViewBag.HabitacionesPrecios[int.Parse(item.Value)]"
+                                                data-capacidad="@ViewBag.HabitacionesCapacidad[int.Parse(item.Value)]">
+                                            @item.Text
+                                        </option>
+                                    }
+                                </select>
+                                <span asp-validation-for="IdHabitacion" class="text-danger"></span>
+                            </div>
 
+                            <!-- Fechas -->
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -345,18 +340,110 @@ body::before {
                                 </div>
                             </div>
 
+                            <!-- Servicios -->
                             <div class="form-group">
-                                <label asp-for="NumeroPersonas" class="control-label">Número de Personas</label>
-                                <input asp-for="NumeroPersonas" class="form-control" id="numeroPersonas" min="1" />
-                                <span asp-validation-for="NumeroPersonas" class="text-danger"></span>
-                                <span id="capacidadError" class="text-danger" style="display:none">
-                                    El número de personas excede la capacidad de la habitación
-                                </span>
+                                <label class="control-label">Servicios Adicionales</label>
+                                <div class="row">
+                                    @foreach (var servicio in ViewBag.ServiciosActivos)
+                                    {
+                                        <div class="col-md-6">
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input servicio-checkbox" 
+                                                       type="checkbox" 
+                                                       name="ServiciosSeleccionados" 
+                                                       value="@servicio.Value"
+                                                       id="servicio_@servicio.Value"
+                                                       data-precio="@servicio.Text.Split('$')[1].Trim()">
+                                                <label class="form-check-label" for="servicio_@servicio.Value">
+                                                    @servicio.Text
+                                                </label>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
                             </div>
 
+                            <!-- Detalles de la Reserva -->
+                            <div class="form-group mt-4">
+                                <div class="card">
+                                    <div class="card-header bg-light">
+                                        <h5 class="mb-0">Detalles de la Reserva</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- Detalles de la habitación -->
+                                        <div class="mb-4">
+                                            <h6 class="text-muted">Detalles de la Habitación</h6>
+                                            <div class="table-responsive">
+                                                <table class="table table-sm">
+                                                    <tr>
+                                                        <td>Precio por día:</td>
+                                                        <td class="text-end" id="precioPorDia">$0.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Número de días:</td>
+                                                        <td class="text-end" id="numeroDias">0</td>
+                                                    </tr>
+                                                    <tr class="fw-bold">
+                                                        <td>Total por días de reserva:</td>
+                                                        <td class="text-end" id="totalPorDias">$0.00</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <!-- Detalles de servicios -->
+                                        <div>
+                                            <h6 class="text-muted">Servicios Adicionales Seleccionados</h6>
+                                            <div class="table-responsive">
+                                                <table class="table table-sm" id="tablaServicios">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Servicio</th>
+                                                            <th class="text-end">Precio</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                    <tfoot>
+                                                        <tr class="fw-bold">
+                                                            <td>Total Servicios:</td>
+                                                            <td class="text-end" id="totalServicios">$0.00</td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Precios y Totales -->
+                            <div class="row mt-4">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="PrecioTotal" class="control-label">Precio Total</label>
+                                        <input asp-for="PrecioTotal" class="form-control" readonly />
+                                        <span asp-validation-for="PrecioTotal" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="Anticipo" class="control-label">Anticipo</label>
+                                        <input asp-for="Anticipo" class="form-control" type="number" min="0" step="0.01" />
+                                        <span asp-validation-for="Anticipo" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Saldo</label>
+                                        <input type="text" id="Saldo" class="form-control" readonly />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Notas y Estado -->
                             <div class="form-group">
                                 <label asp-for="Notas" class="control-label">Notas</label>
-                                <textarea asp-for="Notas" class="form-control" rows="3"></textarea>
+                                <textarea asp-for="Notas" class="form-control"></textarea>
                                 <span asp-validation-for="Notas" class="text-danger"></span>
                             </div>
 
@@ -366,61 +453,13 @@ body::before {
                                 <span asp-validation-for="IdEstado" class="text-danger"></span>
                             </div>
 
-                            <!-- Reemplazar la sección de servicios -->
-                            <div class="form-group">
-                                <label class="control-label">Servicios Adicionales</label>
-                                <div class="row">
-                                    @foreach (var servicio in ViewBag.ServiciosActivos)
-                                    {
-                                        <div class="col-md-6">
-                                            <div class="form-check mb-2">
-                                                <input class="form-check-input servicio-checkbox" type="checkbox" 
-                                                        name="ServiciosSeleccionados" 
-                                                        value="@servicio.IdServicio" 
-                                                        id="servicio_@servicio.IdServicio"
-                                                        data-precio="@servicio.PrecioServicio">
-                                                <label class="form-check-label" for="servicio_@servicio.IdServicio">
-                                                    @servicio.Nombre + @servicio.PrecioServicio
-                                                </label>
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
-                            </div>
-
-                            <!-- Reemplazar la sección de precios actual con este código y colocarlo después de la sección de servicios -->
-                            <div class="form-group mt-4">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label asp-for="PrecioTotal" class="control-label">Precio Total</label>
-                                            <input asp-for="PrecioTotal" class="form-control" readonly style="background-color: #e9ecef;"/>
-                                            <span asp-validation-for="PrecioTotal" class="text-danger"></span>
-                                            <span asp-validation-for="PrecioTotal" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label asp-for="Anticipo" class="control-label">Anticipo</label>
-                                            <input asp-for="Anticipo" class="form-control" />
-                                            <span asp-validation-for="Anticipo" class="text-danger"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="control-label">Saldo</label>
-                                            <input type="text" id="Saldo" class="form-control" readonly style="background-color: #e9ecef;" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <!-- Botones -->
                             <div class="form-group text-center mt-4">
-                                <button type="submit" class="btn btn-primary me-2">
+                                <button type="submit" class="btn btn-primary">
                                     <i class="bi bi-check-circle"></i> Crear Reserva
                                 </button>
                                 <a asp-action="Index" class="btn btn-secondary">
-                                    <i class="bi bi-arrow-left-circle"></i> Regresar
+                                    <i class="bi bi-arrow-left-circle"></i> Volver
                                 </a>
                             </div>
                         </form>
@@ -439,7 +478,6 @@ body::before {
         </a>
     </div>
 
-
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -449,7 +487,6 @@ body::before {
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
-    
     
     <!-- Tus scripts personalizados -->
     <script src="~/js/index.js"></script>
@@ -495,6 +532,57 @@ body::before {
         
         $('#huespedes-error').toggle(!isValid);
         return isValid;
+    }
+
+    // Reemplazar la función calcularPrecioTotal con esta versión mejorada:
+    function calcularPrecioTotal() {
+        const habitacionId = $('#habitacionSelect').val();
+        const precioHabitacion = precios[habitacionId] || 0;
+        
+        // Calcular días
+        const fechaInicio = new Date($('#FechaInicio').val());
+        const fechaFin = new Date($('#FechaFin').val());
+        const diffDays = Math.ceil(Math.abs(fechaFin - fechaInicio) / (1000 * 60 * 60 * 24)) || 0;
+
+        // Actualizar detalles de la habitación
+        $('#precioPorDia').text(`$${precioHabitacion.toFixed(2)}`);
+        $('#numeroDias').text(diffDays);
+        const totalPorDias = precioHabitacion * diffDays;
+        $('#totalPorDias').text(`$${totalPorDias.toFixed(2)}`);
+
+        // Actualizar tabla de servicios
+        let precioServicios = 0;
+        const tablaServicios = $('#tablaServicios tbody');
+        tablaServicios.empty();
+        
+        $('.servicio-checkbox:checked').each(function() {
+            const precio = parseFloat($(this).data('precio')) || 0;
+            const nombreServicio = $(this).next('label').text().trim();
+            precioServicios += precio;
+            
+            tablaServicios.append(`
+                <tr>
+                    <td>${nombreServicio}</td>
+                    <td class="text-end">$${precio.toFixed(2)}</td>
+                </tr>
+            `);
+        });
+        
+        $('#totalServicios').text(`$${precioServicios.toFixed(2)}`);
+
+        // Calcular total y actualizar campos
+        const precioTotal = totalPorDias + precioServicios;
+        $('#PrecioTotal').val(precioTotal.toFixed(2));
+
+        // Validar y actualizar anticipo
+        const anticipo = parseFloat($('#Anticipo').val()) || 0;
+        if (anticipo > precioTotal) {
+            $('#Anticipo').val(precioTotal.toFixed(2));
+        }
+        
+        // Calcular y actualizar saldo
+        const saldo = precioTotal - (parseFloat($('#Anticipo').val()) || 0);
+        $('#Saldo').val(saldo.toFixed(2));
     }
 
     // 3. Cálculo del precio total
@@ -617,7 +705,9 @@ body::before {
 
         $('#Anticipo').on('input', calcularPrecioTotal);
         
-        $('.servicio-checkbox').change(calcularPrecioTotal);
+        $('.servicio-checkbox').change(function() {
+            calcularPrecioTotal();
+        });
 
         $('#numeroPersonas').change(function() {
             validarHuespedes();
@@ -633,11 +723,57 @@ body::before {
         });
     }
 
+    // Agregar validaciones para número de personas y anticipo
+    function setupValidations() {
+        $('#numeroPersonas').on('change', function() {
+            const numPersonas = parseInt($(this).val());
+            const habitacionId = $('#habitacionSelect').val();
+            const capacidadHabitacion = capacidades[habitacionId] || 0;
+            const errorElement = $('#capacidadError');
+
+            if (numPersonas < 1) {
+                $(this).val(1);
+                errorElement.text('El número de personas no puede ser menor a 1');
+                errorElement.show();
+            } else if (numPersonas > capacidadHabitacion) {
+                $(this).val(capacidadHabitacion);
+                errorElement.text(`El número de personas no puede superar la capacidad de la habitación (${capacidadHabitacion})`);
+                errorElement.show();
+            } else {
+                errorElement.hide();
+            }
+            calcularPrecioTotal();
+        });
+
+        $('#Anticipo').on('change', function() {
+            const anticipo = parseFloat($(this).val());
+            const precioTotal = parseFloat($('#PrecioTotal').val());
+            
+            if (anticipo < 1) {
+                $(this).val(1);
+                Swal.fire({
+                    title: 'Advertencia',
+                    text: 'El anticipo no puede ser menor a 1',
+                    icon: 'warning'
+                });
+            } else if (anticipo > precioTotal) {
+                $(this).val(precioTotal.toFixed(2));
+                Swal.fire({
+                    title: 'Advertencia',
+                    text: 'El anticipo no puede ser mayor al precio total',
+                    icon: 'warning'
+                });
+            }
+            calcularPrecioTotal();
+        });
+    }
+
     // 6. Inicialización
     function init() {
         setupHuespedesHandlers();
         setupFormHandlers();
         setupEventListeners();
+        setupValidations();
         calcularPrecioTotal();
     }
 
@@ -683,6 +819,14 @@ $(document).ready(function () {
 
     // Inicializar disponibilidad
     actualizarDisponibilidad();
+});
+</script>
+    <script>
+$(document).ready(function() {
+    $('select[name="ServiciosSeleccionados"]').select2({
+        placeholder: "Seleccione los servicios...",
+        allowClear: true
+    });
 });
 </script>
 </body>

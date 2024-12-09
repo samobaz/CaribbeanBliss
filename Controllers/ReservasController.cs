@@ -61,56 +61,65 @@ namespace Caribbean2.Controllers
         {
             try 
             {
-                // Crear un generador de números aleatorios
                 Random random = new Random();
 
-                // Modificar la consulta de habitaciones
                 var habitaciones = _context.Habitaciones
                     .Where(h => h.IdEstado == 1)
-                    .Select(h => new
-                    {
-                        h.IdHabitacion,
-                        NumeroHabitacion = random.Next(1, 101),
-                        h.Nombre,
-                        h.PrecioHabitacion,
-                        h.Capacidad
-                    })
                     .ToList();
 
-                // Crear SelectList para habitaciones
-                ViewBag.IdHabitacion = habitaciones.Select(h => new SelectListItem
+                // Preparar ViewBag para habitaciones
+                ViewBag.IdHabitacion = new SelectList(habitaciones.Select(h => new
                 {
-                    Value = h.IdHabitacion.ToString(),
-                    Text = $"Habitación {h.NumeroHabitacion} - {h.Nombre} - ${h.PrecioHabitacion:N2}"
-                });
+                    Value = h.IdHabitacion,
+                    Text = $"Habitación {random.Next(1, 101)} - {h.Nombre} - ${h.PrecioHabitacion:N2}"
+                }), "Value", "Text");
 
-                // Guardar los precios para JavaScript
+                // Preparar ViewBag para clientes
+                ViewBag.IdCliente = new SelectList(_context.Clientes
+                    .Where(c => c.ClienteEstado)
+                    .Select(c => new
+                    {
+                        Value = c.idCliente,
+                        Text = c.nombre
+                    }), "Value", "Text");
+
+                // Preparar ViewBag para huéspedes
+                ViewBag.Huespedes = new SelectList(_context.Huespedes
+                    .Select(h => new
+                    {
+                        Value = h.Id,
+                        Text = h.NombreCompleto
+                    }), "Value", "Text");
+
+                // Preparar ViewBag para estados
+                ViewBag.IdEstado = new SelectList(_context.ReservaEstados, "IdEstado", "Nombre");
+
+                // Preparar ViewBag para servicios activos - CORREGIDO
+                ViewBag.ServiciosActivos = new SelectList(
+                    _context.Servicios
+                        .Where(s => s.EstadoServicio)
+                        .Select(s => new
+                        {
+                            Value = s.IdServicio,
+                            Text = $"{s.Nombre} - ${s.PrecioServicio:N2}"
+                        }), "Value", "Text"
+                );
+
+                // Diccionarios para precios y capacidades
                 ViewBag.HabitacionesPrecios = habitaciones.ToDictionary(
                     h => h.IdHabitacion,
                     h => h.PrecioHabitacion
                 );
 
-                // Preparar el resto de ViewBag
-                ViewBag.IdCliente = new SelectList(_context.Clientes.Where(c => c.ClienteEstado), "idCliente", "nombre");
-                ViewBag.Huespedes = new SelectList(_context.Huespedes, "Id", "NombreCompleto");
-                ViewBag.IdEstado = new SelectList(_context.ReservaEstados, "IdEstado", "Nombre");
-                ViewBag.ServiciosActivos = _context.Servicios
-                    .Where(s => s.EstadoServicio)
-                    .Select(s => new
-                    {
-                        s.IdServicio,
-                        s.Nombre,
-                        s.PrecioServicio,
-                        DisplayText = $"{s.Nombre} - ${s.PrecioServicio:N2}"
-                    })
-                    .ToList();
+                ViewBag.HabitacionesCapacidad = habitaciones.ToDictionary(
+                    h => h.IdHabitacion,
+                    h => h.Capacidad
+                );
 
-                ViewBag.RolId = new SelectList(_context.Roles, "IdRol", "NombreRol");
-                ViewBag.IdEstadoHuesped = new SelectList(_context.HuespedEstados, "IdEstadoHuesped", "NombreEstado");
-
-                // Guardar los precios y capacidades como diccionarios serializados
-                ViewBag.HabitacionesPrecios = habitaciones.ToDictionary(h => h.IdHabitacion, h => h.PrecioHabitacion);
-                ViewBag.HabitacionesCapacidad = habitaciones.ToDictionary(h => h.IdHabitacion, h => h.Capacidad);
+                ViewBag.HabitacionesDisponibles = habitaciones.ToDictionary(
+                    h => h.IdHabitacion,
+                    h => true
+                );
 
                 return View();
             }
@@ -157,7 +166,6 @@ namespace Caribbean2.Controllers
                     try
                     {
                         _context.Add(reserva);
-                        Console.WriteLine(reserva);
                         await _context.SaveChangesAsync();
                         TempData["Success"] = "Reserva creada correctamente";
                         return RedirectToAction(nameof(Index));
@@ -200,18 +208,25 @@ namespace Caribbean2.Controllers
 
             ViewBag.IdCliente = new SelectList(_context.Clientes.Where(c => c.ClienteEstado), "idCliente", "nombre", reserva?.IdCliente);
             ViewBag.Huespedes = new SelectList(_context.Huespedes, "Id", "NombreCompleto");
-            ViewBag.IdHabitacion = habitaciones.Select(h => new SelectListItem
+            ViewBag.IdHabitacion = new SelectList(habitaciones.Select(h => new
             {
-                Value = h.IdHabitacion.ToString(),
+                Value = h.IdHabitacion,
                 Text = $"Habitación {h.NumeroHabitacion} - {h.Nombre} - ${h.PrecioHabitacion:N2}"
-            });
+            }), "Value", "Text", reserva?.IdHabitacion);
             ViewBag.IdEstado = new SelectList(_context.ReservaEstados, "IdEstado", "Nombre", reserva?.IdEstado);
-            ViewBag.ServiciosActivos = _context.Servicios
-                .Where(s => s.EstadoServicio)
-                .ToList();
-
-            ViewBag.RolId = new SelectList(_context.Roles, "IdRol", "NombreRol");
-            ViewBag.IdEstadoHuesped = new SelectList(_context.HuespedEstados, "IdEstadoHuesped", "NombreEstado");
+            
+            // Modificar cómo se pasan los servicios
+            ViewBag.ServiciosActivos = new SelectList(
+                _context.Servicios
+                    .Where(s => s.EstadoServicio)
+                    .Select(s => new
+                    {
+                        Value = s.IdServicio,
+                        Text = $"{s.Nombre} - ${s.PrecioServicio:N2}"
+                    }), 
+                "Value", 
+                "Text"
+            );
 
             ViewBag.HabitacionesPrecios = habitaciones.ToDictionary(h => h.IdHabitacion, h => h.PrecioHabitacion);
             ViewBag.HabitacionesCapacidad = habitaciones.ToDictionary(h => h.IdHabitacion, h => h.Capacidad);

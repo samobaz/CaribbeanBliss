@@ -125,10 +125,10 @@ namespace Caribbean2.Migrations
                         .HasColumnType("nvarchar(3)");
 
                     b.Property<string>("TipodeHabitacion")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UsuarioId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateOnly>("fechaLlegada")
@@ -449,6 +449,9 @@ namespace Caribbean2.Migrations
                     b.Property<string>("Notas")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("NumeroHabitacion")
+                        .HasColumnType("int");
+
                     b.Property<int>("NumeroPersonas")
                         .HasColumnType("int");
 
@@ -756,7 +759,7 @@ namespace Caribbean2.Migrations
                             Contrasena = "nimad4321",
                             Correo = "admin@admincorreo.com",
                             Estado = true,
-                            FechaRegistro = new DateTime(2024, 12, 8, 17, 31, 7, 136, DateTimeKind.Local).AddTicks(9988),
+                            FechaRegistro = new DateTime(2024, 12, 8, 20, 25, 2, 686, DateTimeKind.Local).AddTicks(218),
                             IdRol = 3,
                             Identificacion = "1",
                             NombresApellidos = "admin",
@@ -779,6 +782,9 @@ namespace Caribbean2.Migrations
                     b.Property<string>("Descripcion")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("HabitacionesDisponibles")
+                        .HasColumnType("int");
 
                     b.Property<int>("IdEstado")
                         .HasColumnType("int");
@@ -806,6 +812,7 @@ namespace Caribbean2.Migrations
                             IdHabitacion = 1,
                             Capacidad = 2,
                             Descripcion = "Habitación Deluxe con diseño moderno, equipada con comodidades premium para una experiencia única de confort.",
+                            HabitacionesDisponibles = 1,
                             IdEstado = 1,
                             Nombre = "Deluxe",
                             NumeroHabitacion = 0,
@@ -816,6 +823,7 @@ namespace Caribbean2.Migrations
                             IdHabitacion = 2,
                             Capacidad = 8,
                             Descripcion = "Habitación ideal para familias, amplia y cómoda, con capacidad para grupos grandes y servicios adaptados a sus necesidades.",
+                            HabitacionesDisponibles = 1,
                             IdEstado = 1,
                             Nombre = "Familiar",
                             NumeroHabitacion = 0,
@@ -826,6 +834,7 @@ namespace Caribbean2.Migrations
                             IdHabitacion = 3,
                             Capacidad = 1,
                             Descripcion = "Habitación perfecta para una sola persona, diseñada para garantizar privacidad y un espacio acogedor.",
+                            HabitacionesDisponibles = 1,
                             IdEstado = 1,
                             Nombre = "Individual",
                             NumeroHabitacion = 0,
@@ -836,6 +845,7 @@ namespace Caribbean2.Migrations
                             IdHabitacion = 4,
                             Capacidad = 2,
                             Descripcion = "Habitación VIP con servicios exclusivos, lujo excepcional y diseño elegante para huéspedes exigentes.",
+                            HabitacionesDisponibles = 1,
                             IdEstado = 1,
                             Nombre = "VIP",
                             NumeroHabitacion = 0,
