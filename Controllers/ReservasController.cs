@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Caribbean2.Models;
+using Microsoft.Extensions.Logging;
 
 namespace Caribbean2.Controllers
 {
@@ -65,6 +66,18 @@ namespace Caribbean2.Controllers
 
                 var habitaciones = _context.Habitaciones
                     .Where(h => h.IdEstado == 1)
+<<<<<<< HEAD
+=======
+                    .Select(h => new
+                    {
+                        h.IdHabitacion,
+                        NumeroHabitacion = random.Next(1, 101),
+                        h.Nombre,
+                        h.PrecioHabitacion,
+                        h.Capacidad,
+                        h.HabitacionesDisponibles // Include HabitacionesDisponibles
+                    })
+>>>>>>> cb6b423c27d0d1082595223a753eed316d9c1a14
                     .ToList();
 
                 // Preparar ViewBag para habitaciones
@@ -111,10 +124,33 @@ namespace Caribbean2.Controllers
                     h => h.PrecioHabitacion
                 );
 
+<<<<<<< HEAD
                 ViewBag.HabitacionesCapacidad = habitaciones.ToDictionary(
                     h => h.IdHabitacion,
                     h => h.Capacidad
                 );
+=======
+                // Guardar las habitaciones disponibles para JavaScript
+                ViewBag.HabitacionesDisponibles = habitaciones.ToDictionary(
+                    h => h.IdHabitacion,
+                    h => h.HabitacionesDisponibles
+                );
+
+                // Preparar el resto de ViewBag
+                ViewBag.IdCliente = new SelectList(_context.Clientes.Where(c => c.ClienteEstado), "idCliente", "nombre");
+                ViewBag.Huespedes = new SelectList(_context.Huespedes, "Id", "NombreCompleto");
+                ViewBag.IdEstado = new SelectList(_context.ReservaEstados, "IdEstado", "Nombre");
+                ViewBag.ServiciosActivos = _context.Servicios
+                    .Where(s => s.EstadoServicio)
+                    .Select(s => new
+                    {
+                        s.IdServicio,
+                        s.Nombre,
+                        s.PrecioServicio,
+                        DisplayText = $"{s.Nombre} - ${s.PrecioServicio:N2}"
+                    })
+                    .ToList();
+>>>>>>> cb6b423c27d0d1082595223a753eed316d9c1a14
 
                 ViewBag.HabitacionesDisponibles = habitaciones.ToDictionary(
                     h => h.IdHabitacion,
@@ -133,36 +169,70 @@ namespace Caribbean2.Controllers
         // POST: Reservas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdReserva,IdCliente,IdHabitacion,FechaInicio,FechaFin,NumeroPersonas,PrecioTotal,Anticipo,Notas,IdEstado")] Reserva reserva, int[] HuespedesSeleccionados, int[] ServiciosSeleccionados)
+        public async Task<IActionResult> Create([FromBody] ReservaViewModel reservaData)
         {
+            using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
                 if (ModelState.IsValid)
                 {
-                    // Inicializar las colecciones
-                    reserva.Huespedes = new List<Huesped>();
-                    reserva.Servicios = new List<Servicio>();
-
-                    // Agregar huéspedes seleccionados
-                    foreach (var huespedId in HuespedesSeleccionados)
+                    // Check if habitación is available
+                    var habitacion = await _context.Habitaciones.FindAsync(reservaData.IdHabitacion);
+                    if (habitacion == null || habitacion.HabitacionesDisponibles <= 0)
                     {
-                        var huesped = await _context.Huespedes.FindAsync(huespedId);
-                        if (huesped != null)
+                        return Json(new { success = false, message = "No hay habitaciones disponibles" });
+                    }
+
+                    // Generar número de habitación basado en las disponibles
+                    var numeroAsignado = habitacion.HabitacionesDisponibles;
+
+                    var reserva = new Reserva
+                    {
+                        IdCliente = reservaData.IdCliente,
+                        IdHabitacion = reservaData.IdHabitacion,
+                        NumeroHabitacion = numeroAsignado, // Asignar el número generado
+                        FechaInicio = reservaData.FechaInicio,
+                        FechaFin = reservaData.FechaFin,
+                        NumeroPersonas = reservaData.NumeroPersonas,
+                        PrecioTotal = reservaData.PrecioTotal,
+                        Anticipo = reservaData.Anticipo,
+                        Notas = reservaData.Notas,
+                        IdEstado = reservaData.IdEstado,
+                        Huespedes = new List<Huesped>(),
+                        Servicios = new List<Servicio>()
+                    };
+
+                    // Decrease available rooms
+                    habitacion.HabitacionesDisponibles--;
+                    _context.Habitaciones.Update(habitacion);
+
+                    // Agregar huéspedes
+                    if (reservaData.HuespedesSeleccionados != null)
+                    {
+                        foreach (var huespedId in reservaData.HuespedesSeleccionados)
                         {
-                            reserva.Huespedes.Add(huesped);
+                            var huesped = await _context.Huespedes.FindAsync(huespedId);
+                            if (huesped != null)
+                            {
+                                reserva.Huespedes.Add(huesped);
+                            }
                         }
                     }
 
-                    // Agregar servicios seleccionados
-                    foreach (var servicioId in ServiciosSeleccionados)
+                    // Agregar servicios
+                    if (reservaData.ServiciosSeleccionados != null)
                     {
-                        var servicio = await _context.Servicios.FindAsync(servicioId);
-                        if (servicio != null)
+                        foreach (var servicioId in reservaData.ServiciosSeleccionados)
                         {
-                            reserva.Servicios.Add(servicio);
+                            var servicio = await _context.Servicios.FindAsync(servicioId);
+                            if (servicio != null)
+                            {
+                                reserva.Servicios.Add(servicio);
+                            }
                         }
                     }
 
+<<<<<<< HEAD
                     try
                     {
                         _context.Add(reserva);
@@ -176,17 +246,37 @@ namespace Caribbean2.Controllers
                         PrepararViewBags(reserva);
                         return View(reserva);
                     }
+=======
+                    _context.Reservas.Add(reserva);
+                    await _context.SaveChangesAsync();
+                    await transaction.CommitAsync();
+
+                    return Json(new { success = true, message = "Reserva creada correctamente" });
+>>>>>>> cb6b423c27d0d1082595223a753eed316d9c1a14
                 }
 
-                PrepararViewBags(reserva);
-                return View(reserva);
+                return Json(new { success = false, message = "Error de validación del modelo" });
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", "Error al crear la reserva: " + ex.Message);
-                PrepararViewBags(reserva);
-                return View(reserva);
+                await transaction.RollbackAsync();
+                return Json(new { success = false, message = ex.Message });
             }
+        }
+
+        public class ReservaViewModel
+        {
+            public int IdCliente { get; set; }
+            public int IdHabitacion { get; set; }
+            public DateTime FechaInicio { get; set; }
+            public DateTime FechaFin { get; set; }
+            public int NumeroPersonas { get; set; }
+            public decimal PrecioTotal { get; set; }
+            public decimal Anticipo { get; set; }
+            public string Notas { get; set; }
+            public int IdEstado { get; set; }
+            public int[] HuespedesSeleccionados { get; set; }
+            public int[] ServiciosSeleccionados { get; set; }
         }
 
         // Método auxiliar para preparar ViewBags
@@ -241,97 +331,135 @@ namespace Caribbean2.Controllers
             }
 
             var reserva = await _context.Reservas
-                .Include(r => r.Huespedes)
+                .Include(r => r.Cliente)
+                .Include(r => r.Habitacion)
+                .Include(r => r.Estado)
                 .Include(r => r.Servicios)
                 .FirstOrDefaultAsync(m => m.IdReserva == id);
+
             if (reserva == null)
             {
                 return NotFound();
             }
-            ViewBag.IdCliente = new SelectList(_context.Clientes, "IdCliente", "Nombre", reserva.IdCliente);
-            ViewBag.IdHabitacion = new SelectList(_context.Habitaciones, "IdHabitacion", "NumeroHabitacion", reserva.IdHabitacion);
-            ViewBag.Huespedes = new SelectList(_context.Huespedes, "Id", "NombreCompleto");
+
+            ViewBag.IdCliente = new SelectList(_context.Clientes.Where(c => c.ClienteEstado), "idCliente", "nombre", reserva.IdCliente);
+            ViewBag.IdHabitacion = new SelectList(_context.Habitaciones.Where(h => h.IdEstado == 1), "IdHabitacion", "Nombre", reserva.IdHabitacion);
             ViewBag.IdEstado = new SelectList(_context.ReservaEstados, "IdEstado", "Nombre", reserva.IdEstado);
-            ViewBag.ServiciosActivos = _context.Servicios.Where(s => s.EstadoServicio.Equals(true)).ToList();
+
+            // Pasar el ID del estado "Completada" a la vista
+            var estadoCompletada = _context.ReservaEstados.FirstOrDefault(e => e.Nombre == "Completada")?.IdEstado;
+            ViewBag.EstadoCompletada = estadoCompletada;
+
             return View(reserva);
         }
 
         // POST: Reservas/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdReserva,IdCliente,IdHabitacion,FechaInicio,FechaFin,NumeroPersonas,PrecioTotal,Anticipo,Notas,IdEstado")] Reserva reserva, int[] HuespedesSeleccionados, int[] ServiciosSeleccionados)
+        public async Task<IActionResult> Edit(int id, Reserva reserva, int[] HuespedesSeleccionados, int[] ServiciosSeleccionados)
         {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+            
             if (id != reserva.IdReserva)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            try
             {
-                try
+                var reservaExistente = await _context.Reservas
+                    .Include(r => r.Huespedes)
+                    .Include(r => r.Servicios)
+                    .FirstOrDefaultAsync(r => r.IdReserva == id);
+
+                if (reservaExistente == null)
                 {
-                    var reservaToUpdate = await _context.Reservas
-                        .Include(r => r.Huespedes)
-                        .Include(r => r.Servicios)
-                        .FirstOrDefaultAsync(m => m.IdReserva == id);
-
-                    if (reservaToUpdate == null)
-                    {
-                        return NotFound();
-                    }
-
-                    reservaToUpdate.IdCliente = reserva.IdCliente;
-                    reservaToUpdate.IdHabitacion = reserva.IdHabitacion;
-                    reservaToUpdate.FechaInicio = reserva.FechaInicio;
-                    reservaToUpdate.FechaFin = reserva.FechaFin;
-                    reservaToUpdate.NumeroPersonas = reserva.NumeroPersonas;
-                    reservaToUpdate.PrecioTotal = reserva.PrecioTotal;
-                    reservaToUpdate.Anticipo = reserva.Anticipo;
-                    reservaToUpdate.IdEstado = reserva.IdEstado;
-                    reservaToUpdate.Notas = reserva.Notas;
-
-                    reservaToUpdate.Huespedes.Clear();
-                    foreach (var huespedId in HuespedesSeleccionados)
-                    {
-                        var huesped = await _context.Huespedes.FindAsync(huespedId);
-                        if (huesped != null)
-                        {
-                            reservaToUpdate.Huespedes.Add(huesped);
-                        }
-                    }
-
-                    reservaToUpdate.Servicios.Clear();
-                    foreach (var servicioId in ServiciosSeleccionados)
-                    {
-                        var servicio = await _context.Servicios.FindAsync(servicioId);
-                        if (servicio != null)
-                        {
-                            reservaToUpdate.Servicios.Add(servicio);
-                        }
-                    }
-
-                    _context.Update(reservaToUpdate);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
+
+                // If room is changing, update availability
+                if (reservaExistente.IdHabitacion != reserva.IdHabitacion)
                 {
-                    if (!ReservaExists(reserva.IdReserva))
+                    // Increase old room availability
+                    var oldHabitacion = await _context.Habitaciones.FindAsync(reservaExistente.IdHabitacion);
+                    if (oldHabitacion != null)
                     {
-                        return NotFound();
+                        oldHabitacion.HabitacionesDisponibles++;
+                        _context.Habitaciones.Update(oldHabitacion);
                     }
-                    else
+
+                    // Decrease new room availability
+                    var newHabitacion = await _context.Habitaciones.FindAsync(reserva.IdHabitacion);
+                    if (newHabitacion == null || newHabitacion.HabitacionesDisponibles <= 0)
                     {
-                        throw;
+                        ModelState.AddModelError("", "No hay habitaciones disponibles");
+                        PrepararViewBags(reserva);
+                        return View(reserva);
+                    }
+                    newHabitacion.HabitacionesDisponibles--;
+                    _context.Habitaciones.Update(newHabitacion);
+                }
+
+                // Actualizar propiedades básicas
+                reservaExistente.IdCliente = reserva.IdCliente;
+                reservaExistente.IdHabitacion = reserva.IdHabitacion;
+                reservaExistente.FechaInicio = reserva.FechaInicio;
+                reservaExistente.FechaFin = reserva.FechaFin;
+                reservaExistente.NumeroPersonas = reserva.NumeroPersonas;
+                reservaExistente.PrecioTotal = reserva.PrecioTotal;
+                reservaExistente.Anticipo = reserva.Anticipo;
+                reservaExistente.Notas = reserva.Notas;
+                reservaExistente.IdEstado = reserva.IdEstado;
+
+                // Actualizar huéspedes
+                reservaExistente.Huespedes.Clear();
+                if (HuespedesSeleccionados != null)
+                {
+                    var huespedes = await _context.Huespedes
+                        .Where(h => HuespedesSeleccionados.Contains(h.Id))
+                        .ToListAsync();
+                    foreach (var huesped in huespedes)
+                    {
+                        reservaExistente.Huespedes.Add(huesped);
                     }
                 }
+
+                // Actualizar servicios
+                reservaExistente.Servicios.Clear();
+                if (ServiciosSeleccionados != null)
+                {
+                    var servicios = await _context.Servicios
+                        .Where(s => ServiciosSeleccionados.Contains(s.IdServicio))
+                        .ToListAsync();
+                    foreach (var servicio in servicios)
+                    {
+                        reservaExistente.Servicios.Add(servicio);
+                    }
+                }
+
+                await _context.SaveChangesAsync();
+                await transaction.CommitAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.IdCliente = new SelectList(_context.Clientes, "IdCliente", "NombreCompleto", reserva.IdCliente);
-            ViewBag.IdHabitacion = new SelectList(_context.Habitaciones, "IdHabitacion", "NumeroHabitacion", reserva.IdHabitacion);
-            ViewBag.Huespedes = new SelectList(_context.Huespedes, "Id", "NombreCompleto");
-            ViewBag.IdEstado = new SelectList(_context.ReservaEstados, "IdEstado", "Nombre", reserva.IdEstado);
-            ViewBag.ServiciosActivos = _context.Servicios.Where(s => s.EstadoServicio.Equals(true)).ToList();
-            return View(reserva);
+            catch (DbUpdateConcurrencyException)
+            {
+                await transaction.RollbackAsync();
+                if (!ReservaExists(reserva.IdReserva))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync();
+                ModelState.AddModelError("", "Ocurrió un error al guardar los cambios." + ex.Message);
+                PrepararViewBags(reserva);
+                return View(reserva);
+            }
         }
 
         // GET: Reservas/Delete/5

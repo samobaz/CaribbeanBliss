@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Caribbean2.Migrations
 {
     [DbContext(typeof(CaribbeanContext))]
-    partial class CaribbeanContextModelSnapshot : ModelSnapshot
+    [Migration("20241209010544_Caribbbeaannnnnnnnnn")]
+    partial class Caribbbeaannnnnnnnnn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -759,11 +762,7 @@ namespace Caribbean2.Migrations
                             Contrasena = "nimad4321",
                             Correo = "admin@admincorreo.com",
                             Estado = true,
-<<<<<<< HEAD
-                            FechaRegistro = new DateTime(2024, 12, 8, 20, 25, 2, 686, DateTimeKind.Local).AddTicks(218),
-=======
                             FechaRegistro = new DateTime(2024, 12, 8, 20, 5, 43, 979, DateTimeKind.Local).AddTicks(5850),
->>>>>>> cb6b423c27d0d1082595223a753eed316d9c1a14
                             IdRol = 3,
                             Identificacion = "1",
                             NombresApellidos = "admin",
