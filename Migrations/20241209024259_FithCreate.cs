@@ -544,7 +544,7 @@ namespace Caribbean2.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioID", "Contrasena", "Correo", "Estado", "FechaRegistro", "IdRol", "Identificacion", "NombresApellidos", "ResetPasswordExpiry", "ResetPasswordToken", "RolIdRol", "Telefono", "TipoIdentificacion" },
-                values: new object[] { 1, "nimad4321", "admin@admincorreo.com", true, new DateTime(2024, 12, 8, 20, 25, 2, 686, DateTimeKind.Local).AddTicks(218), 3, "1", "admin", null, null, null, "1", "CC" });
+                values: new object[] { 1, "nimad4321", "admin@admincorreo.com", true, new DateTime(2024, 12, 8, 21, 42, 57, 36, DateTimeKind.Local).AddTicks(7390), 3, "1", "admin", null, null, null, "1", "CC" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Calificaciones_IdCliente",

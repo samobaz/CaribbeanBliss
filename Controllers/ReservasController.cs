@@ -66,8 +66,6 @@ namespace Caribbean2.Controllers
 
                 var habitaciones = _context.Habitaciones
                     .Where(h => h.IdEstado == 1)
-<<<<<<< HEAD
-=======
                     .Select(h => new
                     {
                         h.IdHabitacion,
@@ -75,39 +73,23 @@ namespace Caribbean2.Controllers
                         h.Nombre,
                         h.PrecioHabitacion,
                         h.Capacidad,
-                        h.HabitacionesDisponibles // Include HabitacionesDisponibles
+                        h.HabitacionesDisponibles
                     })
->>>>>>> cb6b423c27d0d1082595223a753eed316d9c1a14
                     .ToList();
 
-                // Preparar ViewBag para habitaciones
+                // ViewBag para habitaciones
                 ViewBag.IdHabitacion = new SelectList(habitaciones.Select(h => new
                 {
                     Value = h.IdHabitacion,
-                    Text = $"Habitación {random.Next(1, 101)} - {h.Nombre} - ${h.PrecioHabitacion:N2}"
+                    Text = $"Habitación {h.NumeroHabitacion} - {h.Nombre} - ${h.PrecioHabitacion:N2}"
                 }), "Value", "Text");
 
-                // Preparar ViewBag para clientes
-                ViewBag.IdCliente = new SelectList(_context.Clientes
-                    .Where(c => c.ClienteEstado)
-                    .Select(c => new
-                    {
-                        Value = c.idCliente,
-                        Text = c.nombre
-                    }), "Value", "Text");
-
-                // Preparar ViewBag para huéspedes
-                ViewBag.Huespedes = new SelectList(_context.Huespedes
-                    .Select(h => new
-                    {
-                        Value = h.Id,
-                        Text = h.NombreCompleto
-                    }), "Value", "Text");
-
-                // Preparar ViewBag para estados
+                // Resto de ViewBags
+                ViewBag.IdCliente = new SelectList(_context.Clientes.Where(c => c.ClienteEstado), "idCliente", "nombre");
+                ViewBag.Huespedes = new SelectList(_context.Huespedes, "Id", "NombreCompleto");
                 ViewBag.IdEstado = new SelectList(_context.ReservaEstados, "IdEstado", "Nombre");
-
-                // Preparar ViewBag para servicios activos - CORREGIDO
+                
+                // Servicios activos como SelectList
                 ViewBag.ServiciosActivos = new SelectList(
                     _context.Servicios
                         .Where(s => s.EstadoServicio)
@@ -115,47 +97,15 @@ namespace Caribbean2.Controllers
                         {
                             Value = s.IdServicio,
                             Text = $"{s.Nombre} - ${s.PrecioServicio:N2}"
-                        }), "Value", "Text"
+                        }), 
+                    "Value", 
+                    "Text"
                 );
 
-                // Diccionarios para precios y capacidades
-                ViewBag.HabitacionesPrecios = habitaciones.ToDictionary(
-                    h => h.IdHabitacion,
-                    h => h.PrecioHabitacion
-                );
-
-<<<<<<< HEAD
-                ViewBag.HabitacionesCapacidad = habitaciones.ToDictionary(
-                    h => h.IdHabitacion,
-                    h => h.Capacidad
-                );
-=======
-                // Guardar las habitaciones disponibles para JavaScript
-                ViewBag.HabitacionesDisponibles = habitaciones.ToDictionary(
-                    h => h.IdHabitacion,
-                    h => h.HabitacionesDisponibles
-                );
-
-                // Preparar el resto de ViewBag
-                ViewBag.IdCliente = new SelectList(_context.Clientes.Where(c => c.ClienteEstado), "idCliente", "nombre");
-                ViewBag.Huespedes = new SelectList(_context.Huespedes, "Id", "NombreCompleto");
-                ViewBag.IdEstado = new SelectList(_context.ReservaEstados, "IdEstado", "Nombre");
-                ViewBag.ServiciosActivos = _context.Servicios
-                    .Where(s => s.EstadoServicio)
-                    .Select(s => new
-                    {
-                        s.IdServicio,
-                        s.Nombre,
-                        s.PrecioServicio,
-                        DisplayText = $"{s.Nombre} - ${s.PrecioServicio:N2}"
-                    })
-                    .ToList();
->>>>>>> cb6b423c27d0d1082595223a753eed316d9c1a14
-
-                ViewBag.HabitacionesDisponibles = habitaciones.ToDictionary(
-                    h => h.IdHabitacion,
-                    h => true
-                );
+                // Diccionarios para JavaScript
+                ViewBag.HabitacionesPrecios = habitaciones.ToDictionary(h => h.IdHabitacion, h => h.PrecioHabitacion);
+                ViewBag.HabitacionesCapacidad = habitaciones.ToDictionary(h => h.IdHabitacion, h => h.Capacidad);
+                ViewBag.HabitacionesDisponibles = habitaciones.ToDictionary(h => h.IdHabitacion, h => h.HabitacionesDisponibles);
 
                 return View();
             }
@@ -232,27 +182,11 @@ namespace Caribbean2.Controllers
                         }
                     }
 
-<<<<<<< HEAD
-                    try
-                    {
-                        _context.Add(reserva);
-                        await _context.SaveChangesAsync();
-                        TempData["Success"] = "Reserva creada correctamente";
-                        return RedirectToAction(nameof(Index));
-                    }
-                    catch (Exception ex)
-                    {
-                        ModelState.AddModelError("", "Error al guardar la reserva: " + ex.Message);
-                        PrepararViewBags(reserva);
-                        return View(reserva);
-                    }
-=======
                     _context.Reservas.Add(reserva);
                     await _context.SaveChangesAsync();
                     await transaction.CommitAsync();
 
                     return Json(new { success = true, message = "Reserva creada correctamente" });
->>>>>>> cb6b423c27d0d1082595223a753eed316d9c1a14
                 }
 
                 return Json(new { success = false, message = "Error de validación del modelo" });

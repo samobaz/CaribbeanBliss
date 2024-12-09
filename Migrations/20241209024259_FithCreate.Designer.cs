@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Caribbean2.Migrations
 {
     [DbContext(typeof(CaribbeanContext))]
-    [Migration("20241209010544_Caribbbeaannnnnnnnnn")]
-    partial class Caribbbeaannnnnnnnnn
+    [Migration("20241209024259_FithCreate")]
+    partial class FithCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -762,7 +762,7 @@ namespace Caribbean2.Migrations
                             Contrasena = "nimad4321",
                             Correo = "admin@admincorreo.com",
                             Estado = true,
-                            FechaRegistro = new DateTime(2024, 12, 8, 20, 5, 43, 979, DateTimeKind.Local).AddTicks(5850),
+                            FechaRegistro = new DateTime(2024, 12, 8, 21, 42, 57, 36, DateTimeKind.Local).AddTicks(7390),
                             IdRol = 3,
                             Identificacion = "1",
                             NombresApellidos = "admin",

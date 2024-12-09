@@ -759,11 +759,7 @@ namespace Caribbean2.Migrations
                             Contrasena = "nimad4321",
                             Correo = "admin@admincorreo.com",
                             Estado = true,
-<<<<<<< HEAD
-                            FechaRegistro = new DateTime(2024, 12, 8, 20, 25, 2, 686, DateTimeKind.Local).AddTicks(218),
-=======
-                            FechaRegistro = new DateTime(2024, 12, 8, 20, 5, 43, 979, DateTimeKind.Local).AddTicks(5850),
->>>>>>> cb6b423c27d0d1082595223a753eed316d9c1a14
+                            FechaRegistro = new DateTime(2024, 12, 8, 21, 42, 57, 36, DateTimeKind.Local).AddTicks(7390),
                             IdRol = 3,
                             Identificacion = "1",
                             NombresApellidos = "admin",
