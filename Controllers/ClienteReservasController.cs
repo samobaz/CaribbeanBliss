@@ -36,6 +36,15 @@ namespace Caribbean2.Controllers
 
                 // Obtener el rol del usuario
                 var userRoleId = HttpContext.Session.GetInt32("UserRoleId");
+                
+                // Si no hay rol, redirigir al login
+                if (userRoleId == null)
+                {
+                    return RedirectToAction("Login", "Usuarios");
+                }
+
+                // Agregar el rol a ViewBag
+                ViewBag.UserRoleId = userRoleId.Value; // Convert to non-nullable int
 
                 var reservations = await _context.ClienteReserva
                     .OrderByDescending(r => r.fechaReserva)
